@@ -30,7 +30,7 @@ func _physics_process(delta):
 		if abs(movementRotation-realRotation)<PI: 
 			movementRotation = (1-rotation_frac)*movementRotation  +  rotation_frac*realRotation
 		else:
-			movementRotation = (1-rotation_frac)*movementRotation  +  rotation_frac * (PI + (PI-realRotation*sign(realRotation)))*sign(movementRotation)
+			movementRotation = (1-rotation_frac)*movementRotation  +  rotation_frac * (2*PI - abs(realRotation))*sign(movementRotation)
 		if movementRotation > PI:
 			movementRotation-=2*PI
 		if movementRotation < -PI:
