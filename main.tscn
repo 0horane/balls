@@ -1,11 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctjhgbe7lv625"]
+[gd_scene load_steps=8 format=3 uid="uid://ctjhgbe7lv625"]
 
 [ext_resource type="PackedScene" uid="uid://bm5vltrp28oor" path="res://player.tscn" id="1_c2cto"]
+[ext_resource type="Texture2D" uid="uid://bexol24inxyjb" path="res://Joe_Biden_presidential_portrait.jpg" id="1_t60jr"]
 [ext_resource type="PackedScene" uid="uid://bcaiyqbwg6v20" path="res://chair.tscn" id="2_7bd4v"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="3_p7t3e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kjjv"]
 size = Vector3(60, 2, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmo7x"]
+albedo_texture = ExtResource("1_t60jr")
 
 [sub_resource type="BoxMesh" id="BoxMesh_8p3s3"]
 size = Vector3(60, 2, 60)
@@ -19,6 +23,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 shape = SubResource("BoxShape3D_6kjjv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TemporaryGround"]
+material_override = SubResource("StandardMaterial3D_vmo7x")
 mesh = SubResource("BoxMesh_8p3s3")
 skeleton = NodePath("../CollisionShape3D")
 
@@ -32,6 +37,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.8672, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.54519, 4.90547, 9.04478)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.627963, 0.778243, 0, -0.778243, 0.627963, 0, 11, 2)
+transform = Transform3D(1, 0, 0, 0, 0.924453, 0.381296, 0, -0.381296, 0.924453, 0, 8.01627, 15.7494)
 fov = 75.9375
 script = ExtResource("3_p7t3e")
