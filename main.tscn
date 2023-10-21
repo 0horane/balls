@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctjhgbe7lv625"]
+[gd_scene load_steps=5 format=3 uid="uid://ctjhgbe7lv625"]
 
 [ext_resource type="PackedScene" uid="uid://bm5vltrp28oor" path="res://player.tscn" id="1_c2cto"]
+[ext_resource type="PackedScene" uid="uid://bcaiyqbwg6v20" path="res://chair.tscn" id="2_7bd4v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kjjv"]
 size = Vector3(60, 2, 60)
@@ -30,3 +31,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.8672, 0)
 transform = Transform3D(1, 0, 0, 0, 0.720926, 0.693012, 0, -0.693012, 0.720926, 1.1916, 14.3941, 10.9391)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.966922, -0.255075, 0, 0.255075, 0.966922, 0, -11.4869, 1.84875)
+fov = 75.9375
+
+[node name="RigidBody3D" parent="." groups=["object"] instance=ExtResource("2_7bd4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.54519, 4.90547, 9.04478)

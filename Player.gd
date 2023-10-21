@@ -6,7 +6,7 @@ const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
+var size=0.5
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -30,6 +30,23 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+		
+	for index in range(get_slide_collision_count()):
+		# We get one of the collisions with the player
+		var collision = get_slide_collision(index)
+
+		# If the collision is with ground
+		#if collision.get_collider() == null:
+		#	continue
+
+		# If the collider is with a mob
+		if collision.get_collider().is_in_group("object") && collision.get_collider().size < size*5:
+			var mob = collision.get_collider()
+			# we check that we are hitting it from above.
+			#if Vector3.UP.dot(collision.get_normal()) > 0.1:
+				# If so, we squash it and bounce.
+				#mob.squash()
+				#target_velocity.y = bounce_impulse
 
 	move_and_slide()
 
