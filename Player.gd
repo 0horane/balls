@@ -49,7 +49,3 @@ func _physics_process(delta):
 				#target_velocity.y = bounce_impulse
 
 	move_and_slide()
-
-
-	
-
