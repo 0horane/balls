@@ -9,7 +9,7 @@ func _ready():
 	$ChairSds2.transform = $ChairSds2.transform.scaled(Vector3(size,size,size))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	#if size<0.5:
 		#print( snapped(position, Vector3.ONE*0.01))
 		#pass
