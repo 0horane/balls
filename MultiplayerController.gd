@@ -15,6 +15,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+@rpc("any_peer","call_local")
+func startGame():
+	var scene = load("res://main.tscn").instantiate()
+	get_tree().root.add_child(scene)
+	self.hide()
 func peer_connected(id):
 	print("Player "+str(id)+ " connected")
 func peer_disconnected(id):
@@ -46,4 +51,5 @@ func _on_join_button_down():
 
 
 func _on_play_button_down():
+	startGame.rpc()
 	pass # Replace with function body.
