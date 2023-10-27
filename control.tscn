@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0m5iw71wwv6r"]
+
+[ext_resource type="Script" path="res://MultiplayerController.gd" id="1_8xvf2"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8xvf2")
+
+[node name="Host" type="Button" parent="."]
+layout_mode = 0
+offset_left = 235.0
+offset_top = 147.0
+offset_right = 279.0
+offset_bottom = 178.0
+text = "Host
+"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+
+[node name="Join" type="Button" parent="."]
+offset_left = 235.0
+offset_top = 71.0
+offset_right = 279.0
+offset_bottom = 102.0
+text = "Join
+"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = -56.25
+offset_top = -32.25
+offset_right = -48.25
+offset_bottom = -24.25
+placeholder_text = "Ingrese su nombre de usuario
+"
+
+[node name="Play" type="Button" parent="."]
+offset_left = 235.0
+offset_top = 222.0
+offset_right = 279.0
+offset_bottom = 253.0
+text = "Play
+"
+
+[connection signal="button_down" from="Host" to="." method="_on_host_button_down"]
+[connection signal="button_down" from="Join" to="." method="_on_join_button_down"]
