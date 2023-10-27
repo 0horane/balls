@@ -16,12 +16,14 @@ func _ready():
 
 func spawn_random_object():    
 	if spawn_area and object_scene:
+		print(spawn_area)
+		
 		var random_position = Vector3(
-			randf() * spawn_area.extents.x * 2 - spawn_area.extents.x,
-			randf() * spawn_area.extents.y * 2 - spawn_area.extents.y,
-			randf() * spawn_area.extents.z * 2 - spawn_area.extents.z
+			randf() * spawn_area.mesh.size.x * 2 - spawn_area.mesh.size.x,
+			randf() * spawn_area.mesh.size.y * 2 - spawn_area.mesh.size.y,
+			randf() * spawn_area.mesh.size.z * 2 - spawn_area.mesh.size.z
 		)
-		var new_object = object_scene.instance()
+		var new_object = object_scene.instantiate()
 		new_object.transform.origin = random_position
 		add_child(new_object)
 		print("Object spawned at: ", random_position)
