@@ -20,7 +20,6 @@ contact_monitor = true
 script = ExtResource("1_e760g")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
 material_override = SubResource("StandardMaterial3D_j7juc")
 mesh = SubResource("SphereMesh_2uske")
 skeleton = NodePath("")

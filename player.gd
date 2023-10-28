@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 
-const SPEED = 800.0
+const SPEED = 100.0
 const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -61,8 +61,10 @@ func _physics_process(delta):
 	
 	var direction = Vector3(input_dir.x, 0, input_dir.y).normalized()
 	if direction:
-		angular_velocity = Vector3(-direction.z+accelerometerValue.z, 0, direction.x+accelerometerValue.y/32) \
+		# i came to this vector through trial and error. it works. that's what maters
+		var true_dir = Vector3(-direction.x+accelerometerValue.y/32, 0, -direction.z+accelerometerValue.z) \
 			.rotated(Vector3(0,1,0),movementRotation) * SPEED*delta
+		apply_central_force(true_dir)
 	else:
 		angular_velocity.x = move_toward(angular_velocity.x, 0, SPEED/100*delta)
 		angular_velocity.z = move_toward(angular_velocity.z, 0, SPEED/100*delta)
