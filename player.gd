@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 
-const SPEED = 100.0
+const SPEED = 200.0
 const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -10,7 +10,7 @@ var size=1
 var realRotation:float = 0
 var movementRotation:float = 0
 var lifted_object_map = {} # aactualmente mapea Body->Collisionshape. Actualizar si algo se cambia
-var waitfor=true
+
 
 var linear_velocity_before_collision:Vector3=linear_velocity
 
@@ -23,8 +23,11 @@ func is_on_floor():
 	return true #TODO
 
 func _physics_process(delta):
-	waitfor=true
+	if linear_velocity.y>5:
+		linear_velocity.y=5
+	
 	linear_velocity_before_collision=linear_velocity # to prevent collisions from causing jumps TODO rename
+	
 	
 	# Horrendously cursed camera and direction system, took me 2 hours to debug,
 	# stay away for your own sanity
@@ -61,14 +64,17 @@ func _physics_process(delta):
 	
 	var direction = Vector3(input_dir.x, 0, input_dir.y).normalized()
 	if direction:
-		# the possibilites here is to have an apply_central_force and then to calculate needed angular
-		# velocity based on that (because rigidbody rotation only seems to be correctly calculated 
-		# from spheres), to set the torque (angular_velocity =), to add to the torque (apply_torque),  
-		var true_dir = Vector3(-direction.x+accelerometerValue.y/32, 0, -direction.z+accelerometerValue.z) \
+		# the possibilites here is to 
+		# 1) have an apply_central_force and then to calculate needed angular velocity based on 
+		# that (because rigidbody rotation only seems to be correctly calculated from spheres), 
+		# 2) to set the torque (angular_velocity =), 
+		# 3) to add to the torque (apply_torque),  
+		#
+		# The second one is currently being used
+		
+		#the current method
+		angular_velocity = Vector3(-direction.z+accelerometerValue.z, 0, direction.x+accelerometerValue.y/32) \
 			.rotated(Vector3(0,1,0),movementRotation) * SPEED*delta
-		apply_central_force(true_dir)
-		#angular_velocity = Vector3(-direction.z+accelerometerValue.z, 0, direction.x+accelerometerValue.y/32) \
-		#	.rotated(Vector3(0,1,0),movementRotation) * SPEED*delta
 	else:
 		angular_velocity.x = move_toward(angular_velocity.x, 0, SPEED/100*delta)
 		angular_velocity.z = move_toward(angular_velocity.z, 0, SPEED/100*delta)
@@ -79,13 +85,12 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
-	if waitfor:
-		print("body entered: ", body)
-		if "size" in body and size>body.size*4:
-			var parent = body.get_parent()
-			if parent && parent!=self:
-				absorb_body(body)
-				waitfor=false
+	print("body entered: ", body)
+	if "size" in body and size>body.size*4:
+		var parent = body.get_parent()
+		if parent && parent!=self:
+			absorb_body(body)
+
 
 func absorb_body(body):
 	var pos=body.global_position
@@ -98,10 +103,14 @@ func absorb_body(body):
 	lifted_object_map[body] = body_collision_shape
 	body.remove_child(body_collision_shape)
 	add_child(body_collision_shape)
+	body_collision_shape.global_position=pos
+	# Whenever i also apply the correct rotation, the player immediately collides
+	# with every single object in the game, absorbing them if they're the right size. only
+	# then to exit the game. i have no idea why. //TODO fix
 	#body_collision_shape.global_rotation=rot
 	print(body_collision_shape.global_rotation)
 	print(rot)
-	body_collision_shape.global_position=pos
+	
 	#
 	
 	parent.remove_child(body)
