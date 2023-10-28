@@ -34,6 +34,7 @@ transform = Transform3D(0.99758, 0.0565139, -0.0405017, 0.00680668, 0.500341, 0.
 
 [node name="Player" parent="." instance=ExtResource("1_c2cto")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.8672, 0)
+mass = 0.1
 
 [node name="LiftableObject" parent="." groups=["object"] instance=ExtResource("2_7bd4v")]
 transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, -5.43457, 9.81094, -3.82701)

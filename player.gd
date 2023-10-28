@@ -10,7 +10,7 @@ var size=1
 var realRotation:float = 0
 var movementRotation:float = 0
 var lifted_object_map = {} # aactualmente mapea Body->Collisionshape. Actualizar si algo se cambia
-
+var waitfor=true
 
 var linear_velocity_before_collision:Vector3=linear_velocity
 
@@ -23,6 +23,7 @@ func is_on_floor():
 	return true #TODO
 
 func _physics_process(delta):
+	waitfor=true
 	linear_velocity_before_collision=linear_velocity # to prevent collisions from causing jumps TODO rename
 	
 	# Horrendously cursed camera and direction system, took me 2 hours to debug,
@@ -72,11 +73,13 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
-	if "size" in body and size>body.size*4:
-		var parent = body.get_parent()
-		if parent && parent!=self:
-			absorb_body(body)
-			
+	if waitfor:
+		print("body entered: ", body)
+		if "size" in body and size>body.size*4:
+			var parent = body.get_parent()
+			if parent && parent!=self:
+				absorb_body(body)
+				waitfor=false
 
 func absorb_body(body):
 	var pos=body.global_position
@@ -89,8 +92,11 @@ func absorb_body(body):
 	lifted_object_map[body] = body_collision_shape
 	body.remove_child(body_collision_shape)
 	add_child(body_collision_shape)
+	#body_collision_shape.global_rotation=rot
+	print(body_collision_shape.global_rotation)
+	print(rot)
 	body_collision_shape.global_position=pos
-	body_collision_shape.global_rotation=rot
+	#
 	
 	parent.remove_child(body)
 	add_child(body)
