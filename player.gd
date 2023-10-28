@@ -9,6 +9,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var size=1
 var realRotation:float = 0
 var movementRotation:float = 0
+var lifted_object_map = {} # aactualmente mapea Body->Collisionshape. Actualizar si algo se cambia
 
 
 var linear_velocity_before_collision:Vector3=linear_velocity
@@ -65,6 +66,7 @@ func _physics_process(delta):
 		angular_velocity.x = move_toward(angular_velocity.x, 0, SPEED/100*delta)
 		angular_velocity.z = move_toward(angular_velocity.z, 0, SPEED/100*delta)
 		
+		
 
 
 
@@ -72,16 +74,34 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if "size" in body and size>body.size*4:
 		var parent = body.get_parent()
-		if parent:
-			if parent!=self:				
-				var pos=body.global_position
-				var rot=body.global_rotation
-				parent.remove_child(body)
-				add_child(body)
-				body.add_to_parent(pos, rot)
-				linear_velocity=linear_velocity_before_collision
-				change_size(body.size/12)
-				
+		if parent && parent!=self:
+			absorb_body(body)
+			
+
+func absorb_body(body):
+	var pos=body.global_position
+	var rot=body.global_rotation
+	var parent = body.get_parent()
+	
+	# El cambio de collisionShape debe ocurrir antes del add_child porque el add_child 
+	# inmediatamenta causa un _on_body_entered. 
+	var body_collision_shape = body.get_node("CollisionShape3D")
+	lifted_object_map[body] = body_collision_shape
+	body.remove_child(body_collision_shape)
+	add_child(body_collision_shape)
+	body_collision_shape.global_position=pos
+	body_collision_shape.global_rotation=rot
+	
+	parent.remove_child(body)
+	add_child(body)
+	body.add_to_parent(pos, rot)
+	#linear_velocity=linear_velocity_before_collision
+	change_size(body.size/12)
+	
+
+	
+	
+
 func change_size(addedsize):
 	size+=addedsize
 	$CollisionShape3D.shape.radius=size/2
