@@ -61,10 +61,14 @@ func _physics_process(delta):
 	
 	var direction = Vector3(input_dir.x, 0, input_dir.y).normalized()
 	if direction:
-		# i came to this vector through trial and error. it works. that's what maters
+		# the possibilites here is to have an apply_central_force and then to calculate needed angular
+		# velocity based on that (because rigidbody rotation only seems to be correctly calculated 
+		# from spheres), to set the torque (angular_velocity =), to add to the torque (apply_torque),  
 		var true_dir = Vector3(-direction.x+accelerometerValue.y/32, 0, -direction.z+accelerometerValue.z) \
 			.rotated(Vector3(0,1,0),movementRotation) * SPEED*delta
 		apply_central_force(true_dir)
+		#angular_velocity = Vector3(-direction.z+accelerometerValue.z, 0, direction.x+accelerometerValue.y/32) \
+		#	.rotated(Vector3(0,1,0),movementRotation) * SPEED*delta
 	else:
 		angular_velocity.x = move_toward(angular_velocity.x, 0, SPEED/100*delta)
 		angular_velocity.z = move_toward(angular_velocity.z, 0, SPEED/100*delta)
