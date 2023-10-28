@@ -17,8 +17,6 @@ func _process(_delta):
 		rotation=parentRot
 		position=parentPos
 		#pass
-	
-
 func add_to_parent(initpos, initrot):
 	global_position=initpos
 	global_rotation=initrot
@@ -26,4 +24,3 @@ func add_to_parent(initpos, initrot):
 	parentPos=position
 	parentRot=rotation
 	$CollisionShape3D.queue_free()
-

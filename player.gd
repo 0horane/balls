@@ -44,13 +44,9 @@ func _physics_process(delta):
 			movementRotation-=2*PI
 		if movementRotation < -PI:
 			movementRotation+=2*PI
-		
-	
-
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		linear_velocity.y = JUMP_VELOCITY
-
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions. //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwaTODO
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
@@ -64,16 +60,11 @@ func _physics_process(delta):
 	else:
 		angular_velocity.x = move_toward(angular_velocity.x, 0, SPEED/100*delta)
 		angular_velocity.z = move_toward(angular_velocity.z, 0, SPEED/100*delta)
-		
-
-
-
-
 func _on_body_entered(body):
 	if "size" in body and size>body.size*4:
 		var parent = body.get_parent()
 		if parent:
-			if parent!=self:				
+			if parent!=self:
 				var pos=body.global_position
 				var rot=body.global_rotation
 				parent.remove_child(body)
@@ -85,4 +76,3 @@ func _on_body_entered(body):
 func change_size(addedsize):
 	size+=addedsize
 	$CollisionShape3D.shape.radius=size/2
-	

@@ -12,7 +12,7 @@ func _ready():
 	object_scene = load(object_scene_path)
 
 	if object_scene:
-		print("El objeto se instanciará en el área de spawn al presionar la tecla 'P'.")
+		print("presionar la tecla 'P'.")
 
 func spawn_random_object():    
 	if spawn_area and object_scene:
