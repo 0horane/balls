@@ -9,7 +9,7 @@ points = PackedVector3Array(-45.039, 41.0532, 36.2123, 24.2077, -14.3322, 7.0755
 [node name="RigidBody3D" type="RigidBody3D"]
 script = ExtResource("1_womxj")
 
-[node name="ChairSds2" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.018, 0, 0, 0, -7.86805e-10, 0.018, 0, -0.018, -7.86805e-10, 0, 0, 0.0475835)
 mesh = ExtResource("1_vc6ok")
 
