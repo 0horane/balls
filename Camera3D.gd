@@ -5,7 +5,7 @@ var camera_offset
 var camera_speed = 5.0
 
 func _ready():
-	player = $"../Player"  # Asegúrate de que la ruta al jugador sea correcta
+	player = $"../Player"  
 
 func _process(delta):
 	if player:

@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Camera3D.gd" id="3_p7t3e"]
 [ext_resource type="Script" path="res://Spawn.gd" id="6_6nr0g"]
 [ext_resource type="Script" path="res://Area.gd" id="7_e0w53"]
-[ext_resource type="Script" path="res://LiftableOjbectSpawner.gd" id="8_2gxk6"]
+[ext_resource type="Script" path="res://LiftableObjectSpawner.gd" id="8_u0hbn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kjjv"]
 size = Vector3(60, 2, 60)
@@ -53,7 +53,9 @@ script = ExtResource("6_6nr0g")
 [node name="Area" type="Node" parent="Spawn"]
 script = ExtResource("7_e0w53")
 
-[node name="LiftableOjbectSpawner" type="Marker3D" parent="."]
-script = ExtResource("8_2gxk6")
+[node name="Timer" type="Timer" parent="Spawn"]
+
+[node name="LiftableObjectSpawner" type="Marker3D" parent="."]
+script = ExtResource("8_u0hbn")
 
 [connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
