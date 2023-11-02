@@ -2,7 +2,7 @@ extends Camera3D
 
 var player
 var camera_offset
-var camera_speed = 5.0
+var camera_speed = 2.0
 
 func _ready():
 	player = $"../Player"  
