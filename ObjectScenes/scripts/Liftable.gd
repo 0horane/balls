@@ -1,3 +1,4 @@
+@tool
 extends RigidBody3D
 @export var size:float=1 
 var parentPos=Vector3.ZERO
@@ -13,20 +14,19 @@ func _ready():
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
 
+func _process(_delta):
 	if parentPos:
 		rotation=parentRot
 		position=parentPos
 		#pass
-	
-
 func add_to_parent(initpos, initrot):
 	global_position=initpos
 	global_rotation=initrot
 	gravity_scale=0
 	parentPos=position
 	parentRot=rotation
-	print(position)
+
 	#$CollisionShape3D.queue_free()
+
 

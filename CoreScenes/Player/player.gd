@@ -35,6 +35,7 @@ func _physics_process(delta):
 	
 	linear_velocity_before_collision=linear_velocity # to prevent collisions from causing jumps TODO rename
 	
+
 	
 	# Horrendously cursed camera and direction system, took me 2 hours to debug,
 	# stay away for your own sanity
@@ -56,13 +57,9 @@ func _physics_process(delta):
 			movementRotation-=2*PI
 		if movementRotation < -PI:
 			movementRotation+=2*PI
-		
-	
-
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		linear_velocity.y = JUMP_VELOCITY
-
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions. //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwaTODO
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
@@ -85,6 +82,7 @@ func _physics_process(delta):
 	else:
 		angular_velocity.x = move_toward(angular_velocity.x, 0, SPEED/100*delta)
 		angular_velocity.z = move_toward(angular_velocity.z, 0, SPEED/100*delta)
+
 		
 		
 
@@ -105,6 +103,7 @@ func _on_body_entered(body):
 	#print("body entered: ", body)
 	if "size" in body and size*MINIMUM_ABSORBTION_RATIO>body.size:
 		var parent = body.get_parent()
+
 		if parent && parent!=self:
 			absorb_body(body)
 
@@ -189,3 +188,4 @@ func scale_to_factor(scale:Vector3) -> float:
 	# this is terrible and ideally i should be multiplying the scaled mesh vectors by whichever corresponds 
 	# according to direction. it might be worth doing, depends #TODO
 	return (scale.x + scale.y + scale.z) 
+

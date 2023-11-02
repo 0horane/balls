@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bm5vltrp28oor"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_e760g"]
+[ext_resource type="Script" path="res://CoreScenes/Player/player.gd" id="1_r3wye"]
 [ext_resource type="Texture2D" uid="uid://cq22og4jilpkc" path="res://1517788487669.jpeg" id="2_re4j3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fex5t"]
@@ -17,7 +17,7 @@ albedo_texture = ExtResource("2_re4j3")
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_fex5t")
 contact_monitor = true
-script = ExtResource("1_e760g")
+script = ExtResource("1_r3wye")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_j7juc")
