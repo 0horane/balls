@@ -1,3 +1,4 @@
+@tool
 extends Marker3D
 @export var size:float=1
 
@@ -9,9 +10,10 @@ var player_group : String = "balls"
 var replacement_timer_duration : float = 5
 
 func _ready():
-	spawn_timer = Timer.new()
-	check_timer = Timer.new()
-	setup_timers()
+	if !Engine.is_editor_hint():
+		spawn_timer = Timer.new()
+		check_timer = Timer.new()
+		setup_timers()
 	spawn_chair()
 	
 	

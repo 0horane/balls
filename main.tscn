@@ -55,6 +55,5 @@ script = ExtResource("7_e0w53")
 [node name="LiftableObjectSpawner" type="Marker3D" parent="."]
 transform = Transform3D(-0.520633, -0.852626, 0.0443834, 0.711233, -0.46188, -0.529919, 0.472323, -0.244327, 0.846886, 7.13803, 8.14347, 8.10485)
 script = ExtResource("8_u0hbn")
-size = 0.15
 
 [connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]

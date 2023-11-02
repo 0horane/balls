@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://f4j3jsayehft"]
+
+[ext_resource type="Script" path="res://LiftableObjectSpawner.gd" id="1_ems4i"]
+[ext_resource type="PackedScene" uid="uid://bcaiyqbwg6v20" path="res://chair.tscn" id="2_a27bt"]
+
+[node name="LiftableObjectSpawner" type="Marker3D"]
+transform = Transform3D(-0.544639, -0.83867, 0, 0.838671, -0.544639, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_ems4i")
+chair_scene = null
+
+[node name="RigidBody3D" parent="." instance=ExtResource("2_a27bt")]

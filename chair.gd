@@ -1,3 +1,4 @@
+@tool
 extends RigidBody3D
 @export var size:float=1 
 var parentPos=Vector3.ZERO
