@@ -82,8 +82,7 @@ func _physics_process(delta):
 	else:
 		angular_velocity.x = move_toward(angular_velocity.x, 0, SPEED/100*delta)
 		angular_velocity.z = move_toward(angular_velocity.z, 0, SPEED/100*delta)
-<<<<<<< HEAD
-=======
+
 		
 		
 
@@ -100,26 +99,11 @@ func _physics_process(delta):
 # - Subir fricción 
 # - Evitar que esfera solo crezca en una dirección
 
->>>>>>> main
 func _on_body_entered(body):
 	#print("body entered: ", body)
 	if "size" in body and size*MINIMUM_ABSORBTION_RATIO>body.size:
 		var parent = body.get_parent()
-<<<<<<< HEAD
-		if parent:
-			if parent!=self:
-				var pos=body.global_position
-				var rot=body.global_rotation
-				parent.remove_child(body)
-				add_child(body)
-				body.add_to_parent(pos, rot)
-				linear_velocity=linear_velocity_before_collision
-				change_size(body.size/12)
-				
-func change_size(addedsize):
-	size+=addedsize
-	$CollisionShape3D.shape.radius=size/2
-=======
+
 		if parent && parent!=self:
 			absorb_body(body)
 
@@ -204,4 +188,4 @@ func scale_to_factor(scale:Vector3) -> float:
 	# this is terrible and ideally i should be multiplying the scaled mesh vectors by whichever corresponds 
 	# according to direction. it might be worth doing, depends #TODO
 	return (scale.x + scale.y + scale.z) 
->>>>>>> main
+
