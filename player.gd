@@ -24,6 +24,10 @@ func is_on_floor():
 func _physics_process(delta):
 	linear_velocity_before_collision=linear_velocity # to prevent collisions from causing jumps TODO rename
 	
+	if Input.is_action_pressed("kill_self_debug"):
+		queue_free()
+		
+	
 	# Horrendously cursed camera and direction system, took me 2 hours to debug,
 	# stay away for your own sanity
 	# Calculates the rotation of the ball's movement relative to the z axis, 

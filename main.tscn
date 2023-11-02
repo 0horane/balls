@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctjhgbe7lv625"]
+[gd_scene load_steps=11 format=3 uid="uid://ctjhgbe7lv625"]
 
 [ext_resource type="PackedScene" uid="uid://bm5vltrp28oor" path="res://player.tscn" id="1_c2cto"]
 [ext_resource type="Script" path="res://main.gd" id="1_e8hrr"]
 [ext_resource type="Texture2D" uid="uid://bexol24inxyjb" path="res://Joe_Biden_presidential_portrait.jpg" id="1_t60jr"]
-[ext_resource type="PackedScene" uid="uid://bcaiyqbwg6v20" path="res://chair.tscn" id="2_7bd4v"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="3_p7t3e"]
 [ext_resource type="Script" path="res://Spawn.gd" id="6_6nr0g"]
 [ext_resource type="Script" path="res://Area.gd" id="7_e0w53"]
@@ -38,12 +37,9 @@ transform = Transform3D(0.99758, 0.0565139, -0.0405017, 0.00680668, 0.500341, 0.
 [node name="Player" parent="." groups=["balls"] instance=ExtResource("1_c2cto")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.8672, 0)
 
-[node name="LiftableObject" parent="." groups=["object"] instance=ExtResource("2_7bd4v")]
-transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, -5.43457, 9.81094, -3.82701)
-size = 0.2
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.924453, 0.381296, 0, -0.381296, 0.924453, 0, 8.01627, 15.7494)
+current = true
 fov = 75.9375
 script = ExtResource("3_p7t3e")
 
@@ -56,6 +52,8 @@ script = ExtResource("7_e0w53")
 [node name="Timer" type="Timer" parent="Spawn"]
 
 [node name="LiftableObjectSpawner" type="Marker3D" parent="."]
+transform = Transform3D(-0.520633, -0.852626, 0.0443834, 0.711233, -0.46188, -0.529919, 0.472323, -0.244327, 0.846886, 7.13803, 8.14347, 8.10485)
 script = ExtResource("8_u0hbn")
+size = 0.15
 
 [connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
