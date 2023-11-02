@@ -5,7 +5,7 @@ extends Node
 func _ready():
 	"""
 	for x in range(0, 100):
-		var chairloader = load("res://chair.tscn")
+		var chairloader = load("res://ObjectScenes/chair.tscn")
 		var chair = chairloader.instantiate()
 		chair.size=randf_range(0,1)**2+0.2
 		add_child(chair)

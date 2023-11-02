@@ -2,7 +2,7 @@
 extends Marker3D
 @export var size:float=1
 
-@export var chair_scene : PackedScene = preload("res://chair.tscn")
+@export var chair_scene : PackedScene = preload("res://ObjectScenes/chair.tscn")
 var chair_instance : Node3D
 var spawn_timer : Timer
 var check_timer : Timer
@@ -72,6 +72,8 @@ func _on_check_timer_timeout():
 			player_found = true
 			break
 		current_node = current_node.get_parent()
+		
+	# chair.get_tree().get_nodes_in_group("balls")  
 
 	if !player_found:
 		print("player not found")

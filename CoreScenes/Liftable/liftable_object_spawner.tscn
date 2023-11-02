@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://f4j3jsayehft"]
+
+[ext_resource type="Script" path="res://CoreScenes/Liftable/LiftableObjectSpawner.gd" id="1_rbe68"]
+
+[node name="LiftableObjectSpawner" type="Marker3D"]
+script = ExtResource("1_rbe68")
