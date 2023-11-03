@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://0qow4xfame2q"
+path="res://.godot/imported/wooden_table_02_1k.obj-c4b2df0b9578fed77ab9e774df537c7a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wooden_table_02_1k.obj-c4b2df0b9578fed77ab9e774df537c7a.mesh"]
+
+source_file="res://figuras/escenario/mesas/wooden_table_02_1k.obj"
+dest_files=["res://.godot/imported/wooden_table_02_1k.obj-c4b2df0b9578fed77ab9e774df537c7a.mesh", "res://.godot/imported/wooden_table_02_1k.obj-c4b2df0b9578fed77ab9e774df537c7a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
