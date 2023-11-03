@@ -19,6 +19,13 @@ func _process(_delta):
 	if parentPos:
 		rotation=parentRot
 		position=parentPos
+		
+	if Engine.is_editor_hint():
+		var parent  = get_parent()
+		if parent.is_in_group("liftable_spawner") && position != Vector3.ZERO:
+			parent.global_position = global_position
+			parent.global_rotation = global_rotation
+			position=Vector3.ZERO
 		#pass
 func add_to_parent(initpos, initrot):
 	global_position=initpos
