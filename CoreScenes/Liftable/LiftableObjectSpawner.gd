@@ -1,8 +1,29 @@
 @tool
 extends Marker3D
-@export var size:float=1
+@export var size:float:
+	get:
+		return sizestore 
+	set(value):
+		sizestore = value
+		if is_instance_valid(chair_instance) || Engine.is_editor_hint():
+			queue_free_chair()
+			spawn_chair()
+		
+var sizestore:float=1
 
-@export var chair_scene : PackedScene = preload("res://ObjectScenes/chair.tscn")
+
+@export var chair_scene : PackedScene:
+	get:
+		return chair_scene_store 
+	set(value):
+		chair_scene_store = value
+		if is_instance_valid(chair_instance) || Engine.is_editor_hint():
+			queue_free_chair()
+			spawn_chair()
+
+var chair_scene_store : PackedScene = preload("res://ObjectScenes/chair.tscn")
+
+
 var chair_instance : Node3D
 var spawn_timer : Timer
 var check_timer : Timer
@@ -37,6 +58,10 @@ func spawn_chair():
 	if chair_scene:
 		print("spawning_chair")
 		chair_instance = chair_scene.instantiate()
+		print(chair_instance)
+		print(chair_instance.size)
+		print(size)
+		
 		chair_instance.size = size
 		add_child(chair_instance)
 		chair_instance.position = Vector3.ZERO

@@ -3,7 +3,8 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	"""
+
+
 	for x in range(0, 100):
 		var chairloader = load("res://ObjectScenes/chair.tscn")
 		var chair = chairloader.instantiate()
@@ -13,9 +14,10 @@ func _ready():
 		chair.global_position.z=randf_range(-20,20)
 		chair.mass=chair.size**3 *1000
 
+
 		
 		#chair. = randf_range(-PI / 4, PI / 4)
-	"""
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

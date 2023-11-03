@@ -22,7 +22,7 @@ func _ready():
 	max_contacts_reported=9999
 	
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, $MeshInstance3D.get_mesh().get_mesh_arrays())
-	$MeshInstance3D.hide()
+
 
 
 func is_on_floor():
@@ -120,7 +120,7 @@ func absorb_body(body):
 	add_child(body)
 	body.add_to_parent(pos, rot)
 	#linear_velocity=linear_velocity_before_collision
-	change_size(body.size/12)
+	change_size(body.size*1.5)
 	
 	
 	# removes child object hitbox
