@@ -8,7 +8,7 @@ const MINIMUM_ABSORBTION_RATIO:float=0.25
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-var size :float = 1
+var size :float = 5
 var realRotation:float = 0
 var movementRotation:float = 0
 var lifted_object_map := {} # aactualmente mapea Body->Collisionshape. Actualizar si algo se cambia
@@ -63,7 +63,7 @@ func _physics_process(delta):
 		linear_velocity.y = JUMP_VELOCITY
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions. //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwaTODO
-	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+	var input_dir := Input.get_vector("debug_left", "debug_right", "debug_up", "debug_down")
 	var accelerometerValue := Input.get_accelerometer();
 	accelerometerValue.rotated(transform.basis.y, PI/2)
 	
@@ -109,9 +109,13 @@ func _on_body_entered(body):
 			absorb_body(body)
 
 # Notas: de mis pruebas en el juego original, el hitbox del katamri se desforma solo en approx. el 
-# centro del objeto original. Ademas, parece que el hitbox de contacto en el piso y objetos grandes 
+# centro del objeto original. Ademas, parece que el hitboxd de contacto en el piso y objetos grandes 
 # es mayor al hitbox que alica para levantar objetos, que es mas chica. 
 func absorb_body(body):
+	if body.is_in_group("balls"):
+		body.on_death()
+		return
+	
 	var pos=body.global_position
 	var rot=body.global_rotation
 	var parent = body.get_parent()

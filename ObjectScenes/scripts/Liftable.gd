@@ -3,6 +3,7 @@ extends RigidBody3D
 @export var size:float=1 
 var parentPos=Vector3.ZERO
 var parentRot=Vector3.ZERO
+var real_gravity_scale := gravity_scale
 
 @onready var parenttest = get_parent()
 @onready var parenttest2 = null
@@ -26,7 +27,24 @@ func add_to_parent(initpos, initrot):
 	gravity_scale=0
 	parentPos=position
 	parentRot=rotation
+	
+func remove_from_parent(initpos, initrot):
+	$MeshInstance3D.create_convex_collision(true, true)
+	var new_collison_shape :CollisionShape3D = $MeshInstance3D.find_child("CollisionShape3D")
+	new_collison_shape.scale = $MeshInstance3D.scale
+	new_collison_shape.rotation = $MeshInstance3D.rotation
+	new_collison_shape.position = $MeshInstance3D.position
+	$MeshInstance3D.get_child(0).remove_child(new_collison_shape)
+	add_child(new_collison_shape)
+	$MeshInstance3D.get_child(0).queue_free()
+	
+	global_position = initpos
+	global_rotation = initrot
+	gravity_scale = real_gravity_scale/5
+	parentPos=null
+	parentRot=null
+	print(global_position, global_rotation, self)
 
-	#$CollisionShape3D.queue_free()
+
 
 

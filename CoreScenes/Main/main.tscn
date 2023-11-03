@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctjhgbe7lv625"]
+[gd_scene load_steps=10 format=3 uid="uid://ctjhgbe7lv625"]
 
 [ext_resource type="Script" path="res://CoreScenes/Main/main.gd" id="1_sg1ki"]
 [ext_resource type="Texture2D" uid="uid://bexol24inxyjb" path="res://Joe_Biden_presidential_portrait.jpg" id="2_u3ikh"]
 [ext_resource type="PackedScene" uid="uid://bm5vltrp28oor" path="res://CoreScenes/Player/player.tscn" id="3_87utk"]
 [ext_resource type="Script" path="res://CoreScenes/Camera/Camera3D.gd" id="4_7or6k"]
 [ext_resource type="PackedScene" uid="uid://f4j3jsayehft" path="res://CoreScenes/Liftable/liftable_object_spawner.tscn" id="5_k0rdg"]
+[ext_resource type="Script" path="res://CoreScenes/Player/player2_debug.gd" id="6_egj3c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kjjv"]
 size = Vector3(60, 2, 60)
@@ -44,5 +45,9 @@ script = ExtResource("4_7or6k")
 
 [node name="LiftableObjectSpawner" parent="." instance=ExtResource("5_k0rdg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.52766, 5.69017, 0)
+
+[node name="Player2" parent="." instance=ExtResource("3_87utk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86968, 8.57644)
+script = ExtResource("6_egj3c")
 
 [connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
