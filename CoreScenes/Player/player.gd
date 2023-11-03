@@ -162,6 +162,8 @@ func absorb_body(body):
 	var new_collison_shape :Shape3D = $MeshInstance3D.find_child("CollisionShape3D").shape
 	$CollisionShape3D.shape = new_collison_shape
 	$MeshInstance3D.remove_child($MeshInstance3D.get_child(0))
+
+	#TODO queue_free, leak de memoria
 	
 	
 	
