@@ -35,6 +35,7 @@ func _ready():
 		spawn_timer = Timer.new()
 		check_timer = Timer.new()
 		setup_timers()
+	queue_free_chair()
 	spawn_chair()
 	
 	
@@ -115,5 +116,5 @@ func respawn():
 	spawn_timer.start()
 
 func queue_free_chair():
-	if chair_instance && is_instance_valid(chair_instance):
+	if chair_instance && chair_instance.has_method("queue_free"):
 		chair_instance.queue_free()

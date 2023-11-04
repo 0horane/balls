@@ -120,7 +120,7 @@ func absorb_body(body):
 	add_child(body)
 	body.add_to_parent(pos, rot)
 	#linear_velocity=linear_velocity_before_collision
-	change_size(body.size*1.5)
+	change_size(body.size*15)
 	
 	
 	# removes child object hitbox
