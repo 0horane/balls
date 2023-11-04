@@ -10,6 +10,8 @@ friction = 10000.0
 albedo_texture = ExtResource("2_re4j3")
 
 [sub_resource type="SphereMesh" id="SphereMesh_2uske"]
+radial_segments = 16
+rings = 8
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5vafc"]
 
