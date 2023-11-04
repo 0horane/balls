@@ -7,13 +7,13 @@ var parentRot=Vector3.ZERO
 @onready var parenttest = get_parent()
 @onready var parenttest2 = null
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	$CollisionShape3D.transform = $CollisionShape3D.transform.scaled(Vector3(size,size,size))
 	$MeshInstance3D.transform = $MeshInstance3D.transform.scaled(Vector3(size,size,size))
 	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 
 func _process(_delta):
 	if parentPos:

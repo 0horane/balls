@@ -35,7 +35,6 @@ func setup_timers():
 	
 func spawn_chair():
 	if chair_scene:
-		print("spawning_chair")
 		chair_instance = chair_scene.instantiate()
 		chair_instance.size = size
 		add_child(chair_instance)
@@ -51,16 +50,13 @@ func _on_spawn_timer_timeout():
 func _on_check_timer_timeout():
 	if !is_instance_valid(chair_instance):
 		respawn()
-		print("isnt valid")
 		return
 
 	if !chair_instance.is_inside_tree():
 		respawn()
-		print("isnt inside tree")
 		return
 	
 	if is_ancestor_of(chair_instance):
-		print("is ancestor")
 		check_timer.start()
 		return
 	
@@ -76,11 +72,9 @@ func _on_check_timer_timeout():
 	# chair.get_tree().get_nodes_in_group("balls")  
 
 	if !player_found:
-		print("player not found")
 		respawn()
 		return
 	
-	print("nothing")
 	check_timer.start()
 		
 
