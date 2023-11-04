@@ -11,8 +11,7 @@ func _ready():
 		chair.global_position.x=randf_range(-20,20)
 		chair.global_position.z=randf_range(-20,20)
 		chair.mass=chair.size**3 *1000
-		
-		#chair. = randf_range(-PI / 4, PI / 4)
+	var index = 0 #chair. = randf_range(-PI / 4, PI / 4)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

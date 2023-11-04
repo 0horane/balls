@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bm5vltrp28oor"]
+[gd_scene load_steps=7 format=3 uid="uid://cyd3ag08uubnt"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_e760g"]
 [ext_resource type="Texture2D" uid="uid://cq22og4jilpkc" path="res://1517788487669.jpeg" id="2_re4j3"]
@@ -26,3 +26,5 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_5vafc")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]

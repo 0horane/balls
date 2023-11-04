@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0m5iw71wwv6r"]
+[gd_scene load_steps=3 format=3 uid="uid://ddxur7utdjo7u"]
 
 [ext_resource type="Script" path="res://MultiplayerController.gd" id="1_8xvf2"]
 [ext_resource type="Texture2D" uid="uid://cq22og4jilpkc" path="res://1517788487669.jpeg" id="2_lv3x3"]
@@ -28,6 +28,7 @@ text = "Host
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 
 [node name="Join" type="Button" parent="."]
+layout_mode = 0
 offset_left = 443.0
 offset_top = 242.0
 offset_right = 616.0
@@ -37,14 +38,15 @@ text = "Join
 
 [node name="TextEdit" type="TextEdit" parent="."]
 layout_mode = 0
-offset_left = -56.25
-offset_top = -32.25
-offset_right = -48.25
-offset_bottom = -24.25
+offset_left = 406.0
+offset_top = 395.0
+offset_right = 660.0
+offset_bottom = 433.0
 placeholder_text = "Ingrese su nombre de usuario
 "
 
 [node name="Play" type="Button" parent="."]
+layout_mode = 0
 offset_left = 442.0
 offset_top = 318.0
 offset_right = 615.0
@@ -62,8 +64,8 @@ text = "Katamari Version 1.0"
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 439.0
+offset_bottom = 259.0
 
 [node name="1517788487669" type="Sprite2D" parent="."]
 show_behind_parent = true

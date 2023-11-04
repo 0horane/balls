@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctjhgbe7lv625"]
+[gd_scene load_steps=9 format=3 uid="uid://dyyxvmsjrtmcl"]
 
-[ext_resource type="PackedScene" uid="uid://bm5vltrp28oor" path="res://player.tscn" id="1_c2cto"]
+[ext_resource type="PackedScene" uid="uid://cyd3ag08uubnt" path="res://player.tscn" id="1_c2cto"]
 [ext_resource type="Script" path="res://main.gd" id="1_e8hrr"]
 [ext_resource type="Texture2D" uid="uid://bexol24inxyjb" path="res://Joe_Biden_presidential_portrait.jpg" id="1_t60jr"]
-[ext_resource type="PackedScene" uid="uid://bcaiyqbwg6v20" path="res://chair.tscn" id="2_7bd4v"]
+[ext_resource type="PackedScene" path="res://chair.tscn" id="2_7bd4v"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="3_p7t3e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kjjv"]
@@ -43,5 +43,11 @@ size = 0.2
 transform = Transform3D(1, 0, 0, 0, 0.924453, 0.381296, 0, -0.381296, 0.924453, 0, 8.01627, 15.7494)
 fov = 75.9375
 script = ExtResource("3_p7t3e")
+
+[node name="SpawnerLocation" type="Node" parent="."]
+
+[node name="0" type="Node" parent="SpawnerLocation" groups=["PLayerSpawnPoint"]]
+
+[node name="1" type="Node" parent="SpawnerLocation" groups=["PLayerSpawnPoint"]]
 
 [connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
