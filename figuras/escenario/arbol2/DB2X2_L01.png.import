@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh6oehprpa1gf"
-path.s3tc="res://.godot/imported/dry_branches_medium_01_diff_1k.jpg-f4c0514bb7b4cb32ab30af4d61fe18b7.s3tc.ctex"
+uid="uid://b4hyg24rve8ya"
+path.s3tc="res://.godot/imported/DB2X2_L01.png-e936b3a21742387d3d3502b35b34d48e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://figuras/escenario/rama3/dry_branches_medium_01_diff_1k.jpg"
-dest_files=["res://.godot/imported/dry_branches_medium_01_diff_1k.jpg-f4c0514bb7b4cb32ab30af4d61fe18b7.s3tc.ctex"]
+source_file="res://figuras/escenario/arbol2/DB2X2_L01.png"
+dest_files=["res://.godot/imported/DB2X2_L01.png-e936b3a21742387d3d3502b35b34d48e.s3tc.ctex"]
 
 [params]
 

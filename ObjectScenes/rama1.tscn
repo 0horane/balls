@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqnl8q8yrp34b"]
+
+[ext_resource type="Script" path="res://ObjectScenes/scripts/Liftable.gd" id="1_pjbep"]
+[ext_resource type="ArrayMesh" uid="uid://cfethjqjifkfi" path="res://figuras/escenario/rama1/dry_branches_medium_01_1k_a.obj" id="2_slfao"]
+[ext_resource type="Texture2D" uid="uid://cxt6n4fs164a4" path="res://figuras/escenario/rama1/dry_branches_medium_01_diff_1k.jpg" id="3_qkkbc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2bir"]
+albedo_texture = ExtResource("3_qkkbc")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y1kjw"]
+points = PackedVector3Array(-0.227773, 0.063249, -0.687898, -0.4012, 0.0316714, -0.587352, -0.531048, 0.070846, -0.545395, -0.524784, 0.175447, -0.544639, -0.278804, 0.268855, -0.278786, -0.381964, -0.007341, 0.569553, -0.435458, -0.0049889, 0.599288, -0.504865, 0.196643, -0.143339, -0.490793, 0.225138, -0.144473, -0.479038, 0.21719, 0.00470787, -0.433469, 0.218407, 0.00155795, -0.396836, 0.0552735, 0.554055)
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
+script = ExtResource("1_pjbep")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.378, 1.20469e-07, 6.02343e-08, -6.02343e-08, 2.63292e-15, -1.378, -1.20469e-07, -1.378, 2.63292e-15, -0.570502, 0, 0.176808)
+mesh = ExtResource("2_slfao")
+surface_material_override/0 = SubResource("StandardMaterial3D_t2bir")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.378, 1.20469e-07, 6.02343e-08, -6.02343e-08, 2.63292e-15, -1.378, -1.20469e-07, -1.378, 2.63292e-15, -0.570502, 0, 0.176808)
+shape = SubResource("ConvexPolygonShape3D_y1kjw")

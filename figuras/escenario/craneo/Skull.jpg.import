@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh6oehprpa1gf"
-path.s3tc="res://.godot/imported/dry_branches_medium_01_diff_1k.jpg-f4c0514bb7b4cb32ab30af4d61fe18b7.s3tc.ctex"
+uid="uid://die4r44q4mi25"
+path.s3tc="res://.godot/imported/Skull.jpg-7c74996a5bbe7001593c380295244f6a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://figuras/escenario/rama3/dry_branches_medium_01_diff_1k.jpg"
-dest_files=["res://.godot/imported/dry_branches_medium_01_diff_1k.jpg-f4c0514bb7b4cb32ab30af4d61fe18b7.s3tc.ctex"]
+source_file="res://figuras/escenario/craneo/Skull.jpg"
+dest_files=["res://.godot/imported/Skull.jpg-7c74996a5bbe7001593c380295244f6a.s3tc.ctex"]
 
 [params]
 

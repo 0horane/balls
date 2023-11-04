@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cu5s3y5d3yl4l"
+path="res://.godot/imported/plastic_monobloc_chair_01_1k.obj-b7cab427e30a55d117eea83771190c2e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/plastic_monobloc_chair_01_1k.obj-b7cab427e30a55d117eea83771190c2e.mesh"]
+
+source_file="res://figuras/escenario/silla/plastic_monobloc_chair_01_1k.obj"
+dest_files=["res://.godot/imported/plastic_monobloc_chair_01_1k.obj-b7cab427e30a55d117eea83771190c2e.mesh", "res://.godot/imported/plastic_monobloc_chair_01_1k.obj-b7cab427e30a55d117eea83771190c2e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

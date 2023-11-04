@@ -1,0 +1,29 @@
+[gd_scene load_steps=8 format=3 uid="uid://ci527vq3u24xb"]
+
+[ext_resource type="Script" path="res://ObjectScenes/scripts/Liftable.gd" id="1_1o8eb"]
+[ext_resource type="ArrayMesh" uid="uid://c31bc77n1ewk6" path="res://figuras/escenario/arbol2/arbol2.obj" id="2_ye3dw"]
+[ext_resource type="Texture2D" uid="uid://djlv3ygamciou" path="res://figuras/escenario/arbol2/bark_0021.jpg" id="3_iv5fx"]
+[ext_resource type="Texture2D" uid="uid://b4hyg24rve8ya" path="res://figuras/escenario/arbol2/DB2X2_L01.png" id="4_h8mt2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmyh6"]
+albedo_color = Color(0.878431, 0.87451, 0.905882, 1)
+albedo_texture = ExtResource("3_iv5fx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8utsw"]
+albedo_texture = ExtResource("4_h8mt2")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sbo1f"]
+points = PackedVector3Array(0.986758, 1.56472, 1.70531, -0.416871, 1.75105, 1.03626, 0.0612267, -0.000394, -0.0740032, 1.27529, 1.58966, 1.54991, 1.71645, 2.44282, 1.20941, 0.85887, 2.31004, 1.63069, -0.261106, 3.22776, 1.43871, -0.584833, 2.6772, 1.3025, -0.545456, 2.48537, 1.30069, -1.08175, 2.69554, 1.14928, -1.46959, 2.59688, 0.911286, 0.851552, 2.68014, -1.25092, 1.48089, 2.30491, 0.145513, 1.42757, 1.54674, 1.35865, -1.58981, 2.49161, 0.628015, -1.79193, 1.88493, -0.720599, -1.55741, 1.91427, -1.1897, -1.35077, 2.09327, -1.47949, 0.302367, 2.96881, -1.99532, 0.50169, 2.78578, -1.84209, 1.38227, 1.6234, 1.46442, 1.54884, 2.68527, 1.23585, 1.76802, 2.76854, 0.835216, 1.69833, 3.00805, 0.797543, 1.58438, 2.79495, 1.19275, 0.589156, 3.25857, 1.30504, 0.486358, 3.16357, 1.37495, 0.981182, 3.36641, 1.0819, 0.587065, 3.7222, 0.361408, 0.111406, 3.7123, 0.345831, -1.55009, 3.37852, 0.442549, -1.48179, 3.07114, 0.792472, -1.58494, 2.70288, 0.781605, 0.782904, 2.86977, -1.41972, 1.19444, 3.63344, -0.675682, -1.70725, 2.85877, 0.332066, -1.49015, 2.24512, -1.47152, -1.70899, 3.09535, -0.305474, -0.947588, 3.00182, -1.47768, -0.57647, 3.12359, -1.40161, -1.13506, 3.39722, -0.680391, 0.377636, 3.39575, -1.03973, 1.4673, 3.1412, 1.04676, 0.873157, 3.74678, -0.00372887, -1.09778, 3.4273, -0.559765, -0.039132, 3.54577, -0.574255, -1.45531, 2.77881, -1.02742, -1.30651, 2.95487, -1.09044)
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
+script = ExtResource("1_1o8eb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.378, 0, 0, 0, 1.378, 0, 0, 0, 1.378, 0, -1.93489, 0.0475835)
+mesh = ExtResource("2_ye3dw")
+surface_material_override/0 = SubResource("StandardMaterial3D_pmyh6")
+surface_material_override/1 = SubResource("StandardMaterial3D_8utsw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.378, 0, 0, 0, 1.378, 0, 0, 0, 1.378, 0, -1.93489, 0.0475835)
+shape = SubResource("ConvexPolygonShape3D_sbo1f")

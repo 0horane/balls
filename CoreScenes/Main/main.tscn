@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctjhgbe7lv625"]
+[gd_scene load_steps=22 format=3 uid="uid://ctjhgbe7lv625"]
 
 [ext_resource type="Script" path="res://CoreScenes/Main/main.gd" id="1_sg1ki"]
 [ext_resource type="Texture2D" uid="uid://bexol24inxyjb" path="res://Joe_Biden_presidential_portrait.jpg" id="2_u3ikh"]
@@ -11,6 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://b7idl08n3ayjh" path="res://ObjectScenes/lamparota.tscn" id="9_c14ao"]
 [ext_resource type="PackedScene" uid="uid://r06xjtpc48qo" path="res://ObjectScenes/planta.tscn" id="10_joosv"]
 [ext_resource type="PackedScene" uid="uid://nq01deo33fp3" path="res://ObjectScenes/basura.tscn" id="11_dy6rh"]
+[ext_resource type="PackedScene" uid="uid://dqnl8q8yrp34b" path="res://ObjectScenes/rama1.tscn" id="12_mtvc6"]
+[ext_resource type="PackedScene" uid="uid://cumoophnshusm" path="res://ObjectScenes/rama2.tscn" id="13_e6qxu"]
+[ext_resource type="PackedScene" uid="uid://cc0ywft7nvn8r" path="res://ObjectScenes/rama3.tscn" id="14_80f0u"]
+[ext_resource type="PackedScene" uid="uid://brdhiaxw2eyui" path="res://ObjectScenes/arbol1.tscn" id="15_klsl5"]
+[ext_resource type="PackedScene" uid="uid://ci527vq3u24xb" path="res://ObjectScenes/arbol2.tscn" id="16_so0cp"]
+[ext_resource type="PackedScene" uid="uid://cx62hokk7bi82" path="res://ObjectScenes/craneo.tscn" id="17_n31h7"]
+[ext_resource type="PackedScene" uid="uid://rlmc5wte2jpe" path="res://ObjectScenes/silla2.tscn" id="18_8whbr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kjjv"]
 size = Vector3(250, 2, 250)
@@ -52,7 +59,7 @@ script = ExtResource("4_7or6k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.58836, 5.69017, -11.4722)
 
 [node name="Gato" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36116, 10.757, 8.9726)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36116, 10.757, 2.58271)
 chair_scene = ExtResource("7_8j1ww")
 
 [node name="Mesa" parent="." instance=ExtResource("5_k0rdg")]
@@ -72,8 +79,38 @@ chair_scene = ExtResource("9_c14ao")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.725565, 16.3407, 32.1836)
 chair_scene = ExtResource("10_joosv")
 
-[node name="LiftableObjectSpawner" parent="." instance=ExtResource("5_k0rdg")]
+[node name="Basura" parent="." instance=ExtResource("5_k0rdg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.12458, 14.2143, 34.8088)
 chair_scene = ExtResource("11_dy6rh")
+
+[node name="Rama1" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.32504, 14.4876, -7.14635)
+chair_scene = ExtResource("12_mtvc6")
+
+[node name="Rama2" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7237, 9.79143, -15.6803)
+chair_scene = ExtResource("13_e6qxu")
+
+[node name="Rama3" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4962, 8.61671, -16.2502)
+chair_scene = ExtResource("14_80f0u")
+
+[node name="Arbol1" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.18376, 8.21027, -13.3031)
+size = 4.0
+chair_scene = ExtResource("15_klsl5")
+
+[node name="Arbol2" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55693, 8.55696, -12.6662)
+chair_scene = ExtResource("16_so0cp")
+
+[node name="Craneo" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59463, 14.1858, -20.7001)
+chair_scene = ExtResource("17_n31h7")
+
+[node name="Silla2" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.36722, 15.449, 31.0883)
+size = 2.0
+chair_scene = ExtResource("18_8whbr")
 
 [connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
