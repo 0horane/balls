@@ -3,7 +3,7 @@ extends RigidBody3D
 
 const SPEED := 600.0
 const JUMP_VELOCITY := 4.5
-const USE_SIMPLIFIED_COLLISION_MESH := false
+const USE_SIMPLIFIED_COLLISION_MESH := true
 const MINIMUM_ABSORBTION_RATIO:float=0.25
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -22,7 +22,7 @@ func _ready():
 	max_contacts_reported=9999
 	
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, $MeshInstance3D.get_mesh().get_mesh_arrays())
-	$MeshInstance3D.hide()
+
 
 
 func is_on_floor():
@@ -64,9 +64,12 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions. //wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwaTODO
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var accelerometerValue := Input.get_accelerometer();
-	accelerometerValue.rotated(transform.basis.y, PI/2)
+	accelerometerValue.rotated(transform.basis.y, PI/2)/9.8
+
 	
-	var direction := Vector3(input_dir.x, 0, input_dir.y).normalized()
+	var direction := Vector3(-input_dir.y, 0, input_dir.x).normalized()
+	direction += Vector3(-accelerometerValue.z+1/2, 0 ,  0) #accelerometerValue.y
+
 	if direction:
 		# the possibilites here is to 
 		# 1) have an apply_central_force and then to calculate needed angular velocity based on 
@@ -77,8 +80,7 @@ func _physics_process(delta):
 		# The second one is currently being used, some previous ones are in git history
 		
 		#the current method
-		angular_velocity = Vector3(-direction.z+accelerometerValue.z, 0, direction.x+accelerometerValue.y/32) \
-			.rotated(Vector3(0,1,0),movementRotation) * SPEED*delta
+		angular_velocity = direction.rotated(Vector3(0,1,0),movementRotation) * SPEED*delta
 	else:
 		angular_velocity.x = move_toward(angular_velocity.x, 0, SPEED/100*delta)
 		angular_velocity.z = move_toward(angular_velocity.z, 0, SPEED/100*delta)
@@ -105,7 +107,9 @@ func _on_body_entered(body):
 		var parent = body.get_parent()
 
 		if parent && parent!=self:
+			position.y+=1
 			absorb_body(body)
+			
 
 # Notas: de mis pruebas en el juego original, el hitbox del katamri se desforma solo en approx. el 
 # centro del objeto original. Ademas, parece que el hitbox de contacto en el piso y objetos grandes 

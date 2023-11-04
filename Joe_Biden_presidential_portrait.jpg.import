@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bexol24inxyjb"
 path.s3tc="res://.godot/imported/Joe_Biden_presidential_portrait.jpg-262f82f35de9fcd105faa5a6e2faf081.s3tc.ctex"
+path.etc2="res://.godot/imported/Joe_Biden_presidential_portrait.jpg-262f82f35de9fcd105faa5a6e2faf081.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Joe_Biden_presidential_portrait.jpg"
-dest_files=["res://.godot/imported/Joe_Biden_presidential_portrait.jpg-262f82f35de9fcd105faa5a6e2faf081.s3tc.ctex"]
+dest_files=["res://.godot/imported/Joe_Biden_presidential_portrait.jpg-262f82f35de9fcd105faa5a6e2faf081.s3tc.ctex", "res://.godot/imported/Joe_Biden_presidential_portrait.jpg-262f82f35de9fcd105faa5a6e2faf081.etc2.ctex"]
 
 [params]
 
