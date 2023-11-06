@@ -28,15 +28,8 @@ func add_to_parent(initpos, initrot):
 	parentPos=position
 	parentRot=rotation
 	
-func remove_from_parent(initpos, initrot):
-	$MeshInstance3D.create_convex_collision(true, true)
-	var new_collison_shape :CollisionShape3D = $MeshInstance3D.find_child("CollisionShape3D")
-	new_collison_shape.scale = $MeshInstance3D.scale
-	new_collison_shape.rotation = $MeshInstance3D.rotation
-	new_collison_shape.position = $MeshInstance3D.position
-	$MeshInstance3D.get_child(0).remove_child(new_collison_shape)
-	add_child(new_collison_shape)
-	$MeshInstance3D.get_child(0).queue_free()
+func remove_from_parent(initpos, initrot, new_collison_shape):
+	add_child(new_collison_shape)	
 	
 	global_position = initpos
 	global_rotation = initrot

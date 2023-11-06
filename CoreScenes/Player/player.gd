@@ -198,7 +198,7 @@ func on_death():
 			
 			remove_child(child)
 			get_parent().add_child(child)
-			child.call_deferred("remove_from_parent", pos, rot)
+			child.call_deferred("remove_from_parent", pos, rot, lifted_object_map[child])
 			
 	queue_free()
 			
