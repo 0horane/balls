@@ -44,11 +44,7 @@ func _process(delta):
 					if node.global_position.y < global_position.y:
 						freeze=true
 						break
-			elif name=="eitan":
-				if linear_velocity.length() < 0.2:
-					print("TOO MUCH MOVEMENT")
-				else:
-					print("TOO MUCH ROT", PI/32)
+
 					
 				
 			
