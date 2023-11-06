@@ -3,7 +3,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
+	#Engine.time_scale = 0.5
 
 	for x in range(0, 100):
 		var chairloader = load("res://ObjectScenes/chair.tscn")

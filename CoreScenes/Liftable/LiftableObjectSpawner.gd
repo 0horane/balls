@@ -12,6 +12,7 @@ extends Marker3D
 var sizestore:float=1
 
 
+
 @export var chair_scene : PackedScene:
 	get:
 		return chair_scene_store 
@@ -62,7 +63,7 @@ func spawn_chair():
 		print(chair_instance)
 		print(chair_instance.size)
 		print(size)
-		
+
 		chair_instance.size = size
 		add_child(chair_instance)
 		chair_instance.position = Vector3.ZERO
