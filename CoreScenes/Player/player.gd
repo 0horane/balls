@@ -37,26 +37,15 @@ func _physics_process(delta):
 	
 
 	
-	# Horrendously cursed camera and direction system, took me 2 hours to debug,
-	# stay away for your own sanity
+
 	# Calculates the rotation of the ball's movement relative to the z axis, 
-	# Then adjusts "movement rotation" (a delayed inerpolated version of the
-	# angle, for smoother camera movements) in the equivalent of a .lerp
-	# function but circular, given that angles loop back around.
+	# Then lerps "movement rotation" 
 	var horizontal_velocity := linear_velocity
 	horizontal_velocity.y=0
 	if horizontal_velocity.length()>0.1:
 		realRotation = Vector3(0,0,1).signed_angle_to(horizontal_velocity, Vector3(0,1,0))
-		var rotation_frac :float= delta*1
-		#if abs(movementRotation)+abs(realRotation)>PI: 
-		if abs(movementRotation-realRotation)<PI: 
-			movementRotation = (1-rotation_frac)*movementRotation  +  rotation_frac*realRotation
-		else:
-			movementRotation = (1-rotation_frac)*movementRotation  +  rotation_frac * (2*PI - abs(realRotation))*sign(movementRotation)
-		if movementRotation > PI:
-			movementRotation-=2*PI
-		if movementRotation < -PI:
-			movementRotation+=2*PI
+		movementRotation = lerp_angle(movementRotation, realRotation, delta)
+		
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		linear_velocity.y = JUMP_VELOCITY
