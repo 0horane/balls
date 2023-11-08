@@ -53,26 +53,15 @@ func _physics_process(delta):
 	if Input.is_action_pressed("kill_self_debug"):
 		on_death()
 	
-	# Horrendously cursed camera and direction system, took me 2 hours to debug,
-	# stay away for your own sanity
+
 	# Calculates the rotation of the ball's movement relative to the z axis, 
-	# Then adjusts "movement rotation" (a delayed inerpolated version of the
-	# angle, for smoother camera movements) in the equivalent of a .lerp
-	# function but circular, given that angles loop back around.
+	# Then lerps "movement rotation" 
 	var horizontal_velocity := linear_velocity
 	horizontal_velocity.y=0
 	if horizontal_velocity.length()>0.1:
 		realRotation = Vector3(0,0,1).signed_angle_to(horizontal_velocity, Vector3(0,1,0))
-		var rotation_frac :float= delta*1
-		#if abs(movementRotation)+abs(realRotation)>PI: 
-		if abs(movementRotation-realRotation)<PI: 
-			movementRotation = (1-rotation_frac)*movementRotation  +  rotation_frac*realRotation
-		else:
-			movementRotation = (1-rotation_frac)*movementRotation  +  rotation_frac * (2*PI - abs(realRotation))*sign(movementRotation)
-		if movementRotation > PI:
-			movementRotation-=2*PI
-		if movementRotation < -PI:
-			movementRotation+=2*PI
+		movementRotation = lerp_angle(movementRotation, realRotation, delta)
+		
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		linear_velocity.y = JUMP_VELOCITY
@@ -81,8 +70,11 @@ func _physics_process(delta):
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var accelerometerValue := Input.get_accelerometer();
 	accelerometerValue.rotated(transform.basis.y, PI/2)
+
 	
-	var direction := Vector3(input_dir.x, 0, input_dir.y).normalized()
+	var direction := Vector3(-input_dir.y, 0, input_dir.x).normalized()
+	direction += Vector3(accelerometerValue.y/5, 0 ,  accelerometerValue.x/5) #accelerometerValue.y
+
 	if direction:
 		# the possibilites here is to 
 		# 1) have an apply_central_force and then to calculate needed angular velocity based on 
@@ -93,8 +85,7 @@ func _physics_process(delta):
 		# The second one is currently being used, some previous ones are in git history
 		
 		#the current method
-		angular_velocity = Vector3(-direction.z+accelerometerValue.z, 0, direction.x+accelerometerValue.y/32) \
-			.rotated(Vector3(0,1,0),movementRotation) * SPEED*delta
+		angular_velocity = direction.rotated(Vector3(0,1,0),movementRotation) * SPEED*delta
 	else:
 		angular_velocity.x = move_toward(angular_velocity.x, 0, SPEED/100*delta)
 		angular_velocity.z = move_toward(angular_velocity.z, 0, SPEED/100*delta)
@@ -126,10 +117,13 @@ func _on_body_entered(body):
 
 		if parent && parent!=self:
 			absorb_body(body)
+			
 
 # Notas: de mis pruebas en el juego original, el hitbox del katamri se desforma solo en approx. el 
-# centro del objeto original. Ademas, parece que el hitbox de contacto en el piso y objetos grandes 
-# es mayor al hitbox que alica para levantar objetos, que es mas chica. 
+# centro del objeto original (en objetos largos era mas hacia la punta). Ademas, parece que el 
+# hitbox de contacto en el piso y objetos grandes es mayor al hitbox que alica para levantar  
+# objetos, que es mas chica. Lo que #TODO habría que hacer seria que el objeto solo sea levantado 
+# despues de ciero volumen de intersección, pero sería bastante complicado.  
 @rpc("any_peer", "call_local" )
 func absorb_body(body):
 	var pos=body.global_position
@@ -140,7 +134,14 @@ func absorb_body(body):
 	parent.remove_child(body)
 	add_child(body)
 	body.add_to_parent(pos, rot)
-	#linear_velocity=linear_velocity_before_collision
+	
+	# esto es bastante arbitario e impreciso con cambios de tamaño. Hay que ver o de usar size^3 
+	# como fuente del volumen, o si no intentar calcular el volumen, ya sea 1) usando tetraedros 
+	# desde el centroide hasta los vertices (medio lento pero muy preciso, mejor solución
+	# si tenemos la lista de triangulos en vez de vertices), 2) usando voxeles y un arbol octal de profunidad
+	# variable donde se marcan y luego miden las intersecciones de cada vector, 3) tomar los 8 esquinas
+	# de un cubo, encontrar el punto con un angulo mas similar, y calcular el volumen del cuboide 
+	# rectangular con puntas opuestas en el centro y en ese punto, y sumar cada una 
 	change_size(body.size/12)
 	
 	
@@ -150,9 +151,8 @@ func absorb_body(body):
 	lifted_object_map[body] = body_collision_shape
 	body.remove_child(body_collision_shape)
 	
-	# child centroid 
+	# child centroid. as seen by the code, im not actually bothering to calcuate the centroid. explained later
 	var centroid := get_centroid(body.get_node("MeshInstance3D").get_mesh().get_faces(), body.size*scale_to_factor(body.get_node("MeshInstance3D").scale))
-	print(centroid.length())
 	var object_centroid_from_player_center:Vector3 = body.position
 	
 	
@@ -160,14 +160,26 @@ func absorb_body(body):
 	# this section modifies the mesh to extend the best aligned point to the centroid and set its
 	# Position there. This is enough when a conevex mesh is then generated by the engine. 
 	# The centroid must first be adjusted by rotating it by the negative of the angle of the player,
-	# keeping it at the same distance
+	# keeping it at the same distance. Ideally this should use the centroid vector projected onto
+	# the other one, to avoid large deformations, but with meshes as detailed as these it wont be 
+	# relevant.  maybe do that later
+	
+	# also, the vulkan renderer is not compatible with meshdatatool on android, due to a bug in 
+	# godot. the first bug i've encuntered so far. https://github.com/godotengine/godot/issues/75599
+	# everything must be set to a gl_compatibility renderer because of this
+	
+	
 	var mdt := MeshDataTool.new()
+	print(mesh)
 	mdt.create_from_surface(mesh, 0)
 	var closest_aligned_vertex:= 0
 	var closest_angle:float=999
+	
+	# the way this has to check the angle of every part of the mesh is incredibly inefficient. we 
+	# should either offload this to another thread or reduce the vertex count of the sphere mesh.
+	# ideally both. the second is already done.
 	for i in range(mdt.get_vertex_count()):
 		var vertex := mdt.get_vertex(i) # mdt.get_vertex_normal(i) # shoule be equivalent
-		
 		var current_angle := vertex.angle_to(object_centroid_from_player_center)
 		if current_angle < closest_angle:
 			closest_angle = current_angle
@@ -183,6 +195,8 @@ func absorb_body(body):
 	var new_collison_shape :Shape3D = $MeshInstance3D.find_child("CollisionShape3D").shape
 	$CollisionShape3D.shape = new_collison_shape
 	$MeshInstance3D.remove_child($MeshInstance3D.get_child(0))
+
+	#TODO queue_free, leak de memoria
 	
 	
 	
@@ -190,7 +204,9 @@ func absorb_body(body):
 	
 	
 
-	
+# Esto no calcula verdadermante al centroide. habría que multiplicar cada uno por el area de los 
+# triangulos vecinos, para que sea mucho mas preciso, ya que hay objetos con ams vertices en un lado
+# que en otro. Mas simple que usar este método es centrar bien el objeto a ojo en la escena
 func get_centroid(vertexList: PackedVector3Array, scale:float) -> Vector3:
 	var avg:=Vector3.ZERO
 	for vertex in vertexList:
