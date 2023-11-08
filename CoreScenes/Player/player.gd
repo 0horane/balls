@@ -5,14 +5,19 @@ const SPEED := 600.0
 const JUMP_VELOCITY := 4.5
 const USE_SIMPLIFIED_COLLISION_MESH := true
 const MINIMUM_ABSORBTION_RATIO:float=0.25
+const MINIMUM_PLAYER_ABSORBTION_RATIO:float=0.75
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
 var size :float = 1
 var realRotation:float = 0
 var movementRotation:float = 0
 var lifted_object_map := {} # aactualmente mapea Body->Collisionshape. Actualizar si algo se cambia
 var mesh:=ArrayMesh.new()
+
+var syncPos:Vector3
+var syncRot:Quaternion
 
 
 var linear_velocity_before_collision := linear_velocity
@@ -22,6 +27,7 @@ func _ready():
 	max_contacts_reported=9999
 	
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, $MeshInstance3D.get_mesh().get_mesh_arrays())
+	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 
 
 
@@ -29,7 +35,16 @@ func is_on_floor():
 	return true #TODO
 
 func _physics_process(delta):
+	if not $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		global_position = lerp(global_position, syncPos, 0.5)
+		var newRot:=Quaternion(transform.basis).slerp(syncRot, 0.5)
+		transform.basis = Basis(newRot)
+
+		return
 	
+	syncPos = global_position
+	syncRot = Quaternion(transform.basis)
+		
 	if linear_velocity.y>5:
 		linear_velocity.y=5
 	
@@ -102,6 +117,10 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	#print("body entered: ", body)
+	if body.is_in_group("balls") && size*MINIMUM_PLAYER_ABSORBTION_RATIO>body.size:
+		body.on_death()
+		return
+	
 	if "size" in body and size*MINIMUM_ABSORBTION_RATIO>body.size:
 		var parent = body.get_parent()
 
@@ -111,6 +130,7 @@ func _on_body_entered(body):
 # Notas: de mis pruebas en el juego original, el hitbox del katamri se desforma solo en approx. el 
 # centro del objeto original. Ademas, parece que el hitbox de contacto en el piso y objetos grandes 
 # es mayor al hitbox que alica para levantar objetos, que es mas chica. 
+@rpc("any_peer", "call_local" )
 func absorb_body(body):
 	var pos=body.global_position
 	var rot=body.global_rotation
@@ -190,6 +210,7 @@ func scale_to_factor(scale:Vector3) -> float:
 	# according to direction. it might be worth doing, depends #TODO
 	return (scale.x + scale.y + scale.z) 
 
+@rpc("any_peer", "call_local" )
 func on_death():
 	for child in get_children():
 		if "size" in child:

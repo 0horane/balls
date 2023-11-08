@@ -5,7 +5,10 @@ var camera_offset
 var camera_speed = 2.0
 
 func _ready():
-	player = $"../Player"  
+	#player = $"../Player"  
+	player = $"../../Main".get_node(str(multiplayer.get_unique_id())) 
+	print(multiplayer.get_unique_id())
+	print($"../../Main".get_node(str(multiplayer.get_unique_id())))
 
 func _process(delta):
 	if is_instance_valid(player):
@@ -13,3 +16,6 @@ func _process(delta):
 		var target_position = player.global_transform.origin + camera_offset
 		global_transform.origin = global_transform.origin.lerp(target_position, delta * camera_speed)
 		look_at(player.global_transform.origin, Vector3(0, 1, 0))
+	else:
+		player = $"../../Main".get_node(str(multiplayer.get_unique_id()))
+		
