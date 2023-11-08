@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctjhgbe7lv625"]
+
+[ext_resource type="Script" path="res://CoreScenes/Main/main.gd" id="1_sg1ki"]
+[ext_resource type="Texture2D" uid="uid://bexol24inxyjb" path="res://Joe_Biden_presidential_portrait.jpg" id="2_u3ikh"]
+[ext_resource type="PackedScene" uid="uid://bm5vltrp28oor" path="res://CoreScenes/Player/player.tscn" id="3_87utk"]
+[ext_resource type="Script" path="res://CoreScenes/Camera/Camera3D.gd" id="4_7or6k"]
+[ext_resource type="PackedScene" uid="uid://f4j3jsayehft" path="res://CoreScenes/Liftable/liftable_object_spawner.tscn" id="5_k0rdg"]
+[ext_resource type="Script" path="res://CoreScenes/Player/player2_debug.gd" id="6_egj3c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6kjjv"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmo7x"]
+albedo_texture = ExtResource("2_u3ikh")
+
+[sub_resource type="BoxMesh" id="BoxMesh_8p3s3"]
+size = Vector3(60, 2, 60)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_sg1ki")
+
+[node name="TemporaryGround" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TemporaryGround"]
+shape = SubResource("BoxShape3D_6kjjv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TemporaryGround"]
+material_override = SubResource("StandardMaterial3D_vmo7x")
+mesh = SubResource("BoxMesh_8p3s3")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.99758, 0.0565139, -0.0405017, 0.00680668, 0.500341, 0.865802, 0.0691945, -0.863982, 0.498745, 2.90508, 17.579, 13.7305)
+
+[node name="Player" parent="." instance=ExtResource("3_87utk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.8672, 0)
+mass = 0.1
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.924453, 0.381296, 0, -0.381296, 0.924453, 0, 8.01627, 15.7494)
+current = true
+fov = 75.9375
+script = ExtResource("4_7or6k")
+
+[node name="LiftableObjectSpawner" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.52766, 5.69017, 0)
+
+[node name="Player2" parent="." instance=ExtResource("3_87utk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86968, 8.57644)
+script = ExtResource("6_egj3c")
