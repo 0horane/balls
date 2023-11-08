@@ -100,7 +100,6 @@ func _physics_process(delta):
 # - Evitar que esfera solo crezca en una dirección
 
 func _on_body_entered(body):
-	#print("body entered: ", body)
 	if "size" in body and size*MINIMUM_ABSORBTION_RATIO>body.size:
 		var parent = body.get_parent()
 
@@ -131,7 +130,6 @@ func absorb_body(body):
 	
 	# child centroid 
 	var centroid := get_centroid(body.get_node("MeshInstance3D").get_mesh().get_faces(), body.size*scale_to_factor(body.get_node("MeshInstance3D").scale))
-	print(centroid.length())
 	var object_centroid_from_player_center:Vector3 = body.position
 	
 	

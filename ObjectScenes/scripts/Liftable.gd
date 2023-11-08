@@ -1,8 +1,12 @@
 @tool
 extends RigidBody3D
+
 @export var size:float=1 
+
+@export var is_static := false
 var parentPos=Vector3.ZERO
 var parentRot=Vector3.ZERO
+
 
 @onready var parenttest = get_parent()
 @onready var parenttest2 = null
@@ -11,14 +15,16 @@ var parentRot=Vector3.ZERO
 func _ready():
 	$CollisionShape3D.transform = $CollisionShape3D.transform.scaled(Vector3(size,size,size))
 	$MeshInstance3D.transform = $MeshInstance3D.transform.scaled(Vector3(size,size,size))
+	contact_monitor=true
+	max_contacts_reported=20
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
-func _process(_delta):
-	if parentPos:
-		rotation=parentRot
-		position=parentPos
+func _process(delta):
+
+			
+		
 		
 	if Engine.is_editor_hint():
 		var parent  = get_parent()
@@ -26,16 +32,33 @@ func _process(_delta):
 			parent.global_position = global_position
 			parent.global_rotation = global_rotation
 			parent.size = size
-			
-			
 			position=Vector3.ZERO
-		#pass
+	else:
+		if parentPos:
+			rotation=parentRot
+			position=parentPos
+		elif !is_static:
+			freeze = false 
+			if linear_velocity.length() < 0.2 && angular_velocity.length() < PI/128:
+				for node in get_colliding_bodies():
+					if node.global_position.y < global_position.y:
+						freeze=true
+						break
+
+					
+				
+			
+
 func add_to_parent(initpos, initrot):
+	for node in get_colliding_bodies():
+		if "is_static" in node:
+			node.freeze=false
 	global_position=initpos
 	global_rotation=initrot
 	gravity_scale=0
 	parentPos=position
 	parentRot=rotation
+	
 
 	#$CollisionShape3D.queue_free()
 
