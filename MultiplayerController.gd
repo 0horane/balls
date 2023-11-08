@@ -47,6 +47,7 @@ func _on_host_button_down():
 	var error = peer.create_server(port,2)
 	if  error!= OK:
 		print("cannot host")
+		return
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	multiplayer.set_multiplayer_peer(peer)
 	print("Waiting for players")
