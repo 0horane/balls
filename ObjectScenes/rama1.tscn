@@ -7,10 +7,13 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2bir"]
 albedo_texture = ExtResource("3_qkkbc")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y1kjw"]
-points = PackedVector3Array(-0.227773, 0.063249, -0.687898, -0.4012, 0.0316714, -0.587352, -0.531048, 0.070846, -0.545395, -0.524784, 0.175447, -0.544639, -0.278804, 0.268855, -0.278786, -0.381964, -0.007341, 0.569553, -0.435458, -0.0049889, 0.599288, -0.504865, 0.196643, -0.143339, -0.490793, 0.225138, -0.144473, -0.479038, 0.21719, 0.00470787, -0.433469, 0.218407, 0.00155795, -0.396836, 0.0552735, 0.554055)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mta3d"]
+radius = 0.144111
+height = 1.08582
 
 [node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
+max_contacts_reported = 20
+contact_monitor = true
 script = ExtResource("1_pjbep")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -19,5 +22,5 @@ mesh = ExtResource("2_slfao")
 surface_material_override/0 = SubResource("StandardMaterial3D_t2bir")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1.378, 1.20469e-07, 6.02343e-08, -6.02343e-08, 2.63292e-15, -1.378, -1.20469e-07, -1.378, 2.63292e-15, -0.570502, 0, 0.176808)
-shape = SubResource("ConvexPolygonShape3D_y1kjw")
+transform = Transform3D(-1.378, 0, -1.20469e-07, 0, 1.378, 0, 1.20469e-07, 0, -1.378, 0.00272121, -0.00510359, -0.00843495)
+shape = SubResource("CapsuleShape3D_mta3d")

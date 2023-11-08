@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ctjhgbe7lv625"]
+[gd_scene load_steps=31 format=3 uid="uid://ctjhgbe7lv625"]
 
 [ext_resource type="Script" path="res://CoreScenes/Main/main.gd" id="1_sg1ki"]
 [ext_resource type="Texture2D" uid="uid://bexol24inxyjb" path="res://Joe_Biden_presidential_portrait.jpg" id="2_u3ikh"]
@@ -6,19 +6,27 @@
 [ext_resource type="Script" path="res://CoreScenes/Camera/Camera3D.gd" id="4_7or6k"]
 [ext_resource type="PackedScene" uid="uid://f4j3jsayehft" path="res://CoreScenes/Liftable/liftable_object_spawner.tscn" id="5_k0rdg"]
 [ext_resource type="PackedScene" uid="uid://bmvao6iglaf58" path="res://ObjectScenes/mesa.tscn" id="6_0ugbt"]
-[ext_resource type="PackedScene" path="res://ObjectScenes/gato.tscn" id="7_8j1ww"]
-[ext_resource type="PackedScene" path="res://ObjectScenes/gnomo.tscn" id="8_fyl7o"]
-[ext_resource type="PackedScene" path="res://ObjectScenes/lamparota.tscn" id="9_c14ao"]
-[ext_resource type="PackedScene" path="res://ObjectScenes/planta.tscn" id="10_joosv"]
-[ext_resource type="PackedScene" path="res://ObjectScenes/basura.tscn" id="11_dy6rh"]
-[ext_resource type="PackedScene" path="res://ObjectScenes/rama1.tscn" id="12_mtvc6"]
-[ext_resource type="PackedScene" path="res://ObjectScenes/rama2.tscn" id="13_e6qxu"]
-[ext_resource type="PackedScene" path="res://ObjectScenes/rama3.tscn" id="14_80f0u"]
-[ext_resource type="PackedScene" uid="uid://bb16c3lx213bf" path="res://ObjectScenes/arbol1.tscn" id="15_klsl5"]
-[ext_resource type="PackedScene" uid="uid://u0mo25onbvly" path="res://ObjectScenes/arbol2.tscn" id="16_so0cp"]
-[ext_resource type="PackedScene" path="res://ObjectScenes/craneo.tscn" id="17_n31h7"]
-[ext_resource type="PackedScene" path="res://ObjectScenes/silla2.tscn" id="18_8whbr"]
+[ext_resource type="PackedScene" uid="uid://dqbfucyr4es7g" path="res://ObjectScenes/casa.tscn" id="6_33ade"]
+[ext_resource type="PackedScene" uid="uid://is1sl78rawdc" path="res://ObjectScenes/piedra1.tscn" id="6_ono35"]
+[ext_resource type="PackedScene" uid="uid://csq3kr34vcl8d" path="res://ObjectScenes/gato.tscn" id="7_8j1ww"]
+[ext_resource type="PackedScene" uid="uid://ced6ei1jpv1s3" path="res://ObjectScenes/piedra2.tscn" id="7_uadqf"]
+[ext_resource type="PackedScene" uid="uid://b0ugwr3kb7olo" path="res://ObjectScenes/piedra3.tscn" id="8_ejbl4"]
+[ext_resource type="PackedScene" uid="uid://cvvfe7avdip5d" path="res://ObjectScenes/gnomo.tscn" id="8_fyl7o"]
+[ext_resource type="PackedScene" uid="uid://b7idl08n3ayjh" path="res://ObjectScenes/lamparota.tscn" id="9_c14ao"]
+[ext_resource type="PackedScene" uid="uid://bs8fllfi7whk6" path="res://ObjectScenes/piedra4.tscn" id="9_qh1f1"]
+[ext_resource type="PackedScene" uid="uid://bxorb0qta72nk" path="res://ObjectScenes/piedra5.tscn" id="10_jktvy"]
+[ext_resource type="PackedScene" uid="uid://r06xjtpc48qo" path="res://ObjectScenes/planta.tscn" id="10_joosv"]
+[ext_resource type="PackedScene" uid="uid://nq01deo33fp3" path="res://ObjectScenes/basura.tscn" id="11_dy6rh"]
+[ext_resource type="PackedScene" uid="uid://bc5in4ctsna82" path="res://ObjectScenes/piedra6.tscn" id="11_xc3bs"]
+[ext_resource type="PackedScene" uid="uid://dqnl8q8yrp34b" path="res://ObjectScenes/rama1.tscn" id="12_mtvc6"]
+[ext_resource type="PackedScene" uid="uid://cumoophnshusm" path="res://ObjectScenes/rama2.tscn" id="13_e6qxu"]
+[ext_resource type="PackedScene" uid="uid://cc0ywft7nvn8r" path="res://ObjectScenes/rama3.tscn" id="14_80f0u"]
+[ext_resource type="PackedScene" uid="uid://brdhiaxw2eyui" path="res://ObjectScenes/arbol1.tscn" id="15_klsl5"]
+[ext_resource type="PackedScene" uid="uid://ci527vq3u24xb" path="res://ObjectScenes/arbol2.tscn" id="16_so0cp"]
+[ext_resource type="PackedScene" uid="uid://cx62hokk7bi82" path="res://ObjectScenes/craneo.tscn" id="17_n31h7"]
+[ext_resource type="PackedScene" uid="uid://rlmc5wte2jpe" path="res://ObjectScenes/silla2.tscn" id="18_8whbr"]
 [ext_resource type="PackedScene" uid="uid://bcaiyqbwg6v20" path="res://ObjectScenes/chair.tscn" id="19_t2hym"]
+[ext_resource type="PackedScene" uid="uid://dbqm7rwijbgoh" path="res://ObjectScenes/terreno.tscn" id="20_se67r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kjjv"]
 size = Vector3(250, 2, 250)
@@ -33,7 +41,7 @@ size = Vector3(250, 2, 250)
 script = ExtResource("1_sg1ki")
 
 [node name="TemporaryGround" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -35.2265, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TemporaryGround"]
 shape = SubResource("BoxShape3D_6kjjv")
@@ -44,7 +52,7 @@ mesh = SubResource("BoxMesh_8p3s3")
 skeleton = NodePath("../CollisionShape3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.99758, 0.0565139, -0.0405017, 0.00680668, 0.500341, 0.865802, 0.0691945, -0.863982, 0.498745, 2.90508, 17.579, 13.7305)
+transform = Transform3D(0.997673, 0.0570835, -0.0372798, 0.00649021, 0.464797, 0.885394, 0.0678689, -0.883575, 0.463345, 2.332, 11.764, -3.822)
 
 [node name="Player" parent="." groups=["balls"] instance=ExtResource("3_87utk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1935, 0)
@@ -57,10 +65,38 @@ fov = 75.9375
 script = ExtResource("4_7or6k")
 
 [node name="Silla" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21842, 5.69017, -11.4722)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.78054, 5.69017, -11.4722)
+
+[node name="Piedra1" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21842, -0.879987, -1.05988)
+chair_scene = ExtResource("6_ono35")
+
+[node name="Piedra2" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21842, -0.879987, 4.6196)
+chair_scene = ExtResource("7_uadqf")
+
+[node name="Piedra3" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21842, -0.879987, 6.13872)
+chair_scene = ExtResource("8_ejbl4")
+
+[node name="Piedra4" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21842, -0.879987, -6.0563)
+chair_scene = ExtResource("9_qh1f1")
+
+[node name="Piedra5" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21842, -0.879987, 9.17045)
+chair_scene = ExtResource("10_jktvy")
+
+[node name="Piedra6" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21842, -0.879987, -8.97135)
+chair_scene = ExtResource("11_xc3bs")
+
+[node name="Casa" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.986101, 0, 0.166149, 0, 1, 0, -0.166149, 0, -0.986101, 44.5474, 7.05078, -11.4722)
+chair_scene = ExtResource("6_33ade")
 
 [node name="Gato" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36116, 6.9157, 2.58271)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36116, -1.04995, -1.94296)
 chair_scene = ExtResource("7_8j1ww")
 
 [node name="Mesa" parent="." instance=ExtResource("5_k0rdg")]
@@ -72,12 +108,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.64169, 4.55167, 16.1952)
 chair_scene = ExtResource("8_fyl7o")
 
 [node name="Lamparota" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6104, 10.4778, 11.925)
-size = 2.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2775, 5.22931, 11.925)
+size = 3.0
 chair_scene = ExtResource("9_c14ao")
 
 [node name="Planta" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.725565, 16.3407, 32.1836)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3352, 4.09208, -4.00301)
 chair_scene = ExtResource("10_joosv")
 
 [node name="Basura" parent="." instance=ExtResource("5_k0rdg")]
@@ -85,15 +121,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.12458, 2.84788, 34.8088)
 chair_scene = ExtResource("11_dy6rh")
 
 [node name="Rama1" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.32504, 14.4876, -7.14635)
+transform = Transform3D(1, 0, 0, 0, 0.910921, 0.41258, 0, -0.41258, 0.910921, 4.48623, 3.02916, 2.8129)
 chair_scene = ExtResource("12_mtvc6")
 
 [node name="Rama2" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7237, 9.79143, -15.6803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7237, 4.07623, -15.6803)
 chair_scene = ExtResource("13_e6qxu")
 
 [node name="Rama3" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4962, 8.61671, -16.2502)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0974, 5.25833, 6.79413)
 chair_scene = ExtResource("14_80f0u")
 
 [node name="Arbol1" parent="." instance=ExtResource("5_k0rdg")]
@@ -102,7 +138,7 @@ size = 4.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol2" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55693, 8.55696, -12.6662)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55693, 0.486629, -12.6662)
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Craneo" parent="." instance=ExtResource("5_k0rdg")]
@@ -121,15 +157,12 @@ contact_monitor = true
 
 [node name="RigidBody3D" parent="." instance=ExtResource("6_0ugbt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44074, 0.988491, -25.0724)
-max_contacts_reported = 20
-contact_monitor = true
 
 [node name="RigidBody3D2" parent="." instance=ExtResource("6_0ugbt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08964, 0.897858, -24.9886)
-max_contacts_reported = 20
-contact_monitor = true
 
 [node name="RigidBody3D3" parent="." instance=ExtResource("6_0ugbt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.32917, 3.69372, -25.089)
-max_contacts_reported = 20
-contact_monitor = true
+
+[node name="Terreno" parent="." instance=ExtResource("20_se67r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -171.441, -4.466, -199.145)
