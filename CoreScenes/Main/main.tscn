@@ -33,7 +33,7 @@ skeleton = NodePath("../CollisionShape3D")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.99758, 0.0565139, -0.0405017, 0.00680668, 0.500341, 0.865802, 0.0691945, -0.863982, 0.498745, 2.90508, 17.579, 13.7305)
 
-[node name="Player" parent="." groups=["balls"] instance=ExtResource("3_87utk")]
+[node name="Player" parent="." instance=ExtResource("3_87utk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.8672, 0)
 mass = 0.1
 
@@ -50,4 +50,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.52766, 5.69017, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86968, 8.57644)
 script = ExtResource("6_egj3c")
 
-[connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
+[node name="weapon" type="Node3D" parent="."]

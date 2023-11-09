@@ -27,4 +27,10 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_5vafc")
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 866.0
+offset_bottom = 334.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

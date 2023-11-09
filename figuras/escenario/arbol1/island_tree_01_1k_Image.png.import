@@ -2,18 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq22og4jilpkc"
-path.s3tc="res://.godot/imported/1517788487669.jpeg-e42633d786742f949c47ca613f0fe851.s3tc.ctex"
-path.etc2="res://.godot/imported/1517788487669.jpeg-e42633d786742f949c47ca613f0fe851.etc2.ctex"
+uid="uid://ceu4kmhlpkgp4"
+path.s3tc="res://.godot/imported/island_tree_01_1k_Image.png-4bf737371591b5765d9fe014fa2db945.s3tc.ctex"
+path.etc2="res://.godot/imported/island_tree_01_1k_Image.png-4bf737371591b5765d9fe014fa2db945.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://1517788487669.jpeg"
-dest_files=["res://.godot/imported/1517788487669.jpeg-e42633d786742f949c47ca613f0fe851.s3tc.ctex", "res://.godot/imported/1517788487669.jpeg-e42633d786742f949c47ca613f0fe851.etc2.ctex"]
+source_file="res://figuras/escenario/arbol1/island_tree_01_1k_Image.png"
+dest_files=["res://.godot/imported/island_tree_01_1k_Image.png-4bf737371591b5765d9fe014fa2db945.s3tc.ctex", "res://.godot/imported/island_tree_01_1k_Image.png-4bf737371591b5765d9fe014fa2db945.etc2.ctex"]
 
 [params]
 
