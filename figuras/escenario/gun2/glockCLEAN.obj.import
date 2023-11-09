@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b0epywxc5bj4y"
+path="res://.godot/imported/glockCLEAN.obj-b40a72d09db8bf270f2755852721c6aa.mesh"
+
+[deps]
+
+files=["res://.godot/imported/glockCLEAN.obj-b40a72d09db8bf270f2755852721c6aa.mesh"]
+
+source_file="res://figuras/escenario/gun2/glockCLEAN.obj"
+dest_files=["res://.godot/imported/glockCLEAN.obj-b40a72d09db8bf270f2755852721c6aa.mesh", "res://.godot/imported/glockCLEAN.obj-b40a72d09db8bf270f2755852721c6aa.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
