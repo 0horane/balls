@@ -1,5 +1,6 @@
 @tool
 extends Marker3D
+@export var es_estatico := false
 @export var size:float:
 	get:
 		return sizestore 
@@ -65,6 +66,7 @@ func spawn_chair():
 		print(size)
 
 		chair_instance.size = size
+		chair_instance.es_estatico = es_estatico
 		add_child(chair_instance)
 		chair_instance.position = Vector3.ZERO
 		chair_instance.rotation = Vector3.ZERO

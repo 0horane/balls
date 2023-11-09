@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://ObjectScenes/scripts/Liftable.gd" id="1_v6gs5"]
 [ext_resource type="ArrayMesh" uid="uid://op875a4g7bar" path="res://figuras/escenario/casa/woodhouse.obj" id="2_c5umb"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_sdch5"]
-size = Vector3(3.04289, 2.63291, 3.79864)
+[sub_resource type="BoxShape3D" id="BoxShape3D_d5l1a"]
+size = Vector3(4.20193, 3.24795, 4.87804)
 
 [node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
 max_contacts_reported = 20
@@ -16,5 +16,5 @@ transform = Transform3D(1.298, 0, 0, 0, 1.298, 0, 0, 0, 1.298, 0, -0.973105, 0.0
 mesh = ExtResource("2_c5umb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.298, 0, 0, 0, 1.298, 0, 0, 0, 1.298, 0.295193, 0.727597, 0.000887256)
-shape = SubResource("BoxShape3D_sdch5")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.456685, 0.789748, -0.0040254)
+shape = SubResource("BoxShape3D_d5l1a")

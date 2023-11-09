@@ -3,7 +3,7 @@ extends RigidBody3D
 
 @export var size:float=1 
 
-@export var is_static := false
+@export var es_estatico := false
 var parentPos=Vector3.ZERO
 var parentRot=Vector3.ZERO
 
@@ -37,7 +37,7 @@ func _process(delta):
 		if parentPos:
 			rotation=parentRot
 			position=parentPos
-		elif !is_static:
+		elif !es_estatico:
 			freeze = false 
 			if linear_velocity.length() < 0.2 && angular_velocity.length() < PI/128:
 				for node in get_colliding_bodies():
