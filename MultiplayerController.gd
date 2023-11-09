@@ -1,6 +1,6 @@
 extends Control
 @export var address = "127.0.0.1"
-@export var port = 8910
+@export var port = 3150
 #SERVER =
 var peer 
 
@@ -36,11 +36,15 @@ func peer_disconnected(id): #runs on all
 	
 func connected_to_server(): # from client
 	print("connected to server")
+	$IPPrompt/ConnectionTimeout.stop()
+	showError("connected to server")
+	$IPPrompt.hide()
 	SendPlayerInformaction.rpc_id(1,$TextEdit.text, multiplayer.get_unique_id())
 	
 	
 func connection_failed(): # from client
 	print("disconnected from server") 
+	showError("disconnected to server")
 	
 	
 @rpc("any_peer")
@@ -72,9 +76,9 @@ func _on_host_button_down():
 
 func host_game():
 	peer = ENetMultiplayerPeer.new()
-	var error = peer.create_server(port,2)
+	var error = peer.create_server(port,32)
 	if  error!= OK:
-		print("cannot host")
+		showError("Error attempting to host")
 		return
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	multiplayer.set_multiplayer_peer(peer)
@@ -82,10 +86,10 @@ func host_game():
 
 
 func _on_join_button_down():
-	peer = ENetMultiplayerPeer.new()
-	peer.create_client(address,port)
-	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
-	multiplayer.set_multiplayer_peer(peer)
+	$IPPrompt/Label.text = "Ingresar dirección de IP"
+	$IPPrompt.show()
+	$IPPrompt/IPInput.grab_focus()
+	
 
 
 
@@ -109,9 +113,36 @@ func _on_play_button_down():
 		
 		startGame.rpc()
 	else:
-		$Error/ErrorMessage.text = "Not the host"
-		$Error.show()
+		showError("Not the host")
 
 
-func _on_ok_button_pressed():
+func _on_ok_ip_button_pressed(_text=null):
+	peer = ENetMultiplayerPeer.new()
+	peer.create_client($IPPrompt/IPInput.text,port)
+	if peer==null || peer.get_host()==null:
+		showError("Dirección inválida / incorrecta")
+		return
+	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
+	multiplayer.set_multiplayer_peer(peer)
+	$IPPrompt/ConnectionTimeout.start(2)
+	
+
+
+func _on_ip_prompt_close_requested():
+	$IPPrompt.hide()
+
+
+func _on_error_close_requested():
 	$Error.hide()
+
+
+
+func _on_connection_timeout_timeout():
+	showError("nO SE PUDO CONECTAR")
+
+
+func showError(errortext:String):
+	$Error/ErrorMessage.text = errortext
+	$Error.show()
+
+
