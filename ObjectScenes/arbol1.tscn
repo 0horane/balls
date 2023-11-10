@@ -71,6 +71,7 @@ points = PackedVector3Array(-1.23148, 2.11084, -1.09292, 0.0925391, 1.7834, -1.4
 
 [node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.357302, 0)
+gravity_scale = 0.0
 max_contacts_reported = 20
 contact_monitor = true
 script = ExtResource("1_7wgeh")
