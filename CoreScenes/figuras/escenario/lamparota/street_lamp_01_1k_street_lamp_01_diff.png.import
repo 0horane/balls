@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c441it6bqnu7w"
-path.s3tc="res://.godot/imported/street_lamp_01_1k_street_lamp_01_diff_1.png-8f49f3ac5459f2919fbfb26b0f358a25.s3tc.ctex"
-path.etc2="res://.godot/imported/street_lamp_01_1k_street_lamp_01_diff_1.png-8f49f3ac5459f2919fbfb26b0f358a25.etc2.ctex"
+uid="uid://c0p5uw8yylrn1"
+path.s3tc="res://.godot/imported/street_lamp_01_1k_street_lamp_01_diff.png-33102d092ffaa5f132493d26e38b8da8.s3tc.ctex"
+path.etc2="res://.godot/imported/street_lamp_01_1k_street_lamp_01_diff.png-33102d092ffaa5f132493d26e38b8da8.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -13,8 +13,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://figuras/escenario/lamparota/street_lamp_01_1k_street_lamp_01_diff_1.png"
-dest_files=["res://.godot/imported/street_lamp_01_1k_street_lamp_01_diff_1.png-8f49f3ac5459f2919fbfb26b0f358a25.s3tc.ctex", "res://.godot/imported/street_lamp_01_1k_street_lamp_01_diff_1.png-8f49f3ac5459f2919fbfb26b0f358a25.etc2.ctex"]
+source_file="res://CoreScenes/figuras/escenario/lamparota/street_lamp_01_1k_street_lamp_01_diff.png"
+dest_files=["res://.godot/imported/street_lamp_01_1k_street_lamp_01_diff.png-33102d092ffaa5f132493d26e38b8da8.s3tc.ctex", "res://.godot/imported/street_lamp_01_1k_street_lamp_01_diff.png-33102d092ffaa5f132493d26e38b8da8.etc2.ctex"]
 
 [params]
 

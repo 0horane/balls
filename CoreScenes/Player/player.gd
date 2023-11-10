@@ -1,10 +1,20 @@
 extends RigidBody3D
 
-
+var health: int = 100
+	
 const SPEED := 600.0
 const JUMP_VELOCITY := 4.5
 const USE_SIMPLIFIED_COLLISION_MESH := true
 const MINIMUM_ABSORBTION_RATIO:float=0.25
+#var target_player:= Player 
+
+# Variables para el sistema de armas
+#var can_shoot := false
+#var shots_fired := 0
+#var max_shots := 10
+#var current_weapon: Weapon
+#var glock: Weapon  # Referencia a la Glock
+#var subfusil: Weapon  # Referencia al Subfusil
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -22,7 +32,9 @@ func _ready():
 	max_contacts_reported=9999
 	
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, $MeshInstance3D.get_mesh().get_mesh_arrays())
-
+	#glock = $Glock
+	#subfucil = $subfucil
+	#current_weapon =   # Comienza con la Glock
 
 
 func is_on_floor():

@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bn6pqfw7ha8v3"
-path.s3tc="res://.godot/imported/island_tree_01_1k_island_tree_01_branches_diff.png-47240df6ab6fe027f73005d61c5bdb5d.s3tc.ctex"
-path.etc2="res://.godot/imported/island_tree_01_1k_island_tree_01_branches_diff.png-47240df6ab6fe027f73005d61c5bdb5d.etc2.ctex"
+path.s3tc="res://.godot/imported/island_tree_01_1k_island_tree_01_branches_diff.png-827869e0243f03200905fee18e248bb0.s3tc.ctex"
+path.etc2="res://.godot/imported/island_tree_01_1k_island_tree_01_branches_diff.png-827869e0243f03200905fee18e248bb0.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -13,8 +13,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://figuras/escenario/arbol1/island_tree_01_1k_island_tree_01_branches_diff.png"
-dest_files=["res://.godot/imported/island_tree_01_1k_island_tree_01_branches_diff.png-47240df6ab6fe027f73005d61c5bdb5d.s3tc.ctex", "res://.godot/imported/island_tree_01_1k_island_tree_01_branches_diff.png-47240df6ab6fe027f73005d61c5bdb5d.etc2.ctex"]
+source_file="res://CoreScenes/figuras/escenario/arbol1/island_tree_01_1k_island_tree_01_branches_diff.png"
+dest_files=["res://.godot/imported/island_tree_01_1k_island_tree_01_branches_diff.png-827869e0243f03200905fee18e248bb0.s3tc.ctex", "res://.godot/imported/island_tree_01_1k_island_tree_01_branches_diff.png-827869e0243f03200905fee18e248bb0.etc2.ctex"]
 
 [params]
 

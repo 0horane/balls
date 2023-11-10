@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://brp3nx2om0yao"
-path.s3tc="res://.godot/imported/concrete_cat_statue_1k_concrete_cat_statue_diff.png-91fe436d59d1e1a01c20058c1342f2cb.s3tc.ctex"
-path.etc2="res://.godot/imported/concrete_cat_statue_1k_concrete_cat_statue_diff.png-91fe436d59d1e1a01c20058c1342f2cb.etc2.ctex"
+path.s3tc="res://.godot/imported/concrete_cat_statue_1k_concrete_cat_statue_diff.png-cdda816023472c0fda42b595f3e2eb3c.s3tc.ctex"
+path.etc2="res://.godot/imported/concrete_cat_statue_1k_concrete_cat_statue_diff.png-cdda816023472c0fda42b595f3e2eb3c.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -13,8 +13,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://figuras/escenario/gatito/concrete_cat_statue_1k_concrete_cat_statue_diff.png"
-dest_files=["res://.godot/imported/concrete_cat_statue_1k_concrete_cat_statue_diff.png-91fe436d59d1e1a01c20058c1342f2cb.s3tc.ctex", "res://.godot/imported/concrete_cat_statue_1k_concrete_cat_statue_diff.png-91fe436d59d1e1a01c20058c1342f2cb.etc2.ctex"]
+source_file="res://CoreScenes/figuras/escenario/gatito/concrete_cat_statue_1k_concrete_cat_statue_diff.png"
+dest_files=["res://.godot/imported/concrete_cat_statue_1k_concrete_cat_statue_diff.png-cdda816023472c0fda42b595f3e2eb3c.s3tc.ctex", "res://.godot/imported/concrete_cat_statue_1k_concrete_cat_statue_diff.png-cdda816023472c0fda42b595f3e2eb3c.etc2.ctex"]
 
 [params]
 

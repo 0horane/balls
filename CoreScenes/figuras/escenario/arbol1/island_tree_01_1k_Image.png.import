@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bupnnymc747gh"
-path.s3tc="res://.godot/imported/garden_gnome_1k_garden_gnome_diff.png-edac10b45889fddb1c5bf01fad5a9afd.s3tc.ctex"
-path.etc2="res://.godot/imported/garden_gnome_1k_garden_gnome_diff.png-edac10b45889fddb1c5bf01fad5a9afd.etc2.ctex"
+uid="uid://ceu4kmhlpkgp4"
+path.s3tc="res://.godot/imported/island_tree_01_1k_Image.png-92317356796d2ccb41a61d3751dca49a.s3tc.ctex"
+path.etc2="res://.godot/imported/island_tree_01_1k_Image.png-92317356796d2ccb41a61d3751dca49a.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -13,8 +13,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://figuras/escenario/gnomo/garden_gnome_1k_garden_gnome_diff.png"
-dest_files=["res://.godot/imported/garden_gnome_1k_garden_gnome_diff.png-edac10b45889fddb1c5bf01fad5a9afd.s3tc.ctex", "res://.godot/imported/garden_gnome_1k_garden_gnome_diff.png-edac10b45889fddb1c5bf01fad5a9afd.etc2.ctex"]
+source_file="res://CoreScenes/figuras/escenario/arbol1/island_tree_01_1k_Image.png"
+dest_files=["res://.godot/imported/island_tree_01_1k_Image.png-92317356796d2ccb41a61d3751dca49a.s3tc.ctex", "res://.godot/imported/island_tree_01_1k_Image.png-92317356796d2ccb41a61d3751dca49a.etc2.ctex"]
 
 [params]
 

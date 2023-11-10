@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpvhtbcfdl461"
-path.s3tc="res://.godot/imported/potted_plant_01_14k_potted_plant_01_pot_diff.png-74f06fdeb5d23e72454e98b5a9d57a37.s3tc.ctex"
-path.etc2="res://.godot/imported/potted_plant_01_14k_potted_plant_01_pot_diff.png-74f06fdeb5d23e72454e98b5a9d57a37.etc2.ctex"
+path.s3tc="res://.godot/imported/potted_plant_01_14k_potted_plant_01_pot_diff.png-a2194bd086a08eb1b9e145681c3a7cd6.s3tc.ctex"
+path.etc2="res://.godot/imported/potted_plant_01_14k_potted_plant_01_pot_diff.png-a2194bd086a08eb1b9e145681c3a7cd6.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -13,8 +13,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://figuras/escenario/planta/potted_plant_01_14k_potted_plant_01_pot_diff.png"
-dest_files=["res://.godot/imported/potted_plant_01_14k_potted_plant_01_pot_diff.png-74f06fdeb5d23e72454e98b5a9d57a37.s3tc.ctex", "res://.godot/imported/potted_plant_01_14k_potted_plant_01_pot_diff.png-74f06fdeb5d23e72454e98b5a9d57a37.etc2.ctex"]
+source_file="res://CoreScenes/figuras/escenario/planta/potted_plant_01_14k_potted_plant_01_pot_diff.png"
+dest_files=["res://.godot/imported/potted_plant_01_14k_potted_plant_01_pot_diff.png-a2194bd086a08eb1b9e145681c3a7cd6.s3tc.ctex", "res://.godot/imported/potted_plant_01_14k_potted_plant_01_pot_diff.png-a2194bd086a08eb1b9e145681c3a7cd6.etc2.ctex"]
 
 [params]
 

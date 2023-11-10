@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ceu4kmhlpkgp4"
-path.s3tc="res://.godot/imported/island_tree_01_1k_Image.png-4bf737371591b5765d9fe014fa2db945.s3tc.ctex"
-path.etc2="res://.godot/imported/island_tree_01_1k_Image.png-4bf737371591b5765d9fe014fa2db945.etc2.ctex"
+uid="uid://fkuj1lkb8ibj"
+path.s3tc="res://.godot/imported/potted_plant_01_14k_Image.png-f707764a792ddecb00700767df69bca6.s3tc.ctex"
+path.etc2="res://.godot/imported/potted_plant_01_14k_Image.png-f707764a792ddecb00700767df69bca6.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -13,8 +13,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://figuras/escenario/arbol1/island_tree_01_1k_Image.png"
-dest_files=["res://.godot/imported/island_tree_01_1k_Image.png-4bf737371591b5765d9fe014fa2db945.s3tc.ctex", "res://.godot/imported/island_tree_01_1k_Image.png-4bf737371591b5765d9fe014fa2db945.etc2.ctex"]
+source_file="res://CoreScenes/figuras/escenario/planta/potted_plant_01_14k_Image.png"
+dest_files=["res://.godot/imported/potted_plant_01_14k_Image.png-f707764a792ddecb00700767df69bca6.s3tc.ctex", "res://.godot/imported/potted_plant_01_14k_Image.png-f707764a792ddecb00700767df69bca6.etc2.ctex"]
 
 [params]
 

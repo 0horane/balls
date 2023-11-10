@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ytoxqjd1g53d"]
+
+[ext_resource type="Script" path="res://Bullet.gd" id="1_ybcvq"]
+[ext_resource type="ArrayMesh" uid="uid://bocjpm8oqndhn" path="res://ObjectScenes/obj/chair_sds2.obj" id="2_y1dxy"]
+[ext_resource type="Script" path="res://BulletSpawner.gd" id="3_py23i"]
+
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_ybcvq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14655, 1.21557, -8.23025)
+mesh = ExtResource("2_y1dxy")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="BulletSpawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.954912, 2.37549)
+script = ExtResource("3_py23i")

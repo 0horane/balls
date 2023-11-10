@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://chvqbriboeyw3"
-path.s3tc="res://.godot/imported/metal_trash_can_1k_metal_trash_can_diff.png-a8ae1a264203aaaf0f845c3ebbb30283.s3tc.ctex"
-path.etc2="res://.godot/imported/metal_trash_can_1k_metal_trash_can_diff.png-a8ae1a264203aaaf0f845c3ebbb30283.etc2.ctex"
+path.s3tc="res://.godot/imported/metal_trash_can_1k_metal_trash_can_diff.png-4aec745e149f6b894ecf73d87db6e00b.s3tc.ctex"
+path.etc2="res://.godot/imported/metal_trash_can_1k_metal_trash_can_diff.png-4aec745e149f6b894ecf73d87db6e00b.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -13,8 +13,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://figuras/escenario/tachobasura/metal_trash_can_1k_metal_trash_can_diff.png"
-dest_files=["res://.godot/imported/metal_trash_can_1k_metal_trash_can_diff.png-a8ae1a264203aaaf0f845c3ebbb30283.s3tc.ctex", "res://.godot/imported/metal_trash_can_1k_metal_trash_can_diff.png-a8ae1a264203aaaf0f845c3ebbb30283.etc2.ctex"]
+source_file="res://CoreScenes/figuras/escenario/tachobasura/metal_trash_can_1k_metal_trash_can_diff.png"
+dest_files=["res://.godot/imported/metal_trash_can_1k_metal_trash_can_diff.png-4aec745e149f6b894ecf73d87db6e00b.s3tc.ctex", "res://.godot/imported/metal_trash_can_1k_metal_trash_can_diff.png-4aec745e149f6b894ecf73d87db6e00b.etc2.ctex"]
 
 [params]
 
