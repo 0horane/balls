@@ -1,0 +1,166 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceuit70bgdd3e"]
+
+[ext_resource type="Script" path="res://MultiplayerController.gd" id="1_8xvf2"]
+[ext_resource type="Texture2D" uid="uid://cq22og4jilpkc" path="res://1517788487669.jpeg" id="2_lv3x3"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8xvf2")
+
+[node name="Host" type="Button" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 184.0
+offset_right = 622.0
+offset_bottom = 230.0
+text = "Host
+"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+
+[node name="Join" type="Button" parent="."]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 242.0
+offset_right = 616.0
+offset_bottom = 307.0
+text = "Join
+"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 395.0
+offset_right = 660.0
+offset_bottom = 433.0
+placeholder_text = "Ingrese su nombre de usuario
+"
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 442.0
+offset_top = 318.0
+offset_right = 615.0
+offset_bottom = 380.0
+text = "Play
+"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 447.0
+offset_top = 99.0
+offset_right = 487.0
+offset_bottom = 122.0
+text = "Brig Balls Battle Royal"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 439.0
+offset_bottom = 259.0
+
+[node name="1517788487669" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(572, 330)
+scale = Vector2(2.296, 1.3)
+texture = ExtResource("2_lv3x3")
+
+[node name="Error" type="Window" parent="."]
+initial_position = 2
+size = Vector2i(405, 120)
+visible = false
+
+[node name="ErrorMessage" type="Label" parent="Error"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 26.0
+grow_horizontal = 2
+text = "Error"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OkButton" type="Button" parent="Error"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.5
+offset_right = 15.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ok"
+
+[node name="IPPrompt" type="Window" parent="."]
+initial_position = 2
+size = Vector2i(405, 120)
+visible = false
+
+[node name="Label" type="Label" parent="IPPrompt"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 26.0
+grow_horizontal = 2
+text = "Ingresar dirección de IP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OkIPButton" type="Button" parent="IPPrompt"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -31.0
+offset_right = 15.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Ok"
+
+[node name="ConnectionTimeout" type="Timer" parent="IPPrompt"]
+wait_time = 2.996
+one_shot = true
+
+[node name="IPInput" type="LineEdit" parent="IPPrompt"]
+custom_minimum_size = Vector2(230.39, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.5312
+offset_top = -15.5
+offset_right = 33.5312
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "localhost"
+
+[connection signal="button_down" from="Host" to="." method="_on_host_button_down"]
+[connection signal="button_down" from="Join" to="." method="_on_join_button_down"]
+[connection signal="button_down" from="Play" to="." method="_on_play_button_down"]
+[connection signal="close_requested" from="Error" to="." method="_on_error_close_requested"]
+[connection signal="go_back_requested" from="Error" to="." method="_on_error_close_requested"]
+[connection signal="pressed" from="Error/OkButton" to="." method="_on_error_close_requested"]
+[connection signal="close_requested" from="IPPrompt" to="." method="_on_ip_prompt_close_requested"]
+[connection signal="go_back_requested" from="IPPrompt" to="." method="_on_ip_prompt_close_requested"]
+[connection signal="pressed" from="IPPrompt/OkIPButton" to="." method="_on_ok_ip_button_pressed"]
+[connection signal="timeout" from="IPPrompt/ConnectionTimeout" to="." method="_on_connection_timeout_timeout"]
+[connection signal="text_submitted" from="IPPrompt/IPInput" to="." method="_on_ok_ip_button_pressed"]
