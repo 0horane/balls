@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctjhgbe7lv625"]
+[gd_scene load_steps=11 format=3 uid="uid://ctjhgbe7lv625"]
 
 [ext_resource type="Script" path="res://CoreScenes/Main/main.gd" id="1_sg1ki"]
 [ext_resource type="Texture2D" uid="uid://bexol24inxyjb" path="res://Joe_Biden_presidential_portrait.jpg" id="2_u3ikh"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://CoreScenes/Camera/Camera3D.gd" id="4_7or6k"]
 [ext_resource type="PackedScene" uid="uid://f4j3jsayehft" path="res://CoreScenes/Liftable/liftable_object_spawner.tscn" id="5_k0rdg"]
 [ext_resource type="Script" path="res://CoreScenes/Player/player2_debug.gd" id="6_egj3c"]
+[ext_resource type="PackedScene" uid="uid://mv8tfmr3xq1r" path="res://ObjectScenes/armas.tscn" id="7_daqhk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kjjv"]
 size = Vector3(60, 2, 60)
@@ -50,4 +51,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.52766, 5.69017, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86968, 8.57644)
 script = ExtResource("6_egj3c")
 
-[node name="weapon" type="Node3D" parent="."]
+[node name="RigidBody3D" parent="." instance=ExtResource("7_daqhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24357, 1, 5)
+size = 2.0

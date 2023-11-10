@@ -18,7 +18,7 @@ const MINIMUM_ABSORBTION_RATIO:float=0.25
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-var size :float = 1
+var size :float = 10
 var realRotation:float = 0
 var movementRotation:float = 0
 var lifted_object_map := {} # aactualmente mapea Body->Collisionshape. Actualizar si algo se cambia
