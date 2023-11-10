@@ -1,17 +1,20 @@
-extends Control
+extends Node
 @export var address = "127.0.0.1"
 @export var port = 3150
 #SERVER =
 var peer 
 #Declaring Objects
-@onready var log = get_node("LogCont/RichTextLabel")
-@onready var IPlabel = get_node("IPPrompt/Label")
-@onready var IPPrompt = get_node("IPPrompt")
-@onready var IpPromptTimeout = get_node("IPPrompt/ConnectionTimeout")
-@onready var IPPromptText = get_node("IPPrompt/IPInput")
-@onready var PlayerNameTextbokx = get_node("NamePlayer/Player_Name")
-@onready var PlayerNameWindow = get_node("NamePlayer")
-@onready var PlayerNameButton = get_node("NamePlayer/SelectName")
+@onready var log = get_node("Control/LogCont/RichTextLabel")
+@onready var IPlabel = get_node("Control/IPPrompt/Label")
+@onready var IPPrompt = get_node("Control/IPPrompt")
+@onready var IpPromptTimeout = get_node("Control/IPPrompt/ConnectionTimeout")
+@onready var IPPromptText = get_node("Control/IPPrompt/IPInput")
+@onready var PlayerNameTextbokx = get_node("Control/NamePlayer/Player_Name")
+@onready var PlayerNameWindow = get_node("Control/NamePlayer")
+@onready var PlayerNameButton = get_node("Control/NamePlayer/SelectName")
+@onready var aControl = get_node("Control")
+@onready var Main = get_node("Node")
+
 var PlayerName = ""
 var randomcolorGropus = [
 	"#99ccff",
@@ -36,13 +39,38 @@ func _process(delta):
 
 @rpc("any_peer","call_local")
 func startGame():
-	var scene = load("res://CoreScenes/Main/main.tscn").instantiate()
-	get_tree().root.add_child(scene)
-	self.hide()
-	
-	
+	aControl.hide()
+	if multiplayer.is_server():
+	#var scene = load("res://CoreScenes/Main/main.tscn").instantiate()
+	#get_tree().root.add_child(scene)
+		change_level.call_deferred(load("res://CoreScenes/Main/main.tscn"))
+
+
+# Call this function deferred and only on the main authority (server).
+func change_level(scene: PackedScene):
+	# Remove old level if any.
+	var level = Main	# Add new level.
+	level.add_child(scene.instantiate())	
+#@rpc("any_peer","call_local")
+#func startalreadygame():#
+#	if !self.hidden:
+#		var scene = load("res://CoreScenes/Main/main.tscn").instantiate()
+#		get_tree().root.add_child(scene)
+#		self.hide()
 func peer_connected(id): # runs on all
 	PlayersConnectedText(id)
+#		if self.hidden:
+	#		for objects in get_tree().root.get_children():	
+				#change_level.call_deferred(get_tree().root.get_child(0))
+				#for object in objects:
+#				SendObjectInformaction.rpc(objects)
+#				print("De Aca VBiene Informatica \n \n \n")
+#				print(objects)
+#				#
+#			print("Llego")
+#			startalreadygame.rpc()
+			
+			
 	print("Player "+str(id)+ " connected")
 	
 	
@@ -57,13 +85,14 @@ func connected_to_server(): # from client
 	showError("connected to server")
 	IPPrompt.hide()
 	SendPlayerInformaction.rpc_id(1,PlayerNameTextbokx.text, multiplayer.get_unique_id())
-	
+
 	
 func connection_failed(): # from client
 	print("disconnected from server") 
 	showError("disconnected to server")
 	
-	
+
+
 @rpc("any_peer")
 func SendPlayerInformaction(username,id):
 	if !GameManager.Players.has(id):
@@ -81,7 +110,7 @@ func SendObjectInformaction(object):
 	print("adding", object)
 	if !GameManager.Liftables.has(object["id"]):
 		GameManager.Liftables[object["id"]] = object
-	if multiplayer.is_server():
+	if multiplayer.is_server() and !self.hidden:
 		for i in GameManager.Players:
 			SendObjectInformaction.rpc(GameManager.Players[i].username, i)
 			
@@ -134,13 +163,13 @@ func _on_play_button_down():
 
 func _on_ok_ip_button_pressed(_text=null):
 	peer = ENetMultiplayerPeer.new()
-	peer.create_client($IPPrompt/IPInput.text,port)
+	peer.create_client($Control/IPPrompt/IPInput.text,port)
 	if peer==null || peer.get_host()==null:
 		showError("Dirección inválida / incorrecta")
 		return
 	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	multiplayer.set_multiplayer_peer(peer)
-	$IPPrompt/ConnectionTimeout.start(2)
+	$Control/IPPrompt/ConnectionTimeout.start(2)
 	
 func _on_select_name_button_down():
 	PlayerName = PlayerNameTextbokx.text
@@ -152,7 +181,7 @@ func _on_ip_prompt_close_requested():
 
 
 func _on_error_close_requested():
-	$Error.hide()
+	$Control/Error.hide()
 
 
 func PlayersConnectedText(id):
@@ -171,8 +200,8 @@ func _on_connection_timeout_timeout():
 
 
 func showError(errortext:String):
-	$Error/ErrorMessage.text = errortext
-	$Error.show()
+	$Control/Error/ErrorMessage.text = errortext
+	$Control/Error.show()
 
 
 

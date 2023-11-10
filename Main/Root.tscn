@@ -1,0 +1,196 @@
+[gd_scene load_steps=3 format=3 uid="uid://dedcjsuftr6jp"]
+
+[ext_resource type="Script" path="res://Main/Multiplayer_Controller.gd" id="1_p8etp"]
+[ext_resource type="Texture2D" uid="uid://cq22og4jilpkc" path="res://1517788487669.jpeg" id="2_hyfx2"]
+
+[node name="Root" type="Node"]
+script = ExtResource("1_p8etp")
+
+[node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://ObjectScenes/chair.tscn", "res://CoreScenes/Main/main.tscn", "res://CoreScenes/Player/player.tscn")
+spawn_path = NodePath("../Node")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Logo" type="Label" parent="Control"]
+offset_left = 163.0
+offset_top = 82.0
+offset_right = 953.0
+offset_bottom = 188.0
+theme_override_font_sizes/font_size = 75
+text = "Brig Balls Battle Royal"
+horizontal_alignment = 1
+
+[node name="Error" type="Window" parent="Control"]
+initial_position = 2
+size = Vector2i(405, 120)
+visible = false
+
+[node name="ErrorMessage" type="Label" parent="Control/Error"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 26.0
+grow_horizontal = 2
+text = "Error"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OkButton" type="Button" parent="Control/Error"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.5
+offset_right = 15.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ok"
+
+[node name="IPPrompt" type="Window" parent="Control"]
+initial_position = 2
+size = Vector2i(405, 120)
+visible = false
+
+[node name="Label" type="Label" parent="Control/IPPrompt"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 26.0
+grow_horizontal = 2
+text = "Ingresar dirección de IP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OkIPButton" type="Button" parent="Control/IPPrompt"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -31.0
+offset_right = 15.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Ok"
+
+[node name="ConnectionTimeout" type="Timer" parent="Control/IPPrompt"]
+wait_time = 2.996
+one_shot = true
+
+[node name="IPInput" type="LineEdit" parent="Control/IPPrompt"]
+custom_minimum_size = Vector2(230.39, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.5312
+offset_top = -15.5
+offset_right = 33.5312
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "localhost"
+
+[node name="LogCont" type="VBoxContainer" parent="Control"]
+offset_right = 407.0
+offset_bottom = 158.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/LogCont"]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "assdaasds
+"
+bbcode_enabled = true
+text = "Lector"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/LogCont"]
+layout_mode = 2
+
+[node name="NamePlayer" type="Window" parent="Control"]
+initial_position = 2
+size = Vector2i(420, 140)
+
+[node name="Player_Name" type="TextEdit" parent="Control/NamePlayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = -20.0
+offset_right = 195.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+placeholder_text = "Ingrese su nombre de usuario
+"
+
+[node name="SelectName" type="Button" parent="Control/NamePlayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_top = -40.0
+offset_right = 39.5
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Continue
+"
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+show_behind_parent = true
+offset_left = 2.0
+offset_top = 6.0
+offset_right = 1155.0
+offset_bottom = 650.0
+texture = ExtResource("2_hyfx2")
+
+[node name="Options" type="VBoxContainer" parent="Control"]
+offset_left = 288.0
+offset_top = 238.0
+offset_right = 764.0
+offset_bottom = 489.0
+
+[node name="Host" type="Button" parent="Control/Options"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Host
+"
+
+[node name="Join" type="Button" parent="Control/Options"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Join
+"
+
+[node name="Play" type="Button" parent="Control/Options"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Play
+"
+
+[node name="Join2" type="Button" parent="Control/Options"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "
+"

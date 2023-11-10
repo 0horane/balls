@@ -1,4 +1,4 @@
-extends Node
+extends Node 
 
 @export var PlayerScene : PackedScene
 
@@ -23,8 +23,25 @@ func _ready():
 			if spawnpoint.name == str(index % len(spawnpoints)):
 				player.global_position = spawnpoint.global_position 
 		index+=1
+	multiplayer.peer_connected.connect(peer_connected)
 
+func peer_connected(id):
+	if multiplayer.is_server():
+		if get_tree().current_scene.name == "main":
+			var character = preload("res://CoreScenes/Player/player.tscn").instantiate()
+			character.player = id
+			startGame(id).rpc(GameManager.Players[id].id,id)
+			# Set player id.
+@rpc("any_peer","call_local")
+func startGame(id):
+	if !get_tree().current_scene.name == "main":
+		
+		var scene = load("res://CoreScenes/Main/main.tscn").instantiate()
+		get_tree().root.add_child(scene)
 
+	
+	
+#multiplayer.peer_connected.connect(add_player)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

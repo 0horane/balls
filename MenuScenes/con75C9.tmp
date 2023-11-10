@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8da136d7b3qf"]
+[gd_scene load_steps=3 format=3 uid="uid://b8da136d7b3qf"]
 
+[ext_resource type="Script" path="res://MultiplayerScenes/MultiplayerController.gd" id="1_rf8e0"]
 [ext_resource type="Texture2D" uid="uid://cq22og4jilpkc" path="res://1517788487669.jpeg" id="2_53xn8"]
 
 [node name="Control" type="Control"]
@@ -13,6 +14,9 @@ offset_right = -2.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rf8e0")
+address = null
+port = null
 
 [node name="Logo" type="Label" parent="."]
 layout_mode = 2
@@ -195,6 +199,9 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "
 "
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://CoreScenes/Main/main.tscn")
 
 [connection signal="close_requested" from="Error" to="." method="_on_error_close_requested"]
 [connection signal="go_back_requested" from="Error" to="." method="_on_error_close_requested"]
