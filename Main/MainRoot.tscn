@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ksiy3ese7mw8"]
+
+[ext_resource type="PackedScene" uid="uid://b8da136d7b3qf" path="res://MenuScenes/control.tscn" id="1_7wx4e"]
+
+[node name="MainRoot" type="Node"]
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Control" parent="." instance=ExtResource("1_7wx4e")]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://ObjectScenes/chair.tscn", "res://CoreScenes/Player/player.tscn", "res://CoreScenes/Main/main.tscn")
+spawn_path = NodePath("..")

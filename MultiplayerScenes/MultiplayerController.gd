@@ -12,6 +12,8 @@ var peer
 @onready var PlayerNameTextbokx = get_node("NamePlayer/Player_Name")
 @onready var PlayerNameWindow = get_node("NamePlayer")
 @onready var PlayerNameButton = get_node("NamePlayer/SelectName")
+#@onready var 
+#get_tree().root.get_child(node)
 var PlayerName = ""
 var randomcolorGropus = [
 	"#99ccff",
@@ -36,15 +38,20 @@ func _process(delta):
 
 @rpc("any_peer","call_local")
 func startGame():
-	var scene = load("res://CoreScenes/Main/main.tscn").instantiate()
-	get_tree().root.add_child(scene)
-	self.hide()
+	if get_tree().root.get_child(2) == null:
+		var scene = load("res://CoreScenes/Main/main.tscn").instantiate()
+		get_tree().root.add_child(scene)
+	#print(get_tree().root.get_children())
+	#print(get_tree().root.get_child(2))
+		self.hide()
 	
 	
 func peer_connected(id): # runs on all
 	PlayersConnectedText(id)
 	print("Player "+str(id)+ " connected")
 	
+func Close():
+	get_tree().quit()
 	
 func peer_disconnected(id): #runs on all
 	PlayersConnectedText(id)
@@ -108,9 +115,10 @@ func _on_join_button_down():
 	IPPromptText.grab_focus() # Replace with function body.
 	
 
+#get_tree().root.get_child(2)
 
 func _on_play_button_down():
-	if multiplayer.is_server() and peer:
+	if multiplayer.is_server() and peer and get_tree().root.get_child(2) == null:
 		for i in range(100):
 			var size := randf_range(0,1)**2+0.2
 			SendObjectInformaction.rpc({
@@ -129,7 +137,10 @@ func _on_play_button_down():
 		
 		startGame.rpc()
 	else:
-		showError("Not the host")
+		if peer and get_tree().root.get_child(2) == null:
+			AddPlayer.rpc()
+		else:
+			showError("Not the host")
 
 
 func _on_ok_ip_button_pressed(_text=null):
@@ -149,7 +160,10 @@ func _on_select_name_button_down():
 
 func _on_ip_prompt_close_requested():
 	IPPrompt.hide()
-
+@rpc("any_peer","call_local")
+func AddPlayer():
+	if multiplayer.is_server() and !get_tree().root.get_child(2) == null:
+			startGame.rpc()
 
 func _on_error_close_requested():
 	$Error.hide()
@@ -177,3 +191,7 @@ func showError(errortext:String):
 
 
 
+
+
+func _on_join_2_button_down():
+	Close()
