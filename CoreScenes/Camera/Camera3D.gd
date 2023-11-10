@@ -7,8 +7,6 @@ var camera_speed = 2.0
 func _ready():
 	#player = $"../Player"  
 	player = $"../../Main".get_node(str(multiplayer.get_unique_id())) 
-	print(multiplayer.get_unique_id())
-	print($"../../Main".get_node(str(multiplayer.get_unique_id())))
 
 
 # https://www.youtube.com/watch?v=u2sX8UhGkoQ

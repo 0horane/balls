@@ -36,7 +36,6 @@ func remove_from_parent(initpos, initrot, new_collison_shape):
 	gravity_scale = real_gravity_scale/5
 	parentPos=null
 	parentRot=null
-	print(global_position, global_rotation, self)
 
 
 

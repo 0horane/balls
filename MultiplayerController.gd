@@ -61,7 +61,6 @@ func SendPlayerInformaction(username,id):
 
 @rpc("authority", "call_local")
 func SendObjectInformaction(object):
-	print("adding", object)
 	if !GameManager.Liftables.has(object["id"]):
 		GameManager.Liftables[object["id"]] = object
 	if multiplayer.is_server():

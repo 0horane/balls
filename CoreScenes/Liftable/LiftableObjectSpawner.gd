@@ -64,7 +64,6 @@ func _on_check_timer_timeout():
 	var player_found = false
 	while current_node:
 		if player_group in current_node.get_groups():
-			print(current_node.get_groups())
 			player_found = true
 			break
 		current_node = current_node.get_parent()

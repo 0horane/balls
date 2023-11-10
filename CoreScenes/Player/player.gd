@@ -189,7 +189,6 @@ func absorb_body(body):
 	
 	
 	var mdt := MeshDataTool.new()
-	print(mesh)
 	mdt.create_from_surface(mesh, 0)
 	var closest_aligned_vertex:= 0
 	var closest_angle:float=999
