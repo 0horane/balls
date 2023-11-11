@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://betinjxibra4m"]
+
+[ext_resource type="Script" path="res://ObjectScenes/armas.gd" id="1_kkh4p"]
+[ext_resource type="ArrayMesh" uid="uid://d1uet5fuy76jh" path="res://figuras/escenario/gun1/gun1.obj" id="2_2oo3d"]
+[ext_resource type="Texture2D" uid="uid://cm8m4didnhwau" path="res://figuras/escenario/gun1/textures/M1A1_Thompson_Albedo.png" id="3_ymnfc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcvan"]
+albedo_texture = ExtResource("3_ymnfc")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vhg1g"]
+points = PackedVector3Array(1.205, 1.68415, 20.3905, -0.757, -8.7787, -21.4655, -1.411, -8.1231, -21.4655, 1.205, 3.6473, -8.37935, -1.411, 1.68415, 15.1585, 1.205, -8.7787, -21.4655, -1.411, -2.24094, -20.81, -0.757, -6.81555, -1.84448, -1.411, -1.58534, 16.4655, 1.205, -1.58534, 16.4655, -1.411, 1.68415, -9.69043, -0.757, 2.99292, 20.3905, 1.205, -2.24094, -20.81, 1.205, -6.16238, -2.49592, -0.69863, 3.09278, -7.67946, 0.551, 2.99292, 20.3905, -0.757, 0.376596, 20.3905, -1.411, -8.1231, -16.8808, -0.103, -6.81555, -1.84448, 1.205, -3.54606, -21.4655, -0.757, -1.58534, -20.1544, -0.757, -8.7787, -19.503, 1.205, -8.7787, -20.1544, -1.411, -3.54606, -21.4655, 0.551, 0.376596, 20.3905, 0.551, -1.58534, -20.1544, 1.205, 3.6473, -6.42094, 1.205, 1.03098, 20.3905, 0.551, -8.7787, -19.503, -1.411, -0.277788, 16.4655)
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
+max_contacts_reported = 20
+contact_monitor = true
+script = ExtResource("1_kkh4p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.048, 0, 0, 0, 0.048, 0, 0, 0, 0.048, 0.01468, 0, 0.0475835)
+mesh = ExtResource("2_2oo3d")
+surface_material_override/0 = SubResource("StandardMaterial3D_hcvan")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.048, 0, 0, 0, 0.048, 0, 0, 0, 0.048, 0.01468, 0, 0.0475835)
+shape = SubResource("ConvexPolygonShape3D_vhg1g")

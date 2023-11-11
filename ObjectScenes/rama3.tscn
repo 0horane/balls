@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://cc0ywft7nvn8r"]
+
+[ext_resource type="Script" path="res://ObjectScenes/scripts/Liftable.gd" id="1_1pq22"]
+[ext_resource type="ArrayMesh" uid="uid://co7ewqd3lu8q8" path="res://figuras/escenario/rama3/dry_branches_medium_01_1k_c.obj" id="2_vur5i"]
+[ext_resource type="Texture2D" uid="uid://bh6oehprpa1gf" path="res://figuras/escenario/rama3/dry_branches_medium_01_diff_1k.jpg" id="3_6wwib"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wyei"]
+albedo_texture = ExtResource("3_6wwib")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0guv7"]
+points = PackedVector3Array(0.42833, -0.00031, 0.246396, 0.49327, 0.00741199, 0.054979, 0.482025, 0.0143288, 0.195461, 0.47693, 0.0327032, 0.280626, 0.404149, 0.0180248, 0.285155, 0.393154, 0.0440683, -0.31152, 0.438792, 0.00710839, -0.203635, 0.496913, 0.00961639, -0.0402099, 0.498206, 0.0140384, 0.113414, 0.469078, 0.0549319, 0.314558, 0.509066, 0.0344984, 0.0470342, 0.396411, 0.0551959, 0.300079, 0.402879, 0.0866647, -0.264966, 0.404558, 0.0744151, -0.34768, 0.418583, 0.0651487, -0.443983, 0.399123, 0.0431575, -0.33283, 0.43549, 0.0359503, -0.332385, 0.489628, 0.0231728, -0.188562, 0.507035, 0.0363331, -0.0170438, 0.498558, 0.0333236, -0.135325, 0.50363, 0.0778207, -0.0293694, 0.46185, 0.0804871, 0.2856, 0.443785, 0.0754447, 0.307727, 0.407508, 0.0739135, 0.290575, 0.433505, 0.134541, -0.388592, 0.430271, 0.0957859, -0.429133, 0.447019, 0.0622183, -0.406635, 0.491341, 0.0527407, -0.205491, 0.502984, 0.0492691, -0.0706525, 0.438384, 0.0928687, 0.263251, 0.437045, 0.0964459, -0.417921)
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
+script = ExtResource("1_1pq22")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.593, 0, 0, 0, -6.96322e-08, 1.593, 0, -1.593, -6.96322e-08, -0.749039, 0, 0.0475835)
+mesh = ExtResource("2_vur5i")
+surface_material_override/0 = SubResource("StandardMaterial3D_5wyei")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.593, 0, 0, 0, -6.96322e-08, 1.593, 0, -1.593, -6.96322e-08, -0.749039, 0, 0.0475835)
+shape = SubResource("ConvexPolygonShape3D_0guv7")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://u0mo25onbvly"]
+
+[ext_resource type="Script" path="res://ObjectScenes/scripts/Liftable.gd" id="1_1o8eb"]
+[ext_resource type="ArrayMesh" uid="uid://ygo16uwkv02d" path="res://figuras/escenario/arbol2/tree_small_02_1k.obj" id="2_mabf8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ichx7"]
+size = Vector3(1, 4.7487, 1)
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
+gravity_scale = 0.0
+max_contacts_reported = 20
+contact_monitor = true
+script = ExtResource("1_1o8eb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.378, 0, 0, 0, 1.378, 0, 0, 0, 1.378, -0.251926, -1.93489, -0.260849)
+mesh = ExtResource("2_mabf8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.949765, -0.312965, 0, 0.312965, 0.949765, 0, 0.338236, 0.361506)
+shape = SubResource("BoxShape3D_ichx7")

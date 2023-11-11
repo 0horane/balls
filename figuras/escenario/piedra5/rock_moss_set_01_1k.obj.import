@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b6xrgq54o8a62"
+path="res://.godot/imported/rock_moss_set_01_1k.obj-e385ca451583f1673c49b26a40defad3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/rock_moss_set_01_1k.obj-e385ca451583f1673c49b26a40defad3.mesh"]
+
+source_file="res://figuras/escenario/piedra5/rock_moss_set_01_1k.obj"
+dest_files=["res://.godot/imported/rock_moss_set_01_1k.obj-e385ca451583f1673c49b26a40defad3.mesh", "res://.godot/imported/rock_moss_set_01_1k.obj-e385ca451583f1673c49b26a40defad3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,8 +1,32 @@
 @tool
 extends Marker3D
-@export var size:float=1
+@export var sin_gravedad := false
+@export var anti_vibracion := false
+@export var size:float:
+	get:
+		return sizestore 
+	set(value):
+		sizestore = value
+		if is_instance_valid(chair_instance) || Engine.is_editor_hint():
+			queue_free_chair()
+			spawn_chair()
+		
+var sizestore:float=1
 
-@export var chair_scene : PackedScene = preload("res://ObjectScenes/chair.tscn")
+
+
+@export var chair_scene : PackedScene:
+	get:
+		return chair_scene_store 
+	set(value):
+		chair_scene_store = value
+		if is_instance_valid(chair_instance) || Engine.is_editor_hint():
+			queue_free_chair()
+			spawn_chair()
+
+var chair_scene_store : PackedScene = preload("res://ObjectScenes/chair.tscn")
+
+
 var chair_instance : Node3D
 var spawn_timer : Timer
 var check_timer : Timer
@@ -14,6 +38,7 @@ func _ready():
 		spawn_timer = Timer.new()
 		check_timer = Timer.new()
 		setup_timers()
+	queue_free_chair()
 	spawn_chair()
 	
 	
@@ -36,7 +61,13 @@ func setup_timers():
 func spawn_chair():
 	if chair_scene:
 		chair_instance = chair_scene.instantiate()
+		print(chair_instance)
+		print(chair_instance.size)
+		print(size)
+
 		chair_instance.size = size
+		chair_instance.anti_vibracion = anti_vibracion
+		chair_instance.sin_gravedad = sin_gravedad
 		add_child(chair_instance)
 		chair_instance.position = Vector3.ZERO
 		chair_instance.rotation = Vector3.ZERO
@@ -83,5 +114,5 @@ func respawn():
 	spawn_timer.start()
 
 func queue_free_chair():
-	if chair_instance && is_instance_valid(chair_instance):
+	if chair_instance && chair_instance.has_method("queue_free"):
 		chair_instance.queue_free()

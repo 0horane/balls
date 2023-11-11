@@ -120,7 +120,7 @@ func _on_play_button_down():
 						"mass": size**3 *1000
 					}, 
 					"setAfterAdding": {
-						"global_position": Vector3(randf_range(-20, 20), 5,randf_range(-20, 20)),
+						"global_position": Vector3(randf_range(-20, 20), 10,randf_range(-20, 20)),
 						"global_rotation": Vector3(0, randf_range(0, 2*PI),0)
 					} 
 				})

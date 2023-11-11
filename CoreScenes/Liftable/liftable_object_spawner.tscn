@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://f4j3jsayehft"]
+[gd_scene load_steps=3 format=3 uid="uid://f4j3jsayehft"]
 
 [ext_resource type="Script" path="res://CoreScenes/Liftable/LiftableObjectSpawner.gd" id="1_rbe68"]
+[ext_resource type="PackedScene" uid="uid://bcaiyqbwg6v20" path="res://ObjectScenes/chair.tscn" id="2_3qef1"]
 
-[node name="LiftableObjectSpawner" type="Marker3D"]
+[node name="LiftableObjectSpawner" type="Marker3D" groups=["liftable_spawner"]]
 script = ExtResource("1_rbe68")
+size = 1.0
+chair_scene = ExtResource("2_3qef1")

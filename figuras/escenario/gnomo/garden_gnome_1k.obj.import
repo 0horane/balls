@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bwehig031g2en"
+path="res://.godot/imported/garden_gnome_1k.obj-54505e6af4e0f3befb4fdbde3f5882fb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/garden_gnome_1k.obj-54505e6af4e0f3befb4fdbde3f5882fb.mesh"]
+
+source_file="res://figuras/escenario/gnomo/garden_gnome_1k.obj"
+dest_files=["res://.godot/imported/garden_gnome_1k.obj-54505e6af4e0f3befb4fdbde3f5882fb.mesh", "res://.godot/imported/garden_gnome_1k.obj-54505e6af4e0f3befb4fdbde3f5882fb.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
