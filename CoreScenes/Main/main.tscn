@@ -643,8 +643,6 @@ chair_scene = ExtResource("18_8whbr")
 
 [node name="eitan" parent="." instance=ExtResource("19_t2hym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.63166, 3.1418, 8.86401)
-max_contacts_reported = 20
-contact_monitor = true
 
 [node name="mesa3" parent="." instance=ExtResource("6_0ugbt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44074, 0.136009, -19.1618)
@@ -660,18 +658,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -171.441, -4.466, -199.145)
 
 [node name="RigidBody3D" parent="." instance=ExtResource("19_t2hym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.387, 20.0748, 29.2133)
-max_contacts_reported = 20
-contact_monitor = true
 
 [node name="RigidBody3D2" parent="." instance=ExtResource("19_t2hym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.443, 16.0833, 24.5387)
-max_contacts_reported = 20
-contact_monitor = true
 size = 1.5
 
 [node name="RigidBody3D3" parent="." instance=ExtResource("19_t2hym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.098, 16.0833, 24.5387)
-max_contacts_reported = 20
-contact_monitor = true
 linear_velocity = Vector3(1, 0, 0)
 size = 2.0

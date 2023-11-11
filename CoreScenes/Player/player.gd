@@ -8,7 +8,7 @@ const JUMP_VELOCITY := 4.5
 const USE_SIMPLIFIED_COLLISION_MESH := true
 
 #### variables para Absorcion
-const MINIMUM_ABSORBTION_RATIO:float = 2.0/2**3
+const MINIMUM_ABSORBTION_RATIO:float = 1.0/2**3
 const MINIMUM_PLAYER_ABSORBTION_RATIO:float=0.75
 var size :float = 1000
 @onready var volume :float = 4.0/3*PI*$MeshInstance3D.mesh.radius**3
@@ -233,10 +233,9 @@ func get_centroid(vertexList: PackedVector3Array, scale:float) -> Vector3:
 	
 func find_body_volume(body:Node3D) -> float:
 	var bodymeshinstance:MeshInstance3D = body.get_node("MeshInstance3D")
-	var meshvolume := bodymeshinstance.get_aabb().get_volume()
 	var scalebasis := bodymeshinstance.scale
-	meshvolume*=scalebasis.x*scalebasis.y*scalebasis.z
-	return meshvolume
+	return get_mesh_volume(bodymeshinstance.mesh)*scalebasis.x*scalebasis.y*scalebasis.z
+
 
 func change_size(body: Node3D):
 	size+=body.size/12
