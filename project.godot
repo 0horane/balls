@@ -77,7 +77,6 @@ kill_self_debug={
 [physics]
 
 3d/physics_engine="JoltPhysics3D"
-3d/default_gravity=70.0
 
 [rendering]
 

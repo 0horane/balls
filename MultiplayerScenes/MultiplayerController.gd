@@ -1,4 +1,5 @@
 extends Control
+
 @export var address = "127.0.0.1"
 @export var port = 3150
 #SERVER =
@@ -19,6 +20,7 @@ var randomcolorGropus = [
 ]
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#Engine.time_scale=0.25
 	multiplayer.peer_connected.connect(peer_connected)
 	multiplayer.peer_disconnected.connect(peer_disconnected)
 	multiplayer.connected_to_server.connect(connected_to_server)
@@ -120,7 +122,7 @@ func _on_play_button_down():
 						"mass": size**3 *1000
 					}, 
 					"setAfterAdding": {
-						"global_position": Vector3(randf_range(-20, 20), 10,randf_range(-20, 20)),
+						"global_position": Vector3(randf_range(-20, 20), 1,randf_range(-20, 20)),
 						"global_rotation": Vector3(0, randf_range(0, 2*PI),0)
 					} 
 				})

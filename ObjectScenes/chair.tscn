@@ -1,18 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcaiyqbwg6v20"]
+[gd_scene load_steps=4 format=3 uid="uid://bin0bqjeoplyo"]
 
 [ext_resource type="Script" path="res://ObjectScenes/scripts/Liftable.gd" id="1_1ubam"]
 [ext_resource type="ArrayMesh" uid="uid://bocjpm8oqndhn" path="res://ObjectScenes/obj/chair_sds2.obj" id="2_y4gax"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tpona"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a7wsq"]
 points = PackedVector3Array(-45.039, 41.0532, 36.2123, 24.2077, -14.3322, 7.07552, -44.0689, -13.8114, -32.6876, 22.5128, 37.5908, -32.5004, -45.0685, 37.5839, -32.4966, 23.8811, 47.1017, 31.7451, -47.3283, -15.9349, 5.9458, 20.1081, -15.9443, -32.4168, -8.87414, 29.9637, 42.1823, -46.4451, 47.0935, 31.7438, -41.3702, -19.2815, 5.94057, 22.4906, 29.9637, 37.353, 18.8121, -19.2821, 5.9406, -40.2315, 28.7514, 38.5622, 13.1958, 48.1024, 33.9349, -34.5168, -17.0794, -31.2276, -5.45653, 39.9179, 42.0704, 24.7638, -14.7806, -2.18371, 18.2467, 37.9126, -33.0227, -38.0322, 48.0208, 32.6986, 18.9173, -19.3995, -2.16915, 21.5128, -13.8197, -32.6913, -47.3974, -13.6647, -2.18953, 8.01624, 29.9637, 40.9731, -45.0563, 29.9637, 37.353, -29.876, 39.8553, 40.8143, -42.7245, -19.4912, 0.139582, 18.9831, 38.7267, 38.5459, -24.0715, 48.0113, 36.1804, -30.582, 29.9637, 40.9731, 19.569, 1.2434, -33.1851, 11.9511, -17.0794, -31.2276)
 
 [node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
+max_contacts_reported = 20
+contact_monitor = true
 script = ExtResource("1_1ubam")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.018, 0, 0, 0, -7.86805e-10, 0.018, 0, -0.018, -7.86805e-10, 0, 0, 0.0475835)
+transform = Transform3D(0.015, 0, 0, 0, -6.55671e-10, 0.015, 0, -0.015, -6.55671e-10, 0.13184, 0.149475, 0.282981)
 mesh = ExtResource("2_y4gax")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.018, 0, 0, 0, -7.86805e-10, 0.018, 0, -0.018, -7.86805e-10, 0, 0, 0.0475835)
-shape = SubResource("ConvexPolygonShape3D_tpona")
+transform = Transform3D(0.015, 0, 0, 0, -6.55671e-10, 0.015, 0, -0.015, -6.55671e-10, 0.13184, 0.149475, 0.282981)
+shape = SubResource("ConvexPolygonShape3D_a7wsq")

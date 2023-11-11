@@ -28,6 +28,10 @@ properties/2/path = NodePath(".:syncRot")
 properties/2/spawn = true
 properties/2/sync = true
 properties/2/watch = false
+properties/3/path = NodePath(".:volume")
+properties/3/spawn = true
+properties/3/sync = true
+properties/3/watch = false
 
 [node name="Player" type="RigidBody3D" groups=["balls"]]
 mass = 5.0

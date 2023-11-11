@@ -12,6 +12,7 @@ extends Marker3D
 			spawn_chair()
 		
 var sizestore:float=1
+var spawncount:=0
 
 
 
@@ -61,9 +62,7 @@ func setup_timers():
 func spawn_chair():
 	if chair_scene:
 		chair_instance = chair_scene.instantiate()
-		print(chair_instance)
-		print(chair_instance.size)
-		print(size)
+		chair_instance.name = name+"_"+str(spawncount)
 
 		chair_instance.size = size
 		chair_instance.anti_vibracion = anti_vibracion
@@ -71,6 +70,7 @@ func spawn_chair():
 		add_child(chair_instance)
 		chair_instance.position = Vector3.ZERO
 		chair_instance.rotation = Vector3.ZERO
+		spawncount+=1
 
 
 func _on_spawn_timer_timeout():

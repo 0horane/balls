@@ -9,6 +9,8 @@ var parentPos=Vector3.ZERO
 var parentRot=Vector3.ZERO
 var real_gravity_scale := gravity_scale
 
+# ver https://docs.godotengine.org/en/stable/tutorials/3d/standard_material_3d.html#introduction
+# https://docs.godotengine.org/en/3.4/tutorials/shaders/your_first_shader/your_first_3d_shader.html?highlight=Vertel%20displacement#your-first-3d-shader
 
 @onready var parenttest = get_parent()
 @onready var parenttest2 = null
@@ -22,6 +24,7 @@ func _ready():
 	if sin_gravedad:
 		gravity_scale=0
 		freeze=true
+	
 	
 
 
