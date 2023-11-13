@@ -234,7 +234,6 @@ func get_centroid(vertexList: PackedVector3Array, scale:float) -> Vector3:
 	
 func find_body_volume(body:Node3D) -> float:
 	if body.volume!=0:
-		print("prefound")
 		return body.volume
 	else:
 		var bodymeshinstance:MeshInstance3D = body.get_node("MeshInstance3D")

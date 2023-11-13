@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 GameManager="*res://GameManager.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
