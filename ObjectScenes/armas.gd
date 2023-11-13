@@ -2,6 +2,7 @@ extends "res://ObjectScenes/scripts/Liftable.gd"
 
 
 var respawn_timer: Timer
+var despawn_timer: Timer
 const RESPAWN_TIME: float = 5.0  # Tiempo en segundos antes de reaparecer
 const SHOOT_INTERVAL: float = 0.5  # Intervalo entre disparos en segundos
 var Bullet := load("res://ObjectScenes/bullet.tscn")
@@ -14,13 +15,17 @@ func _ready():
 	respawn_timer.wait_time = RESPAWN_TIME
 	respawn_timer.timeout.connect(_on_respawn_timer_timeout)
 	add_child(respawn_timer)
-
+	despawn_timer = Timer.new()
+	despawn_timer.one_shot = true
+	despawn_timer.wait_time = 1.0  # Ajusta el tiempo según sea necesario
+	despawn_timer.timeout.connect(_on_despawn_timer_timeout)
+	add_child(despawn_timer)
 
 func shoot():
 	
 	# Crea la bala
 	var bullet_instance = Bullet.instantiate()
-	# Agrega la bala como hijo de Main (ajusta según tu jerarquía)
+	# Agrega la bala como hijo de Main 	
 
 	bullet_instance.global_position = global_position
 	bullet_instance.global_rotation = global_rotation#global_transform.basis.get_euler()
@@ -36,7 +41,7 @@ func shoot():
 	# Después de disparar, comienza el tiempo de reaparición
 
 	respawn_timer.start()
-
+	despawn_timer.start()
 
 func _on_respawn_timer_timeout():
 	if can_shoot:
@@ -53,4 +58,7 @@ func remove_from_parent(initpos, initrot, new_collison_shape):
 	super(initpos, initrot, new_collison_shape)
 	respawn_timer.stop()
 	can_shoot = false
-	
+func _on_despawn_timer_timeout():
+# Este método se llama cuando el temporizador de desaparición alcanza el tiempo establecido
+	print("eliminado")
+	queue_free()  # Destruye la bala

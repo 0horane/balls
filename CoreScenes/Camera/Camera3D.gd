@@ -23,5 +23,6 @@ func _process(delta):
 		global_transform.origin = global_transform.origin.lerp(target_position, delta * camera_speed)
 		look_at(player.global_transform.origin, Vector3(0, 1, 0))
 	else:
+
 		player = $"../../Main".get_node(str(multiplayer.get_unique_id()))
 		

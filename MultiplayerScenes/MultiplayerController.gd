@@ -84,7 +84,7 @@ func SendObjectInformaction(object):
 		for i in GameManager.Players:
 			SendObjectInformaction.rpc(GameManager.Players[i].username, i)
 			
-			
+			#alguna idea
 @rpc("any_peer","call_local")
 func _on_host_button_down():
 	host_game()
