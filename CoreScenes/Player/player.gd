@@ -212,7 +212,8 @@ func absorb_body(body):
 	# rectangular con puntas opuestas en el centro y en ese punto, y sumar cada una 
 	var vol = volume
 	change_size(body)
-	print(vol, " ",find_body_volume(body)," ",  volume )
+	print(volume)
+
 	
 	
 	
@@ -232,9 +233,14 @@ func get_centroid(vertexList: PackedVector3Array, scale:float) -> Vector3:
 		
 	
 func find_body_volume(body:Node3D) -> float:
-	var bodymeshinstance:MeshInstance3D = body.get_node("MeshInstance3D")
-	var scalebasis := bodymeshinstance.scale
-	return get_mesh_volume(bodymeshinstance.mesh)*scalebasis.x*scalebasis.y*scalebasis.z
+	if body.volume!=0:
+		print("prefound")
+		return body.volume
+	else:
+		var bodymeshinstance:MeshInstance3D = body.get_node("MeshInstance3D")
+		var scalebasis := bodymeshinstance.scale
+		body.volume = get_mesh_volume(bodymeshinstance.mesh)*scalebasis.x*scalebasis.y*scalebasis.z
+		return body.volume
 
 
 func change_size(body: Node3D):

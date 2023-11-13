@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://u0mo25onbvly" path="res://ObjectScenes/arbol2.tscn" id="16_so0cp"]
 [ext_resource type="PackedScene" uid="uid://cx62hokk7bi82" path="res://ObjectScenes/craneo.tscn" id="17_n31h7"]
 [ext_resource type="PackedScene" uid="uid://rlmc5wte2jpe" path="res://ObjectScenes/silla2.tscn" id="18_8whbr"]
-[ext_resource type="PackedScene" uid="uid://bin0bqjeoplyo" path="res://ObjectScenes/chair.tscn" id="19_t2hym"]
+[ext_resource type="PackedScene" uid="uid://bcaiyqbwg6v20" path="res://ObjectScenes/chair.tscn" id="19_t2hym"]
 [ext_resource type="PackedScene" uid="uid://dbqm7rwijbgoh" path="res://ObjectScenes/terreno.tscn" id="20_se67r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kjjv"]

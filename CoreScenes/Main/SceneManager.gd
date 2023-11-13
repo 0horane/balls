@@ -4,6 +4,8 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
+	
 	for liftable in GameManager.Liftables.values():
 		var chairloader :PackedScene= load(liftable["scene"])
 		var chair := chairloader.instantiate()
@@ -12,6 +14,7 @@ func _ready():
 		add_child(chair)
 		for property in liftable["setAfterAdding"]:
 			chair.set(property, liftable["setAfterAdding"][property])
+
 
 	var index = 0 
 	for i in GameManager.Players:
@@ -28,3 +31,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+

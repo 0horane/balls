@@ -2,6 +2,7 @@
 extends RigidBody3D
 
 @export var size:float=1 
+var volume:float 
 
 @export var sin_gravedad := false
 @export var anti_vibracion := false
@@ -25,7 +26,7 @@ func _ready():
 		gravity_scale=0
 		freeze=true
 	
-	
+
 
 
 
