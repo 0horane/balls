@@ -257,4 +257,7 @@ func on_death():
 			
 	queue_free()
 			
-			
+func take_damage(amount:int):
+	health-=amount
+	if health<0:
+		on_death()

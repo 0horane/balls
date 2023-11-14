@@ -79,7 +79,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.20286, 0, 3.49349)
 
 [node name="GUN" parent="." instance=ExtResource("6_egcnx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47373, -4.18398)
-size = 2.0
 
 [node name="Silla" parent="." instance=ExtResource("5_k0rdg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.78054, 1.85921, -29.1651)
@@ -643,8 +642,6 @@ chair_scene = ExtResource("18_8whbr")
 
 [node name="eitan" parent="." instance=ExtResource("19_t2hym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.63166, 3.1418, 8.86401)
-max_contacts_reported = 20
-contact_monitor = true
 
 [node name="mesa3" parent="." instance=ExtResource("6_0ugbt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44074, 0.136009, -19.1618)

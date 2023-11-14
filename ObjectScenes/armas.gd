@@ -15,11 +15,7 @@ func _ready():
 	respawn_timer.wait_time = RESPAWN_TIME
 	respawn_timer.timeout.connect(_on_respawn_timer_timeout)
 	add_child(respawn_timer)
-	despawn_timer = Timer.new()
-	despawn_timer.one_shot = true
-	despawn_timer.wait_time = 1.0  # Ajusta el tiempo según sea necesario
-	despawn_timer.timeout.connect(_on_despawn_timer_timeout)
-	add_child(despawn_timer)
+
 
 func shoot():
 	
@@ -31,22 +27,20 @@ func shoot():
 	bullet_instance.global_rotation = global_rotation#global_transform.basis.get_euler()
 	get_node("/root/Main").add_child(bullet_instance)
 	bullet_instance.global_position = global_position
-	bullet_instance.global_position += bullet_instance.transform.basis.z * 0.2 
+	bullet_instance.global_position += bullet_instance.transform.basis.z * 0.9*size
 	bullet_instance.global_rotation = global_rotation
-	#bullet_instance.set_gravity_scale(0)  # Desactiva la gravedad para la bala
-
-	#bullet_instance.set_friction(0.0)  # Desactiva la fricción
+	
+	bullet_instance.DADDY = get_parent()
 
 
 	# Después de disparar, comienza el tiempo de reaparición
 
 	respawn_timer.start()
-	despawn_timer.start()
+
 
 func _on_respawn_timer_timeout():
 	if can_shoot:
 		shoot()
-		print("shot")
 	#bullets_fired = 0
 	
 func add_to_parent(initpos, initrot):
@@ -58,7 +52,3 @@ func remove_from_parent(initpos, initrot, new_collison_shape):
 	super(initpos, initrot, new_collison_shape)
 	respawn_timer.stop()
 	can_shoot = false
-func _on_despawn_timer_timeout():
-# Este método se llama cuando el temporizador de desaparición alcanza el tiempo establecido
-	print("eliminado")
-	queue_free()  # Destruye la bala
