@@ -112,7 +112,7 @@ func _on_join_button_down():
 
 func _on_play_button_down():
 	if multiplayer.is_server() and peer:
-		for i in range(700):
+		for i in range(400):
 			var size :float= max(0.0, randfn(0.5,1))  #randf_range(0,3)**2+0.2
 			SendObjectInformaction.rpc({
 					"id":i,

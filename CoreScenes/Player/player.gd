@@ -94,7 +94,7 @@ func _physics_process(delta):
 
 	
 	var direction := Vector3(-input_dir.y, 0, input_dir.x).normalized()
-	direction += Vector3(accelerometerValue.y/5, 0 ,  accelerometerValue.x/5) #accelerometerValue.y
+	direction += Vector3(accelerometerValue.y/8 + (PI/2.5 if accelerometerValue.y else 0), 0 ,  accelerometerValue.x/8 ) #accelerometerValue.y
 
 	if direction:
 		# the possibilites here is to 
@@ -106,7 +106,8 @@ func _physics_process(delta):
 		# The second one is currently being used, some previous ones are in git history
 		
 		#the current method
-		angular_velocity = direction.rotated(Vector3(0,1,0),movementRotation) * SPEED*delta
+		angular_velocity = direction.rotated(Vector3(0,1,0),movementRotation) * SPEED*delta  *  1/pow(3*volume/(4*PI), 1/3.0)/2 # is this even teh right formula
+		print(pow(3*volume/(4*PI), 1/3.0))
 	else:
 		angular_velocity.x = move_toward(angular_velocity.x, 0, SPEED/100*delta)
 		angular_velocity.z = move_toward(angular_velocity.z, 0, SPEED/100*delta)
