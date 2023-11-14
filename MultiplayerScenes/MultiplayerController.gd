@@ -83,9 +83,9 @@ func SendObjectInformaction(object):
 	if !GameManager.Liftables.has(object["id"]):
 		GameManager.Liftables[object["id"]] = object
 	if multiplayer.is_server():
-		for i in GameManager.Players:
-			SendObjectInformaction.rpc(GameManager.Players[i].username, i)
-			
+		#for i in GameManager.Players:
+		#	SendObjectInformaction.rpc_id(int(GameManager.Players[i].username), object)
+		pass	
 			
 @rpc("any_peer","call_local")
 func _on_host_button_down():
@@ -112,7 +112,7 @@ func _on_join_button_down():
 
 func _on_play_button_down():
 	if multiplayer.is_server() and peer:
-		for i in range(1000):
+		for i in range(700):
 			var size :float= max(0.0, randfn(0.5,1))  #randf_range(0,3)**2+0.2
 			SendObjectInformaction.rpc({
 					"id":i,
@@ -125,7 +125,7 @@ func _on_play_button_down():
 						"res://ObjectScenes/craneo.tscn",
 						"res://ObjectScenes/gato.tscn",
 						"res://ObjectScenes/gnomo.tscn",
-						"res://ObjectScenes/gun1.tscn",
+						#"res://ObjectScenes/gun1.tscn",
 						"res://ObjectScenes/gun2.tscn",
 						"res://ObjectScenes/lamparota.tscn",
 						"res://ObjectScenes/mesa.tscn",
@@ -142,12 +142,13 @@ func _on_play_button_down():
 						"res://ObjectScenes/piedra5.tscn",
 						].pick_random(),
 					"setBeforeAdding": {
-						"size": size,
-						"mass": size**3 *1000
+						"size": size+0.1,
+						
 					}, 
 					"setAfterAdding": {
 						"global_position": Vector3(randf_range(-100, 100), 1,randf_range(-20, 20)),
-						"global_rotation": Vector3(0, randf_range(0, 2*PI),0)
+						"global_rotation": Vector3(0, randf_range(0, 2*PI),0),
+						"mass": size**3 *1000
 					} 
 				})
 		
