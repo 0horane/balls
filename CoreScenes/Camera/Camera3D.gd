@@ -34,5 +34,6 @@ func _process(delta):
 		look_at(player.global_transform.origin, Vector3(0, 1, 0))
 		global_position.y = lerp(savedy, avgheight+relative_distance_vector.y, 0.5) 
 	else:
+
 		player = $"../../Main".get_node(str(multiplayer.get_unique_id()))
 		

@@ -79,7 +79,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.20286, 11.1019, 3.49349)
 
 [node name="GUN" parent="." instance=ExtResource("6_egcnx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47373, -4.18398)
-size = 2.0
 
 [node name="Silla" parent="." instance=ExtResource("5_k0rdg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.78054, 1.85921, -29.1651)

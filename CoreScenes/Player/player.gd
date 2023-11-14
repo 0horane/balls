@@ -261,6 +261,7 @@ func scale_to_factor(scale:Vector3) -> float:
 	# according to direction. it might be worth doing, depends #TODO
 	return (scale.x + scale.y + scale.z) 
 
+
 @rpc("any_peer", "call_local" )
 func on_death():
 	for child in get_children():
@@ -274,6 +275,7 @@ func on_death():
 			
 	queue_free()
 			
+
 # https://github.com/godotengine/godot-proposals/issues/2293#issuecomment-779374733
 func get_mesh_volume(mesh:Mesh):
 	var vol=0
@@ -288,9 +290,16 @@ func get_mesh_volume(mesh:Mesh):
 		vol+=(pa.dot(tri_normal))*tri_area
 	return abs(vol)/3
 
+
 func calculate_triangle_area(point1:Vector3,point2:Vector3,point3:Vector3):
 	var a=point1.distance_to(point2)
 	var b=point2.distance_to(point3)
 	var c=point3.distance_to(point1)
 	var s=(a+b+c)/2
 	return sqrt(s*(s-a)*(s-b)*(s-c))
+
+
+func take_damage(amount:int):
+	health-=amount
+	if health<0:
+		on_death()
