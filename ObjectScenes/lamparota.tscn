@@ -17,10 +17,10 @@ contact_monitor = true
 script = ExtResource("1_sq4l3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.05, 0, 0, 0, 2.05, 0, 0, 0, 2.05, 0, -3.45009, 0.0475835)
+transform = Transform3D(2.05, 0, 0, 0, 2.05, 0, 0, 0, 2.05, 0, -3.75671, 0.0475835)
 mesh = ExtResource("2_m6e1d")
 surface_material_override/0 = SubResource("StandardMaterial3D_d253w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(2.05, 0, 0, 0, 2.05, 0, 0, 0, 2.05, 0, -3.45009, 0.0475835)
+transform = Transform3D(2.05, 0, 0, 0, 2.05, 0, 0, 0, 2.05, 0, -3.75671, 0.0475835)
 shape = SubResource("ConvexPolygonShape3D_yu2h3")
