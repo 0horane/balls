@@ -72,14 +72,15 @@ func add_to_parent(initpos, initrot):
 	parentPos=position
 	parentRot=rotation
 	
-func remove_from_parent(initpos, initrot, new_collison_shape):
+func remove_from_parent(initpos, initrot, new_collison_shape, vel):
 	add_child(new_collison_shape)	
 	
 	global_position = initpos
 	global_rotation = initrot
-	gravity_scale = real_gravity_scale/5
+	gravity_scale = real_gravity_scale
 	parentPos=null
 	parentRot=null
+	linear_velocity = vel*10
 
 
 

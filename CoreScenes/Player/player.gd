@@ -268,10 +268,10 @@ func on_death():
 		if "size" in child:
 			var pos = child.global_position
 			var rot = child.global_rotation
-			
+			var vel = child.global_position - global_position
 			remove_child(child)
 			get_parent().add_child(child)
-			child.call_deferred("remove_from_parent", pos, rot, lifted_object_map[child])
+			child.call_deferred("remove_from_parent", pos, rot, lifted_object_map[child], vel)
 			
 	queue_free()
 			
@@ -303,3 +303,4 @@ func take_damage(amount:int):
 	health-=amount
 	if health<0:
 		on_death()
+

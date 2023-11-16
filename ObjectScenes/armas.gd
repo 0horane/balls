@@ -48,7 +48,7 @@ func add_to_parent(initpos, initrot):
 	respawn_timer.start(1)
 	can_shoot = true
 	
-func remove_from_parent(initpos, initrot, new_collison_shape):
-	super(initpos, initrot, new_collison_shape)
+func remove_from_parent(initpos, initrot, new_collison_shape, vel):
+	super(initpos, initrot, new_collison_shape, vel)
 	respawn_timer.stop()
 	can_shoot = false
