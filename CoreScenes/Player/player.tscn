@@ -46,4 +46,9 @@ shape = SubResource("SphereShape3D_5vafc")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_rdogs")
 
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841077, 0)
+billboard = 2
+text = "test"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

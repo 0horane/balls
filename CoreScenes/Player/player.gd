@@ -35,6 +35,7 @@ var movementRotation:float = 0
 #### Variables para multijuagdor
 var syncPos:Vector3
 var syncRot:Quaternion
+var username = ""
 
 
 var linear_velocity_before_collision := linear_velocity
@@ -43,11 +44,8 @@ func _ready():
 	gravity_scale=70/ProjectSettings.get_setting("physics/3d/default_gravity")
 	contact_monitor=true
 	max_contacts_reported=9999
-	
+	$Label3D.text = username
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, $MeshInstance3D.get_mesh().get_mesh_arrays())
-	#glock = $Glock
-	#subfucil = $subfucil
-	#current_weapon =   # Comienza con la Glock
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 
 
@@ -73,6 +71,10 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("kill_self_debug"):
 		on_death()
+	
+	#$Label3D.global_position = global_position
+	$Label3D.global_rotation += Vector3.ZERO 	
+	$Label3D.position.y =  (volume/4.0*3/PI)**(1.0/3)*1.8
 	
 
 	# Calculates the rotation of the ball's movement relative to the z axis, 
@@ -107,7 +109,6 @@ func _physics_process(delta):
 		
 		#the current method
 		angular_velocity = direction.rotated(Vector3(0,1,0),movementRotation) * SPEED*delta  *  1/pow(3*volume/(4*PI), 1/3.0)/2 # is this even teh right formula
-		print(pow(3*volume/(4*PI), 1/3.0))
 	else:
 		angular_velocity.x = move_toward(angular_velocity.x, 0, SPEED/100*delta)
 		angular_velocity.z = move_toward(angular_velocity.z, 0, SPEED/100*delta)

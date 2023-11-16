@@ -23,7 +23,6 @@ func _process(delta):
 
 
 func _on_bullet_timeout():
-	print("eliminado")
 	queue_free()
 	
 
@@ -32,6 +31,5 @@ func _on_body_entered(body):
 	if "health" in body:
 		if body!=DADDY:
 			body.take_damage(DAMAGE)
-	print("emiminado")
 	queue_free()
 	
