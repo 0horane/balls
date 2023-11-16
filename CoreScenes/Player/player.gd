@@ -246,11 +246,11 @@ func find_body_volume(body:Node3D) -> float:
 
 func change_size(body: Node3D):
 	size+=body.size/12
-	#print(volume," ", find_body_volume(body))
+	print(volume," ", find_body_volume(body))
 	#print(body.size)
-	#volume += find_body_volume(body)
+	volume += find_body_volume(body)
 
-	volume=get_mesh_volume(mesh)
+	#volume=get_mesh_volume(mesh)
 	
 
 	
