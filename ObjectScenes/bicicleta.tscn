@@ -1,0 +1,36 @@
+[gd_scene load_steps=10 format=3 uid="uid://shpecs40aeg1"]
+
+[ext_resource type="Script" path="res://ObjectScenes/scripts/Liftable.gd" id="1_ykjf5"]
+[ext_resource type="Texture2D" uid="uid://bo2x1oedyknfn" path="res://figuras/escenario/chair/textures/fabric_leather_02_diff_1k.png" id="2_duxmm"]
+[ext_resource type="Texture2D" uid="uid://s7lb5ylu2ghv" path="res://figuras/escenario/chair/textures/fabric_leather_02_nor_gl_1k.png" id="3_11dj3"]
+[ext_resource type="Texture2D" uid="uid://df8lfjhuquyq6" path="res://figuras/escenario/chair/textures/fabric_leather_02_rough_1k.png" id="4_kc6kj"]
+[ext_resource type="ArrayMesh" uid="uid://bqscqoig3h56j" path="res://figuras/escenario/bicicleta/bicicleta.obj" id="5_wbuie"]
+[ext_resource type="Texture2D" uid="uid://cuwnbv7wxf5v8" path="res://figuras/escenario/bicicleta/bicycle_bitmap_v2.jpg" id="6_2ksek"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wunn1"]
+albedo_texture = ExtResource("2_duxmm")
+roughness_texture = ExtResource("4_kc6kj")
+normal_enabled = true
+normal_texture = ExtResource("3_11dj3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8x6mw"]
+render_priority = 127
+albedo_texture = ExtResource("6_2ksek")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8ib5y"]
+points = PackedVector3Array(-27.2151, -1.20298, -0.377731, -2.70319, -8.35484, 8.82095, -16.9494, -3.0187, 37.1138, 8.53813, 11.0564, 40.4935, 8.53813, -11.4202, 40.4935, 24.888, 1.85801, 2.68986, -36.4143, -1.20298, 16.9944, -8.82317, 7.9888, 14.952, 23.8637, -1.20298, 1.6687, -18.016, 3.90234, 37.43, -35.3901, 1.85801, 7.79979, 28.985, -1.20298, 16.9944, 12.6352, 10.0331, 40.4935, -28.2266, 1.85801, 0.647533, 12.6352, -10.3992, 40.4935, -34.3658, 1.85801, 20.0661, 19.7794, -1.20298, -0.377731, -12.9074, 7.9888, 16.9944, 10.5803, -11.4202, 38.447, -36.4143, -1.20298, 8.82095, 20.7973, 1.85801, 0.647533, 8.53813, -6.31271, 41.5187, 10.5803, 11.0564, 38.447, 27.9544, 1.85801, 7.79979, 0.363209, -8.35484, 8.82095, 28.985, -1.20298, 8.82095, -34.3658, -1.20298, 21.0749, 27.9544, 1.85801, 18.0237, 26.9301, -1.20298, 21.0749, 8.53813, 5.94667, 41.5187, -33.3479, -1.20298, 3.71103, 26.9301, -1.20298, 4.73219)
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
+max_contacts_reported = 20
+contact_monitor = true
+script = ExtResource("1_ykjf5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.043, 0, 0, 0, -1.87959e-09, 0.043, 0, -0.043, -1.87959e-09, 0, -0.854784, 0.0475835)
+material_overlay = SubResource("StandardMaterial3D_wunn1")
+mesh = ExtResource("5_wbuie")
+surface_material_override/0 = SubResource("StandardMaterial3D_8x6mw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.043, 0, 0, 0, -1.87959e-09, 0.043, 0, -0.043, -1.87959e-09, 0, -0.854784, 0.0475835)
+shape = SubResource("ConvexPolygonShape3D_8ib5y")
