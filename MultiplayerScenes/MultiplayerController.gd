@@ -18,7 +18,47 @@ var randomcolorGropus = [
 	"#99ccff",
 	"e699ff"
 ]
-# Called when the node enters the scene tree for the first time.
+
+var scenelist1 = [
+	"res://ObjectScenes/chair.tscn", 
+	"res://ObjectScenes/arbol1.tscn",
+	"res://ObjectScenes/arbol2.tscn",
+	"res://ObjectScenes/basura.tscn",
+	"res://ObjectScenes/chair.tscn",
+	"res://ObjectScenes/craneo.tscn",
+	"res://ObjectScenes/gato.tscn",
+	"res://ObjectScenes/gnomo.tscn",
+	#"res://ObjectScenes/gun1.tscn",
+	#"res://ObjectScenes/gun2.tscn",
+	"res://ObjectScenes/lamparota.tscn",
+	"res://ObjectScenes/mesa.tscn",
+	"res://ObjectScenes/piedra1.tscn",
+	"res://ObjectScenes/piedra2.tscn",
+	"res://ObjectScenes/piedra3.tscn",
+	"res://ObjectScenes/piedra4.tscn",
+	"res://ObjectScenes/silla2.tscn",
+	"res://ObjectScenes/rama3.tscn",
+	"res://ObjectScenes/rama2.tscn",
+	"res://ObjectScenes/rama1.tscn",
+	"res://ObjectScenes/planta.tscn",
+	"res://ObjectScenes/piedra6.tscn",
+	"res://ObjectScenes/piedra5.tscn",
+]
+var scenelist2 = [
+	"res://ObjectScenes/piedra1.tscn",
+	"res://ObjectScenes/piedra2.tscn",
+	"res://ObjectScenes/piedra3.tscn",
+	"res://ObjectScenes/piedra4.tscn",
+	"res://ObjectScenes/rama3.tscn",
+	"res://ObjectScenes/rama2.tscn",
+	"res://ObjectScenes/rama1.tscn",
+	"res://ObjectScenes/piedra6.tscn",
+	"res://ObjectScenes/piedra5.tscn",
+]
+
+var soloambiente=true
+
+
 func _ready():
 	#Engine.time_scale=0.25
 	multiplayer.peer_connected.connect(peer_connected)
@@ -112,37 +152,16 @@ func _on_join_button_down():
 
 func _on_play_button_down():
 	if multiplayer.is_server() and peer:
-		for i in range(400):
-			var size :float= max(0.0, randfn(0.5,1))  #randf_range(0,3)**2+0.2
+		var usedscenes = scenelist2 if soloambiente else scenelist1
+		
+		
+		for i in range($Conf/Objcount.value):
+			var size :float= max(0.0, randfn(1,1))+0.1  #randf_range(0,3)**2+0.2
 			SendObjectInformaction.rpc({
 					"id":i,
-					"scene": [
-						"res://ObjectScenes/chair.tscn", 
-						"res://ObjectScenes/arbol1.tscn",
-						"res://ObjectScenes/arbol2.tscn",
-						"res://ObjectScenes/basura.tscn",
-						"res://ObjectScenes/chair.tscn",
-						"res://ObjectScenes/craneo.tscn",
-						"res://ObjectScenes/gato.tscn",
-						"res://ObjectScenes/gnomo.tscn",
-						#"res://ObjectScenes/gun1.tscn",
-						"res://ObjectScenes/gun2.tscn",
-						"res://ObjectScenes/lamparota.tscn",
-						"res://ObjectScenes/mesa.tscn",
-						"res://ObjectScenes/piedra1.tscn",
-						"res://ObjectScenes/piedra2.tscn",
-						"res://ObjectScenes/piedra3.tscn",
-						"res://ObjectScenes/piedra4.tscn",
-						"res://ObjectScenes/silla2.tscn",
-						"res://ObjectScenes/rama3.tscn",
-						"res://ObjectScenes/rama2.tscn",
-						"res://ObjectScenes/rama1.tscn",
-						"res://ObjectScenes/planta.tscn",
-						"res://ObjectScenes/piedra6.tscn",
-						"res://ObjectScenes/piedra5.tscn",
-						].pick_random(),
+					"scene": usedscenes.pick_random(),
 					"setBeforeAdding": {
-						"size": size+0.1,
+						"size": size,
 						
 					}, 
 					"setAfterAdding": {
@@ -203,3 +222,7 @@ func showError(errortext:String):
 
 
 
+
+
+func _on_liftable_category_toggled(button_pressed):
+	soloambiente = not soloambiente

@@ -198,6 +198,45 @@ size_flags_vertical = 3
 text = "
 "
 
+[node name="Conf" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 790.0
+offset_top = 243.0
+offset_right = 830.0
+offset_bottom = 283.0
+
+[node name="Objcount" type="HSlider" parent="Conf"]
+layout_mode = 0
+offset_right = 268.0
+offset_bottom = 55.0
+max_value = 1000.0
+value = 400.0
+
+[node name="ObjCountLabel" type="Label" parent="Conf"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Cantidad de objetos"
+
+[node name="LiftableCategory" type="CheckBox" parent="Conf"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.2
+anchor_top = 0.575
+anchor_right = 8.2
+anchor_bottom = 0.575
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+
+[node name="ObjCountLabel2" type="Label" parent="Conf"]
+offset_left = 241.0
+offset_top = -9.0
+offset_right = 406.0
+offset_bottom = 17.0
+text = "Solo ambiente?"
+
 [connection signal="close_requested" from="Error" to="." method="_on_error_close_requested"]
 [connection signal="go_back_requested" from="Error" to="." method="_on_error_close_requested"]
 [connection signal="pressed" from="Error/OkButton" to="." method="_on_error_close_requested"]
@@ -210,3 +249,4 @@ text = "
 [connection signal="button_down" from="Options/Host" to="." method="_on_host_button_down"]
 [connection signal="button_down" from="Options/Join" to="." method="_on_join_button_down"]
 [connection signal="button_down" from="Options/Play" to="." method="_on_play_button_down"]
+[connection signal="toggled" from="Conf/LiftableCategory" to="." method="_on_liftable_category_toggled"]

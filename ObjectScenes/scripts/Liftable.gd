@@ -27,6 +27,7 @@ func _ready():
 		freeze=true
 	else: 
 		pass#gravity_scale=ProjectSettings.get_setting("physics/3d/default_gravity")
+	GameManager.call_deferred("add_body_to_vol_queue", self)
 	
 
 

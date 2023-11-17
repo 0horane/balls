@@ -27,6 +27,8 @@ func _ready():
 			if spawnpoint.name == str(index % len(spawnpoints)):
 				player.global_position = spawnpoint.global_position 
 		index+=1
+	
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

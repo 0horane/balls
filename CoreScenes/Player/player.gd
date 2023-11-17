@@ -133,7 +133,7 @@ func _on_body_entered(body):
 		linear_velocity = linear_velocity_before_collision
 		return
 	
-	if "size" in body and volume*MINIMUM_ABSORBTION_RATIO>find_body_volume(body):
+	if "size" in body and volume*MINIMUM_ABSORBTION_RATIO>GameManager.find_body_volume(body):
 		var parent = body.get_parent()
 		if parent && parent!=self:
 			absorb_body(body)
@@ -171,21 +171,14 @@ func absorb_body(body):
 	
 		
 	
-func find_body_volume(body:Node3D) -> float:
-	if body.volume!=0:
-		return body.volume
-	else:
-		var bodymeshinstance:MeshInstance3D = body.get_node("MeshInstance3D")
-		var scalebasis := bodymeshinstance.scale
-		body.volume = get_mesh_volume(bodymeshinstance.mesh)*scalebasis.x*scalebasis.y*scalebasis.z
-		return body.volume
+
 
 
 func change_size(body: Node3D):
 	size+=body.size/12
-	print(volume," ", find_body_volume(body))
+	print(volume," ", GameManager.find_body_volume(body))
 	#print(body.size)
-	volume += find_body_volume(body)
+	volume += GameManager.find_body_volume(body)
 
 	#volume=get_mesh_volume(mesh)
 	
@@ -208,7 +201,7 @@ func morph_shape(body):
 	mdt.create_from_surface(mesh, 0)
 	var closest_aligned_vertex:= 0
 	var closest_angle:float=999
-	
+	"""
 	# the way this has to check the angle of every part of the mesh is incredibly inefficient. we 
 	# should either offload this to another thread or reduce the vertex count of the sphere mesh.
 	# ideally both. the second is already done.
@@ -224,6 +217,7 @@ func morph_shape(body):
 	# idk if we should be using the same mesh for calculations or a separate one
 	# var mi = MeshInstance.new()
 	# mi.mesh = mesh
+	"""
 	$MeshInstance3D.set_mesh(mesh)
 	$MeshInstance3D.create_convex_collision(true, USE_SIMPLIFIED_COLLISION_MESH)
 	var new_collison_shape :Shape3D = $MeshInstance3D.find_child("CollisionShape3D").shape
@@ -249,27 +243,7 @@ func on_death():
 	queue_free()
 			
 
-# https://github.com/godotengine/godot-proposals/issues/2293#issuecomment-779374733
-func get_mesh_volume(mesh:Mesh):
-	var vol=0
-	var MDT=MeshDataTool.new()
-	MDT.create_from_surface(mesh,0)
-	for i in range(MDT.get_face_count()): #pa = point a, same for b and c
-		var pa=MDT.get_vertex(MDT.get_face_vertex(i,0))
-		var pb=MDT.get_vertex(MDT.get_face_vertex(i,1))
-		var pc=MDT.get_vertex(MDT.get_face_vertex(i,2))
-		var tri_area=calculate_triangle_area(pa,pb,pc)
-		var tri_normal=Plane(pa,pb,pc).normal
-		vol+=(pa.dot(tri_normal))*tri_area
-	return abs(vol)/3
 
-
-func calculate_triangle_area(point1:Vector3,point2:Vector3,point3:Vector3):
-	var a=point1.distance_to(point2)
-	var b=point2.distance_to(point3)
-	var c=point3.distance_to(point1)
-	var s=(a+b+c)/2
-	return sqrt(s*(s-a)*(s-b)*(s-c))
 
 
 func take_damage(amount:int):
