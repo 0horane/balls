@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ctjhgbe7lv625"]
+[gd_scene load_steps=43 format=3 uid="uid://ctjhgbe7lv625"]
 
 [ext_resource type="Script" path="res://CoreScenes/Main/SceneManager.gd" id="1_xo2q1"]
 [ext_resource type="Texture2D" uid="uid://bexol24inxyjb" path="res://Joe_Biden_presidential_portrait.jpg" id="2_u3ikh"]
@@ -8,9 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://bmvao6iglaf58" path="res://ObjectScenes/mesa.tscn" id="6_0ugbt"]
 [ext_resource type="PackedScene" uid="uid://dqbfucyr4es7g" path="res://ObjectScenes/casa.tscn" id="6_33ade"]
 [ext_resource type="PackedScene" uid="uid://betinjxibra4m" path="res://ObjectScenes/gun1.tscn" id="6_egcnx"]
+[ext_resource type="PackedScene" path="res://ObjectScenes/caja.tscn" id="6_gbfgx"]
 [ext_resource type="PackedScene" uid="uid://is1sl78rawdc" path="res://ObjectScenes/piedra1.tscn" id="6_ono35"]
+[ext_resource type="PackedScene" path="res://ObjectScenes/auto.tscn" id="6_ovi30"]
 [ext_resource type="PackedScene" uid="uid://csq3kr34vcl8d" path="res://ObjectScenes/gato.tscn" id="7_8j1ww"]
 [ext_resource type="PackedScene" uid="uid://dhlsrcobhutet" path="res://ObjectScenes/gun2.tscn" id="7_egoh1"]
+[ext_resource type="PackedScene" path="res://ObjectScenes/bicicleta.tscn" id="7_gayc8"]
 [ext_resource type="PackedScene" uid="uid://ced6ei1jpv1s3" path="res://ObjectScenes/piedra2.tscn" id="7_uadqf"]
 [ext_resource type="PackedScene" uid="uid://b0ugwr3kb7olo" path="res://ObjectScenes/piedra3.tscn" id="8_ejbl4"]
 [ext_resource type="PackedScene" uid="uid://cvvfe7avdip5d" path="res://ObjectScenes/gnomo.tscn" id="8_fyl7o"]
@@ -29,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://rlmc5wte2jpe" path="res://ObjectScenes/silla2.tscn" id="18_8whbr"]
 [ext_resource type="PackedScene" uid="uid://bcaiyqbwg6v20" path="res://ObjectScenes/chair.tscn" id="19_t2hym"]
 [ext_resource type="PackedScene" uid="uid://dbqm7rwijbgoh" path="res://ObjectScenes/terreno.tscn" id="20_se67r"]
+[ext_resource type="Shader" path="res://shader-bordes/main.gdshader" id="33_sy8ko"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kjjv"]
 size = Vector3(250, 2, 250)
@@ -49,12 +53,22 @@ background_mode = 2
 background_color = Color(0, 0.329412, 0.411765, 1)
 sky = SubResource("Sky_d4kom")
 
+[sub_resource type="BoxMesh" id="BoxMesh_yteiw"]
+lightmap_size_hint = Vector2i(14, 21)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rk6py"]
+render_priority = 0
+shader = ExtResource("33_sy8ko")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_k4pag"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
 [node name="Main" type="Node"]
 script = ExtResource("1_xo2q1")
 PlayerScene = ExtResource("3_87utk")
 
 [node name="TemporaryGround" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -35.2265, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.1891, -39.5205, -30.0503)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TemporaryGround"]
 shape = SubResource("BoxShape3D_6kjjv")
@@ -65,7 +79,7 @@ mesh = SubResource("BoxMesh_8p3s3")
 skeleton = NodePath("../CollisionShape3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.996956, 0.072345, 0.0290832, -0.0407549, 0.165502, 0.985367, 0.066473, -0.983552, 0.167947, -178.94, 0.043045, -0.985832)
+transform = Transform3D(0.996956, 0.0723449, 0.0290831, -0.0407549, 0.165502, 0.985367, 0.066473, -0.983552, 0.167947, -263.129, -4.25095, -31.0362)
 light_color = Color(0.968627, 0.956863, 0.988235, 1)
 light_energy = 1.329
 light_indirect_energy = 1.315
@@ -74,12 +88,13 @@ light_angular_distance = 7.4
 directional_shadow_max_distance = 128.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.995569, -0.0358566, 0.0869345, 0, 0.924453, 0.381296, -0.0940389, 0.379606, -0.920356, -1.11855, 8.01627, -34.0614)
+transform = Transform3D(-0.995569, -0.0358566, 0.0869345, 0, 0.924453, 0.381296, -0.0940389, 0.379606, -0.920356, -85.3077, 3.72227, -64.1117)
 current = true
 fov = 75.9375
 script = ExtResource("4_7or6k")
 
 [node name="SpawnLocations" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.1891, -4.294, -30.0503)
 
 [node name="1" type="Marker3D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1268, 11.1019, -6.76158)
@@ -94,679 +109,844 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.60892, 11.1019, -5.51603)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.20286, 11.1019, 3.49349)
 
 [node name="GUN" parent="." instance=ExtResource("6_egcnx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47373, -4.18398)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.1891, -2.82028, -34.2343)
 
 [node name="Silla" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.78054, 1.85921, -29.1651)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.9696, -2.43479, -59.2154)
 size = 2.0
 
+[node name="Auto" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.996979, -0.0707086, -0.0321538, -0.0776761, -0.907551, -0.412696, 0, 0.413947, -0.910301, 115.951, 1.63583, -128.203)
+size = 2.0
+chair_scene = ExtResource("6_ovi30")
+
+[node name="Bicicleta" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 0.417978, 0.908457, 0, -0.908457, 0.417978, -76.0301, -2.76898, -59.2154)
+size = 2.0
+chair_scene = ExtResource("7_gayc8")
+
+[node name="Bicicleta2" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 0.999521, -0.0309572, 0, 0.0309572, 0.999521, -118.217, -0.338029, 80.1307)
+size = 2.0
+chair_scene = ExtResource("7_gayc8")
+
+[node name="Bicicleta3" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.112845, 0.950278, -0.290238, -0.0456084, 0.286842, 0.956892, 0.992565, 0.121218, 0.010972, 148.227, -0.400384, 15.3987)
+size = 2.0
+chair_scene = ExtResource("7_gayc8")
+
+[node name="Caja" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.999434, -0.0314069, -0.0120228, 0.0297374, 0.992308, -0.12017, 0.0157045, 0.119744, 0.992681, -86.8496, -1.56181, -67.8426)
+size = 2.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja2" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.994338, -0.0299575, 0.10195, 0.0464087, 0.985527, -0.163041, -0.0955901, 0.166849, 0.981338, -88.1303, -1.63473, -67.7004)
+size = 2.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja3" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.0237961, 0.611753, 0.790691, 0.021871, 0.791044, -0.611368, -0.999477, 0.00274501, -0.0322034, -85.7556, -1.34192, -67.7677)
+size = 2.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja4" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.134512, -0.0161187, 0.990781, 0.203028, 0.978207, 0.0434781, -0.96989, 0.207004, -0.128308, -87.5096, -0.855203, -67.618)
+size = 2.0
+chair_scene = ExtResource("6_gbfgx")
+
 [node name="Arma1" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.950239, 0, 0.311522, 0, 1, 0, -0.311522, 0, 0.950239, 20.2304, 5.69017, 56.9251)
+transform = Transform3D(0.950239, 0, 0.311522, 0, 1, 0, -0.311522, 0, 0.950239, -63.9587, 1.39617, 26.8748)
 size = 2.0
 chair_scene = ExtResource("6_egcnx")
 
 [node name="Arma2" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.950239, 0, 0.311522, 0, 1, 0, -0.311522, 0, 0.950239, -3.78189, 5.69017, 18.7014)
+transform = Transform3D(0.950239, 0, 0.311522, 0, 1, 0, -0.311522, 0, 0.950239, -87.971, 1.39617, -11.3489)
 chair_scene = ExtResource("7_egoh1")
 
 [node name="Piedra1" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0121, 1.59107, 41.8533)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.177, -2.70294, 11.803)
 chair_scene = ExtResource("6_ono35")
 
 [node name="Piedra2" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21842, -0.879987, 27.8376)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.4075, -5.17399, -2.21274)
 chair_scene = ExtResource("7_uadqf")
 
 [node name="Piedra3" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21842, -0.879987, 32.198)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.4075, -5.17399, 2.14766)
 chair_scene = ExtResource("8_ejbl4")
 
 [node name="Piedra4" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.830819, 0.556542, 0, -0.556542, 0.830819, 0, 0, 0, 1, -8.21842, -0.879987, 23.9352)
+transform = Transform3D(0.830819, 0.556542, 0, -0.556542, 0.830819, 0, 0, 0, 1, -92.4075, -5.17399, -6.11514)
 chair_scene = ExtResource("9_qh1f1")
 
 [node name="Piedra5" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.97701, -0.879987, 27.3582)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.2121, -5.17399, -2.69214)
 chair_scene = ExtResource("10_jktvy")
 
 [node name="Piedra6" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7743, -0.879987, 27.167)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.963, -5.17399, -2.88334)
 chair_scene = ExtResource("11_xc3bs")
 
 [node name="Casa" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.143887, -0.0295691, 0.989152, 0.00512987, 0.999562, 0.0291341, -0.989581, 0.000882197, 0.143976, 104.516, 4.70005, 128.637)
+transform = Transform3D(0.143887, -0.0295691, 0.989152, 0.00512987, 0.999562, 0.0291341, -0.989581, 0.000882197, 0.143976, 20.3269, 0.406051, 98.5867)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("6_33ade")
 
 [node name="Casa2" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.143951, 0.0257663, 0.989249, -0.00283659, 0.999668, -0.0256249, -0.989581, 0.000882626, 0.143976, 157.56, 9.26996, 126.487)
+transform = Transform3D(0.143951, 0.0257663, 0.989249, -0.00283659, 0.999668, -0.0256249, -0.989581, 0.000882626, 0.143976, 73.3709, 4.97596, 96.4367)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("6_33ade")
 
 [node name="Casa3" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.143978, 0.00225962, 0.989578, -0.0622616, 0.998037, 0.00677977, -0.98762, -0.0625889, 0.143836, 39.7998, 7.58504, 132.729)
+transform = Transform3D(0.143978, 0.00225962, 0.989578, -0.0622616, 0.998037, 0.00677977, -0.98762, -0.0625889, 0.143836, -44.3893, 3.29104, 102.679)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("6_33ade")
 
 [node name="Casa4" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(-0.0905395, 0.0390955, -0.995125, 0.0703738, 0.996982, 0.0327656, 0.993403, -0.0670642, -0.0930175, 44.8925, 8.78698, -53.8123)
+transform = Transform3D(-0.0905395, 0.0390955, -0.995125, 0.0703738, 0.996982, 0.0327656, 0.993403, -0.0670642, -0.0930175, -39.2966, 4.49298, -83.8626)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("6_33ade")
 
 [node name="Casa5" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(-0.0897275, -0.045908, -0.994908, -0.0876206, 0.995428, -0.0380298, 0.992105, 0.0837621, -0.0933398, -12.5287, 9.31096, -56.9046)
+transform = Transform3D(-0.0897275, -0.045908, -0.994908, -0.0876206, 0.995428, -0.0380298, 0.992105, 0.0837621, -0.0933398, -96.7178, 5.01696, -86.9549)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("6_33ade")
 
 [node name="Casa6" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.143831, -0.0392691, 0.988823, 0.00652653, 0.999228, 0.038733, -0.989581, 0.00088259, 0.143976, 235.727, 9.97093, 137.57)
+transform = Transform3D(0.143831, -0.0392691, 0.988823, 0.00652653, 0.999228, 0.038733, -0.989581, 0.00088259, 0.143976, 151.538, 5.67693, 107.52)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("6_33ade")
 
 [node name="Casa7" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.14353, -0.0328303, 0.989101, 0.0196024, 0.999348, 0.0303259, -0.989452, 0.0150361, 0.14408, -107.512, 6.31234, 127.115)
+transform = Transform3D(0.14353, -0.0328303, 0.989101, 0.0196024, 0.999348, 0.0303259, -0.989452, 0.0150361, 0.14408, -191.701, 2.01834, 97.0647)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("6_33ade")
 
 [node name="Casa8" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(-0.0797576, -0.0635829, -0.994784, -0.00463806, 0.997976, -0.0634151, 0.996804, -0.000443971, -0.0798911, 147.26, 6.92509, -58.1575)
+transform = Transform3D(-0.0797576, -0.0635829, -0.994784, -0.00463806, 0.997976, -0.0634151, 0.996804, -0.000443971, -0.0798911, 63.0709, 2.63109, -88.2078)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("6_33ade")
 
 [node name="Casa9" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(-0.23749, 0.0391745, -0.9706, 0.00652653, 0.999228, 0.038733, 0.971368, 0.00286403, -0.237562, 226.418, 7.18507, -40.7992)
+transform = Transform3D(-0.23749, 0.0391745, -0.9706, 0.00652653, 0.999228, 0.038733, 0.971368, 0.00286403, -0.237562, 142.229, 2.89107, -70.8495)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("6_33ade")
 
 [node name="Casa10" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.143886, 0.0419012, 0.988707, -0.00516012, 0.999121, -0.0415916, -0.989581, 0.000882607, 0.143976, -39.7044, 10.1042, 131.819)
+transform = Transform3D(0.143886, 0.0419012, 0.988707, -0.00516012, 0.999121, -0.0415916, -0.989581, 0.000882607, 0.143976, -123.894, 5.8102, 101.769)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("6_33ade")
 
 [node name="Casa11" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(-0.0198209, 0.0102149, -0.999751, 0.0415992, 0.99909, 0.00938343, 0.998938, -0.0414029, -0.0202278, -84.835, 15.0586, -41.3374)
+transform = Transform3D(-0.0198209, 0.0102149, -0.999751, 0.0415992, 0.99909, 0.00938343, 0.998938, -0.0414029, -0.0202278, -169.024, 10.7646, -71.3877)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("6_33ade")
 
 [node name="Casa12" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(-0.990549, 0.00115329, 0.137155, 0.000654364, 0.999993, -0.00368273, -0.137158, -0.00355817, -0.990543, 250.867, 11.4819, 44.693)
+transform = Transform3D(-0.990549, 0.00115329, 0.137155, 0.000654364, 0.999993, -0.00368273, -0.137158, -0.00355817, -0.990543, 166.678, 7.1879, 14.6427)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("6_33ade")
 
 [node name="Gato" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(-0.999999, 0, 0.00120416, 0, 1, 0, -0.00120416, 0, -0.999999, 5.36116, 1.704, 125.686)
+transform = Transform3D(-0.999999, 0, 0.00120416, 0, 1, 0, -0.00120416, 0, -0.999999, -78.8279, -2.59, 95.6357)
 chair_scene = ExtResource("7_8j1ww")
 
 [node name="Mesa" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 227.201, 4.4335, 34.3044)
+transform = Transform3D(0.991215, -0.120979, -0.0534437, 0.12559, 0.987659, 0.0935743, 0.0414637, -0.0994643, 0.994177, 143.012, -0.49215, 4.25406)
 chair_scene = ExtResource("6_0ugbt")
 
 [node name="Gnomo" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.005, 2.7888, -21.3256)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.1841, -1.5052, -51.3759)
 size = 1.5
 chair_scene = ExtResource("8_fyl7o")
 
 [node name="Lamparota" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.3896, 14.4253, -15.4226)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -155.579, 10.1313, -45.4729)
 sin_gravedad = true
 size = 4.0
 chair_scene = ExtResource("9_c14ao")
 
 [node name="Lamparota2" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.999606, -0.0280612, 0, 0.0280612, 0.999606, 0, 0, 0, 1, 8.26282, 13.5915, -20.1502)
+transform = Transform3D(0.999606, -0.0280612, 0, 0.0280612, 0.999606, 0, 0, 0, 1, -75.9263, 9.2975, -50.2005)
 sin_gravedad = true
 size = 4.0
 chair_scene = ExtResource("9_c14ao")
 
 [node name="Lamparota3" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.0548, 15.6596, -25.6787)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.1343, 11.3656, -55.729)
 sin_gravedad = true
 size = 4.0
 chair_scene = ExtResource("9_c14ao")
 
 [node name="Lamparota4" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.187, 14.5582, -33.6391)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.9979, 10.2642, -63.6894)
 sin_gravedad = true
 size = 4.0
 chair_scene = ExtResource("9_c14ao")
 
 [node name="Lamparota5" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 238.257, 12.4789, -16.1458)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.068, 8.1849, -46.1961)
 sin_gravedad = true
 size = 4.0
 chair_scene = ExtResource("9_c14ao")
 
 [node name="Lamparota6" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 235.494, 17.0869, 59.123)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.305, 12.7929, 29.0727)
 sin_gravedad = true
 size = 4.0
 chair_scene = ExtResource("9_c14ao")
 
 [node name="Lamparota7" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.196, 12.1912, 105.941)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.007, 7.8972, 75.8907)
 sin_gravedad = true
 size = 4.0
 chair_scene = ExtResource("9_c14ao")
 
 [node name="Lamparota8" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.999884, 0.0152361, 0, -0.0152361, 0.999884, 0, 0, 0, 1, -119.013, 12.0842, 92.5642)
+transform = Transform3D(0.999884, 0.0152361, 0, -0.0152361, 0.999884, 0, 0, 0, 1, -203.202, 7.7902, 62.5139)
 sin_gravedad = true
 size = 4.0
 chair_scene = ExtResource("9_c14ao")
 
 [node name="Lamparota9" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 0.999519, 0.031027, 0, -0.031027, 0.999519, -49.7517, 14.9985, 91.5361)
+transform = Transform3D(1, 0, 0, 0, 0.999519, 0.031027, 0, -0.031027, 0.999519, -133.941, 10.7045, 61.4858)
 sin_gravedad = true
 size = 4.0
 chair_scene = ExtResource("9_c14ao")
 
 [node name="Lamparota10" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3046, 13.8141, 101.231)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.8845, 9.5201, 71.1807)
 sin_gravedad = true
 size = 4.0
 chair_scene = ExtResource("9_c14ao")
 
 [node name="Lamparota11" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.3039, 10.9193, 98.4152)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1148, 6.6253, 68.3649)
 sin_gravedad = true
 size = 4.0
 chair_scene = ExtResource("9_c14ao")
 
 [node name="Lamparota12" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.985, 15.6451, 95.1038)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.7959, 11.3511, 65.0535)
 sin_gravedad = true
 size = 4.0
 chair_scene = ExtResource("9_c14ao")
 
 [node name="Planta" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.999894, 0.0145381, 0, -0.0145381, 0.999894, 0, 0, 0, 1, -23.6038, 3.54641, 115.082)
+transform = Transform3D(0.999894, 0.0145381, 0, -0.0145381, 0.999894, 0, 0, 0, 1, -107.793, -0.74759, 85.0317)
 size = 2.0
 chair_scene = ExtResource("10_joosv")
 
 [node name="Basura" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.511, 0.757697, -0.47934)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.6781, -3.5363, -30.5297)
+size = 2.0
+chair_scene = ExtResource("11_dy6rh")
+
+[node name="Basura2" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.1556, -2.48063, -30.5297)
+size = 2.0
+chair_scene = ExtResource("11_dy6rh")
+
+[node name="Basura3" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.99829, 0.0581177, -0.00624895, -0.0584526, 0.992569, -0.106723, 0, 0.106906, 0.994269, -107.265, -6.86253, -30.5297)
+size = 2.0
+chair_scene = ExtResource("11_dy6rh")
+
+[node name="Basura4" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 0.999134, 0.0415966, 0, -0.0415966, 0.999134, 71.1989, -0.486939, -30.5297)
+size = 2.0
+chair_scene = ExtResource("11_dy6rh")
+
+[node name="Basura5" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.014, -3.26392, -31.4575)
+size = 2.0
+chair_scene = ExtResource("11_dy6rh")
+
+[node name="Basura6" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -161.708, -2.7958, -30.5297)
+size = 2.0
+chair_scene = ExtResource("11_dy6rh")
+
+[node name="Basura7" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.998518, 0.0542728, 0.00409889, -0.0543203, 0.998445, 0.0125245, -0.00341278, -0.0127285, 0.999913, -113.064, -2.44965, 63.0352)
+size = 2.0
+chair_scene = ExtResource("11_dy6rh")
+
+[node name="Basura8" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.3107, -3.75567, 66.5997)
+size = 2.0
+chair_scene = ExtResource("11_dy6rh")
+
+[node name="Basura9" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9483, -5.33408, 51.1404)
+size = 2.0
+chair_scene = ExtResource("11_dy6rh")
+
+[node name="Basura10" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.693, -3.93181, 54.3524)
+size = 2.0
+chair_scene = ExtResource("11_dy6rh")
+
+[node name="Basura11" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -163.893, -5.71253, 39.7491)
 size = 2.0
 chair_scene = ExtResource("11_dy6rh")
 
 [node name="Rama1" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 0.910921, 0.41258, 0, -0.41258, 0.910921, 4.48623, 3.98371, 28.5095)
+transform = Transform3D(1, 0, 0, 0, 0.910921, 0.41258, 0, -0.41258, 0.910921, -79.7029, -0.310288, -1.54084)
 chair_scene = ExtResource("12_mtvc6")
 
 [node name="Rama2" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 0.360322, 0.932828, 0, -0.932828, 0.360322, 46.8697, 2.50095, 2.1343)
+transform = Transform3D(1, 0, 0, 0, 0.360322, 0.932828, 0, -0.932828, 0.360322, -37.3194, -1.79305, -27.916)
 size = 2.0
 chair_scene = ExtResource("13_e6qxu")
 
 [node name="Rama3" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 0.210028, 0.977695, 0, -0.977695, 0.210028, 55.5738, 0.425631, 9.95509)
+transform = Transform3D(1, 0, 0, 0, 0.210028, 0.977695, 0, -0.977695, 0.210028, -28.6153, -3.86837, -20.0952)
 size = 2.0
 chair_scene = ExtResource("14_80f0u")
 
 [node name="Arbol1" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.998122, 0.0612576, 0, -0.0612016, 0.997209, 0.042765, 0.00261968, -0.0426847, 0.999085, -35.641, 10.8444, 265.481)
+transform = Transform3D(0.998122, 0.0612576, 0, -0.0612016, 0.997209, 0.042765, 0.00261968, -0.0426847, 0.999085, -119.83, 6.5504, 235.431)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol12" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.999928, -0.0120425, 0, 0.0120425, 0.999928, 0, 0, 0, 1, -123.139, 4.4539, 223.335)
+transform = Transform3D(0.999928, -0.0120425, 0, 0.0120425, 0.999928, 0, 0, 0, 1, -207.328, 0.159904, 193.285)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol13" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.998122, 0.0612576, 0, -0.0611726, 0.996737, -0.0526671, -0.00322626, 0.0525682, 0.998612, -27.6471, 13.4938, -84.5179)
+transform = Transform3D(0.998122, 0.0612576, 0, -0.0611726, 0.996737, -0.0526671, -0.00322626, 0.0525682, 0.998612, -111.836, 9.19981, -114.568)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol14" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.998122, 0.0612576, 0, -0.0612576, 0.998122, 0, 0, 0, 1, 27.5169, 8.26539, -107.007)
+transform = Transform3D(0.998122, 0.0612576, 0, -0.0612576, 0.998122, 0, 0, 0, 1, -56.6722, 3.97139, -137.057)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol15" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.998122, 0.0612576, 0, -0.0608075, 0.990788, -0.121003, -0.00741236, 0.120776, 0.992652, 45.2327, 7.61991, 271.412)
+transform = Transform3D(0.998122, 0.0612576, 0, -0.0608075, 0.990788, -0.121003, -0.00741236, 0.120776, 0.992652, -38.9564, 3.32591, 241.362)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol16" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.998122, 0.0612576, 7.24045e-10, -0.0609797, 0.993593, -0.0951508, -0.0058287, 0.094972, 0.995463, 127.081, 11.8639, 260.899)
+transform = Transform3D(0.998122, 0.0612576, 7.24045e-10, -0.0609797, 0.993593, -0.0951508, -0.0058287, 0.094972, 0.995463, 42.8919, 7.5699, 230.849)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol17" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.998122, 0.0612576, 0, -0.0612576, 0.998122, 0, 0, 0, 1, 239.976, 9.85276, -91.1545)
+transform = Transform3D(0.998122, 0.0612576, 0, -0.0612576, 0.998122, 0, 0, 0, 1, 155.787, 5.55876, -121.205)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol18" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.998122, 0.0612576, 0, -0.0612576, 0.998122, 0, 0, 0, 1, 268.221, 9.85276, -126.357)
+transform = Transform3D(0.998122, 0.0612576, 0, -0.0612576, 0.998122, 0, 0, 0, 1, 184.032, 5.55876, -156.407)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol19" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.998122, 0.0612576, 0, -0.0612576, 0.998122, 0, 0, 0, 1, 190.897, 9.85276, 172.436)
+transform = Transform3D(0.998122, 0.0612576, 0, -0.0612576, 0.998122, 0, 0, 0, 1, 106.708, 5.55876, 142.386)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol20" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.991086, 0.133225, 0, -0.133225, 0.991086, 0, 0, 0, 1, 141.65, 9.12342, 212.195)
+transform = Transform3D(0.991086, 0.133225, 0, -0.133225, 0.991086, 0, 0, 0, 1, 57.4609, 4.82942, 182.145)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol21" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.997995, 0.0612498, -0.0159342, -0.0612576, 0.998122, 0, 0.0159043, 0.00097609, 0.999873, 254.627, 8.17466, 187.577)
+transform = Transform3D(0.997995, 0.0612498, -0.0159342, -0.0612576, 0.998122, 0, 0.0159043, 0.00097609, 0.999873, 170.438, 3.88066, 157.527)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol30" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.988433, 0.151658, 0, -0.151658, 0.988433, 0, 0, 0, 1, 88.5493, 10.1005, -160.342)
+transform = Transform3D(0.988433, 0.151658, 0, -0.151658, 0.988433, 0, 0, 0, 1, 4.3602, 5.8065, -190.392)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol31" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.998122, 0.0612576, 0, -0.0612576, 0.998122, 0, 0, 0, 1, -8.4612, 6.20289, 206.28)
+transform = Transform3D(0.998122, 0.0612576, 0, -0.0612576, 0.998122, 0, 0, 0, 1, -92.6503, 1.90889, 176.23)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol32" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.991002, 0.133848, 0, -0.133848, 0.991002, 0, 0, 0, 1, 292.823, 12.6701, 60.0816)
+transform = Transform3D(0.991002, 0.133848, 0, -0.133848, 0.991002, 0, 0, 0, 1, 208.634, 8.37611, 30.0313)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol33" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.998122, 0.0612576, 0, -0.0612576, 0.998122, 0, 0, 0, 1, 278.243, 6.86866, 250.033)
+transform = Transform3D(0.998122, 0.0612576, 0, -0.0612576, 0.998122, 0, 0, 0, 1, 194.054, 2.57466, 219.983)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol34" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.998122, 0.0612576, 0, -0.0612576, 0.998122, 0, 0, 0, 1, 298.297, 9.159, 152.468)
+transform = Transform3D(0.998122, 0.0612576, 0, -0.0612576, 0.998122, 0, 0, 0, 1, 214.108, 4.865, 122.418)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol35" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.998122, 0.0612576, 0, -0.0612576, 0.998122, 0, 0, 0, 1, 311.984, 5.60699, -35.5716)
+transform = Transform3D(0.998122, 0.0612576, 0, -0.0612576, 0.998122, 0, 0, 0, 1, 227.795, 1.31299, -65.6219)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol36" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.994003, 0.109353, 0, -0.109353, 0.994003, 0, 0, 0, 1, 311.984, 10.1419, -148.659)
+transform = Transform3D(0.994003, 0.109353, 0, -0.109353, 0.994003, 0, 0, 0, 1, 227.795, 5.8479, -178.709)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol37" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.993857, 0.110671, 0, -0.110671, 0.993857, 0, 0, 0, 1, 195.849, 6.2839, -134.761)
+transform = Transform3D(0.993857, 0.110671, 0, -0.110671, 0.993857, 0, 0, 0, 1, 111.66, 1.98991, -164.811)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol38" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.999991, 0.00415388, 0, -0.00415388, 0.999991, 0, 0, 0, 1, -102.158, 4.84517, -134.761)
+transform = Transform3D(0.999991, 0.00415388, 0, -0.00415388, 0.999991, 0, 0, 0, 1, -186.347, 0.551169, -164.811)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol39" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.993857, 0.110671, 0, -0.110671, 0.993857, 0, 0, 0, 1, 31.4408, 6.2839, -155.295)
+transform = Transform3D(0.993857, 0.110671, 0, -0.110671, 0.993857, 0, 0, 0, 1, -52.7483, 1.98991, -185.345)
 sin_gravedad = true
 size = 15.0
 chair_scene = ExtResource("15_klsl5")
 
 [node name="Arbol22" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.4553, 13.1555, -1.19276)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148.644, 8.8615, -31.2431)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol23" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.819, 15.7957, -34.6413)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -195.008, 11.5017, -64.6916)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol24" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.3314, 11.9345, -76.3505)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -172.52, 7.6405, -106.401)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol25" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.99944, -0.0334517, 0, 0.0334517, 0.99944, 0, 0, 0, 1, -49.3882, 16.2964, -96.6671)
+transform = Transform3D(0.99944, -0.0334517, 0, 0.0334517, 0.99944, 0, 0, 0, 1, -133.577, 12.0024, -126.717)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol26" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.3924, 15.7957, -69.3224)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -143.581, 11.5017, -99.3727)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol27" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -147.429, 14.67, -34.6413)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -231.618, 10.376, -64.6916)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol28" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134.424, 12.2485, -64.6538)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -218.613, 7.9545, -94.7041)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol29" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.3313, 11.4965, -0.875751)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.52, 7.2025, -30.9261)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol210" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.2503, 11.218, -34.6413)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0612, 6.924, -64.6916)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol211" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.6274, 15.1347, -2.82053)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -180.817, 10.8407, -32.8709)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol212" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.039, 9.27522, -92.8441)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -202.228, 4.98122, -122.894)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol213" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.548, 12.0622, -6.83332)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.3589, 7.7682, -36.8837)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol214" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.9628, 12.9746, -7.71284)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.2263, 8.6806, -37.7632)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol215" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.8349, 10.8855, -88.5899)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3542, 6.5915, -118.64)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol216" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.2989, 11.1464, -78.4229)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1098, 6.8524, -108.473)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol217" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.3342, 15.7957, -118.07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8549, 11.5017, -148.12)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol218" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.3948, 15.7957, -128.536)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.584, 11.5017, -158.586)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol219" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.16945, 10.2751, 75.2594)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.0197, 5.9811, 45.2091)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol220" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.6625, 9.84546, 88.3804)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5266, 5.55146, 58.3301)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol221" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.0298, 12.8582, 96.5652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.219, 8.5642, 66.5149)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol222" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 185.464, 15.7957, -88.5899)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.275, 11.5017, -118.64)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol223" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.291, 15.7957, -141.186)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.1019, 11.5017, -171.236)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol224" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 268.402, 15.7957, -70.8299)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.213, 11.5017, -100.88)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol225" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 226.752, 15.7957, -68.2625)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142.563, 11.5017, -98.3128)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol226" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 177.469, 14.5787, -22.1177)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.2799, 10.2847, -52.168)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol227" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.138, 12.7749, -18.4798)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.9489, 8.4809, -48.5301)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol228" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 286.36, 9.37644, -18.9877)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 202.171, 5.08244, -49.038)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol229" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 251.402, 9.63191, -133.07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167.213, 5.33791, -163.12)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol230" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 247.003, 15.7957, 91.9134)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162.814, 11.5017, 61.8631)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol231" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 234.629, 14.3268, 13.4769)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.44, 10.0328, -16.5734)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol232" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.16945, 14.3146, 153.502)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.0197, 10.0206, 123.452)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol233" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.8765, 15.7957, 177.805)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154.066, 11.5017, 147.755)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol234" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135.563, 11.9579, 162.088)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -219.752, 7.6639, 132.038)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol235" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.9341, 13.5049, 178.579)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.255, 9.2109, 148.529)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol236" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.431, 15.8486, 86.6759)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.2419, 11.5546, 56.6256)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol237" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.452, 15.1604, 83.7461)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.2629, 10.8664, 53.6958)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol238" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.7647, 18.001, 235.561)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5756, 13.707, 205.511)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol239" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.16945, 15.479, 238.568)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.0197, 11.185, 208.518)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol240" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.994, 12.0067, 181.586)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8049, 7.7127, 151.536)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol241" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.538, 11.1974, 170.779)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3489, 6.9034, 140.729)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol242" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.4623, 11.5224, 236.604)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -155.651, 7.2284, 206.554)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol243" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 208.538, 12.1733, 200.253)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.349, 7.8793, 170.203)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol244" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.16945, 15.531, 295.551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.0197, 11.237, 265.501)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol245" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 307.766, 14.8921, -88.5899)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 223.577, 10.5981, -118.64)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol246" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 249.801, 14.4155, 262.147)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.612, 10.1215, 232.097)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol247" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.994, 13.7929, 243.481)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.8049, 9.4989, 213.431)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol248" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149.076, 13.7623, 94.1473)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -233.265, 9.4683, 64.097)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol249" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.16945, 11.7635, -185.853)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.0197, 7.4695, -215.903)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Arbol250" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.673, 8.36922, 281.797)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -199.862, 4.07522, 251.747)
 sin_gravedad = true
 size = 7.0
 chair_scene = ExtResource("16_so0cp")
 
 [node name="Craneo" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 0.957747, 0.287611, 0, -0.287611, 0.957747, -95.2898, 2.15534, 2.20213)
+transform = Transform3D(1, 0, 0, 0, 0.957747, 0.287611, 0, -0.287611, 0.957747, -179.479, -2.13867, -27.8482)
 size = 2.0
 chair_scene = ExtResource("17_n31h7")
 
 [node name="Silla2" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 0.990095, -0.1404, 0, 0.1404, 0.990095, 30.8001, 3.42588, -27.3651)
+transform = Transform3D(0.0948207, -0.139767, -0.985634, 0, 0.990095, -0.1404, 0.995494, 0.0133128, 0.0938815, -83.0711, -3.68195, -49.3778)
+size = 4.0
+chair_scene = ExtResource("18_8whbr")
+
+[node name="Silla22" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.203311, -0.0397811, 0.978306, 0.0365082, 0.998788, 0.0330269, -0.978433, 0.0290014, 0.204517, -88.2996, -3.95586, -49.5651)
+size = 4.0
+chair_scene = ExtResource("18_8whbr")
+
+[node name="Silla23" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.999298, -0.0373679, -0.00267333, 0.0374467, 0.998438, 0.0414595, 0.0011199, -0.0415305, 0.999137, 66.2419, -2.99986, -68.5675)
+size = 4.0
+chair_scene = ExtResource("18_8whbr")
+
+[node name="Silla24" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.993483, -0.113801, -0.0064422, 0.113984, 0.991895, 0.0561503, 0, -0.0565187, 0.998402, 68.8949, -2.68774, -68.0967)
+size = 4.0
+chair_scene = ExtResource("18_8whbr")
+
+[node name="Silla25" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.50505, 0.0851642, 0.858878, -0.0545479, 0.989981, -0.13024, -0.861365, -0.112628, -0.495344, -49.3479, -2.5211, 77.2547)
+size = 4.0
+chair_scene = ExtResource("18_8whbr")
+
+[node name="Silla26" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 0.998413, -0.0563093, 0, 0.0563093, 0.998413, -42.5799, -0.572389, -57.4154)
+size = 4.0
+chair_scene = ExtResource("18_8whbr")
+
+[node name="Silla27" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 0.999706, -0.0242401, 0, 0.0242401, 0.999706, 59.4489, 20.6392, -88.7807)
+size = 4.0
+chair_scene = ExtResource("18_8whbr")
+
+[node name="Silla28" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.994213, 0.0150827, 0.106363, 0, 0.990095, -0.1404, -0.107427, -0.139588, -0.984365, -50.6679, -0.868119, -99.6468)
 size = 4.0
 chair_scene = ExtResource("18_8whbr")
 
 [node name="eitan" parent="." instance=ExtResource("19_t2hym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.63166, 3.1418, 8.86401)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.5574, -1.1522, -21.1863)
 
 [node name="mesa3" parent="." instance=ExtResource("6_0ugbt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44074, 0.136009, -19.1618)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.6298, -4.15799, -49.2121)
 
 [node name="mesa2" parent="." instance=ExtResource("6_0ugbt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0062, 3.06338, 112.321)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.1953, -1.23061, 82.2707)
 
 [node name="mesa4" parent="." instance=ExtResource("6_0ugbt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.7278, 3.20496, 105.008)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.917, -1.08904, 74.9577)
 
 [node name="Terreno" parent="." instance=ExtResource("20_se67r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -171.441, -4.466, -199.145)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -255.63, -8.76, -229.195)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vrfd6")
 
 [node name="LiftableObjectSpawner" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.269861, -0.962899, 0, 0.962899, 0.269861, 0, 0, 0, 1, -20.1363, 3.66062, -45.2899)
+transform = Transform3D(0.269861, -0.962899, 0, 0.962899, 0.269861, 0, 0, 0, 1, -104.325, -0.633378, -75.3402)
 chair_scene = ExtResource("6_egcnx")
 
 [node name="LiftableObjectSpawner2" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(-0.0874464, -0.157003, -0.983719, -0.994185, 0.076046, 0.0762397, 0.062838, 0.984666, -0.16274, -1.57368, 1.09808, -19.3085)
+transform = Transform3D(-0.0874464, -0.157003, -0.983719, -0.994185, 0.076046, 0.0762397, 0.062838, 0.984666, -0.16274, -85.7628, -3.19592, -49.3588)
 size = 0.5
 chair_scene = ExtResource("6_egcnx")
+
+[node name="Pared1" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 125, 0, 0, 0, 512, -257.251, 51.1927, 27.3836)
+mesh = SubResource("BoxMesh_yteiw")
+surface_material_override/0 = SubResource("ShaderMaterial_rk6py")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pared1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pared1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_k4pag")
+
+[node name="Pared2" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 125, 0, 0, 0, 512, 259.074, 51.193, 27.3837)
+mesh = SubResource("BoxMesh_yteiw")
+surface_material_override/0 = SubResource("ShaderMaterial_rk6py")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pared2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pared2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_k4pag")
+
+[node name="Pared3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.18557e-07, 0, 512, 0, 125, 0, -5, 0, -2.23802e-05, 0.310295, 51.1927, -231.682)
+mesh = SubResource("BoxMesh_yteiw")
+surface_material_override/0 = SubResource("ShaderMaterial_rk6py")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pared3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pared3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_k4pag")
+
+[node name="Pared4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.18557e-07, 0, 512, 0, 125, 0, -5, 0, -2.23802e-05, 1.0476, 51.1927, 285.08)
+mesh = SubResource("BoxMesh_yteiw")
+surface_material_override/0 = SubResource("ShaderMaterial_rk6py")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pared4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pared4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_k4pag")

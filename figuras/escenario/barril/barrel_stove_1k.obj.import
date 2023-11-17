@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dc12i5gqfxviu"
+path="res://.godot/imported/barrel_stove_1k.obj-03fdaf1ac06c61a4a28e726a341510e2.mesh"
+
+[deps]
+
+files=["res://.godot/imported/barrel_stove_1k.obj-03fdaf1ac06c61a4a28e726a341510e2.mesh"]
+
+source_file="res://figuras/escenario/barril/barrel_stove_1k.obj"
+dest_files=["res://.godot/imported/barrel_stove_1k.obj-03fdaf1ac06c61a4a28e726a341510e2.mesh", "res://.godot/imported/barrel_stove_1k.obj-03fdaf1ac06c61a4a28e726a341510e2.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

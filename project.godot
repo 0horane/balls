@@ -91,3 +91,10 @@ textures/vram_compression/import_etc2_astc=true
 lights_and_shadows/directional_shadow/size=512
 lights_and_shadows/directional_shadow/size.mobile=512
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=1
+
+[shader_globals]
+
+player_pos={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}

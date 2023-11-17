@@ -53,13 +53,18 @@ func _ready():
 func is_on_floor():
 	return true #TODO
 
+
+
+	
+
 func _physics_process(delta):
 	if not $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
 		global_position = lerp(global_position, syncPos, 0.5)
 		var newRot:=Quaternion(transform.basis).slerp(syncRot, 0.5)
 		transform.basis = Basis(newRot)
-
 		return
+
+	RenderingServer.global_shader_parameter_set("player_pos", position)
 	
 	syncPos = global_position
 	syncRot = Quaternion(transform.basis)
