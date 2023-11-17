@@ -18,8 +18,6 @@ func _ready():
 # No te dejaba ir para atrás, para no causar problemas de cámara como tenemos ahora, sino que te 
 # permitía dar una vuelta total mirando para atrás. Podríamos replicarlo creo.
 
-# Ademas, hay que hacer que la camara siga a una altura y distancia constante de la esfera según 
-# tamaño. Sin tener en cuenta la altura variable casi no vibraría, me parece.  
 func _process(delta):
 	ticks+=1
 	if is_instance_valid(player):
