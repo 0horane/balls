@@ -761,3 +761,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -171.441, -4.466, -199.145)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vrfd6")
+
+[node name="LiftableObjectSpawner" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.269861, -0.962899, 0, 0.962899, 0.269861, 0, 0, 0, 1, -20.1363, 3.66062, -45.2899)
+chair_scene = ExtResource("6_egcnx")
+
+[node name="LiftableObjectSpawner2" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.0874464, -0.157003, -0.983719, -0.994185, 0.076046, 0.0762397, 0.062838, 0.984666, -0.16274, -1.57368, 1.09808, -19.3085)
+size = 0.5
+chair_scene = ExtResource("6_egcnx")

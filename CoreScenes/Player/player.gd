@@ -201,7 +201,7 @@ func morph_shape(body):
 	mdt.create_from_surface(mesh, 0)
 	var closest_aligned_vertex:= 0
 	var closest_angle:float=999
-	"""
+
 	# the way this has to check the angle of every part of the mesh is incredibly inefficient. we 
 	# should either offload this to another thread or reduce the vertex count of the sphere mesh.
 	# ideally both. the second is already done.
@@ -217,7 +217,7 @@ func morph_shape(body):
 	# idk if we should be using the same mesh for calculations or a separate one
 	# var mi = MeshInstance.new()
 	# mi.mesh = mesh
-	"""
+
 	$MeshInstance3D.set_mesh(mesh)
 	$MeshInstance3D.create_convex_collision(true, USE_SIMPLIFIED_COLLISION_MESH)
 	var new_collison_shape :Shape3D = $MeshInstance3D.find_child("CollisionShape3D").shape
