@@ -219,19 +219,31 @@ func morph_shape(body):
 	mdt.set_vertex(closest_aligned_vertex, object_centroid_from_player_center.project(mdt.get_vertex(closest_aligned_vertex)))
 	mesh.clear_surfaces()
 	mdt.commit_to_surface(mesh)
-	# idk if we should be using the same mesh for calculations or a separate one
-	# var mi = MeshInstance.new()
-	# mi.mesh = mesh
+	
+	var mi = MeshInstance3D.new()
+	mi.mesh = mesh
 
-	$MeshInstance3D.set_mesh(mesh)
-	$MeshInstance3D.create_convex_collision(true, USE_SIMPLIFIED_COLLISION_MESH)
-	var new_collison_shape :Shape3D = $MeshInstance3D.find_child("CollisionShape3D").shape
+	mi.create_convex_collision(true, USE_SIMPLIFIED_COLLISION_MESH)
+	prchldrec(mi)
+	var new_collison_shape :Shape3D = find_child2(mi,"CollisionShape3D").shape
 	$CollisionShape3D.shape = new_collison_shape
-	$MeshInstance3D.remove_child($MeshInstance3D.get_child(0))
+	mi.queue_free()
 	#TODO queue_free, leak de memoria
 	
 	
-	
+func find_child2(node, nam):
+	var returnbody = null
+	for body in node.get_children():
+		if nam in body.name:
+			returnbody = body
+		else: 
+			returnbody = find_child2(body, nam) if returnbody==null else returnbody
+	return returnbody
+			
+func prchldrec(bdy, init=""):
+	print(init, bdy)
+	for body in bdy.get_children():
+		prchldrec(body, init+" ")
 
 
 @rpc("any_peer", "call_local" )
