@@ -2,6 +2,9 @@
 extends Marker3D
 @export var sin_gravedad := false
 @export var anti_vibracion := false
+@export var max_living_spawns:=5
+var current_spawns=1
+
 @export var size:float:
 	get:
 		return sizestore 
@@ -45,8 +48,8 @@ func _ready():
 	
 func setup_timers():
 
-	spawn_timer.wait_time = 2 # change to 30 later
-	check_timer.wait_time = 5
+	spawn_timer.wait_time = 30 # change to 30 later
+	check_timer.wait_time = 30
 
 	spawn_timer.one_shot = true
 	check_timer.one_shot = true
@@ -110,7 +113,12 @@ func _on_check_timer_timeout():
 		respawn()
 		return
 	
-	check_timer.start()
+	if max_living_spawns > current_spawns:
+		spawn_timer.start()
+		current_spawns+=1
+		print("respawn")
+	else:
+		check_timer.start()
 		
 
 func respawn():
