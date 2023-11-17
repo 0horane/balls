@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cfethjqjifkfi"
+path="res://.godot/imported/dry_branches_medium_01_1k_a.obj-7234706ac15fd137ee8fc023773a3e75.mesh"
+
+[deps]
+
+files=["res://.godot/imported/dry_branches_medium_01_1k_a.obj-7234706ac15fd137ee8fc023773a3e75.mesh"]
+
+source_file="res://figuras/escenario/rama1/dry_branches_medium_01_1k_a.obj"
+dest_files=["res://.godot/imported/dry_branches_medium_01_1k_a.obj-7234706ac15fd137ee8fc023773a3e75.mesh", "res://.godot/imported/dry_branches_medium_01_1k_a.obj-7234706ac15fd137ee8fc023773a3e75.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://duuric0otd8bs"
+path="res://.godot/imported/metal_trash_can_1k.obj-0ebcff6f430140bc331577f6b2fa657c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/metal_trash_can_1k.obj-0ebcff6f430140bc331577f6b2fa657c.mesh"]
+
+source_file="res://figuras/escenario/tachobasura/metal_trash_can_1k.obj"
+dest_files=["res://.godot/imported/metal_trash_can_1k.obj-0ebcff6f430140bc331577f6b2fa657c.mesh", "res://.godot/imported/metal_trash_can_1k.obj-0ebcff6f430140bc331577f6b2fa657c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://r06xjtpc48qo"]
+
+[ext_resource type="Script" path="res://ObjectScenes/scripts/Liftable.gd" id="1_sweab"]
+[ext_resource type="ArrayMesh" uid="uid://bav2qpkf4t34a" path="res://figuras/escenario/planta/potted_plant_01_1k.obj" id="2_1hcja"]
+[ext_resource type="Texture2D" uid="uid://dxh3m8pou7ibm" path="res://figuras/escenario/planta/potted_plant_01_pot_diff_1k.png" id="3_gdqpn"]
+[ext_resource type="Texture2D" uid="uid://cdgb7sn1h2cn4" path="res://figuras/escenario/planta/potted_plant_01_leaves_diff_1k.png" id="4_wkcsc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bl1b3"]
+albedo_texture = ExtResource("3_gdqpn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjc1r"]
+albedo_texture = ExtResource("3_gdqpn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gttx"]
+albedo_texture = ExtResource("4_wkcsc")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_u35h5"]
+height = 0.506216
+radius = 0.215004
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
+max_contacts_reported = 20
+contact_monitor = true
+script = ExtResource("1_sweab")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.427445, 0.0475835)
+mesh = ExtResource("2_1hcja")
+surface_material_override/0 = SubResource("StandardMaterial3D_bl1b3")
+surface_material_override/1 = SubResource("StandardMaterial3D_gjc1r")
+surface_material_override/2 = SubResource("StandardMaterial3D_8gttx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.0295496, 0.0475835)
+shape = SubResource("CylinderShape3D_u35h5")

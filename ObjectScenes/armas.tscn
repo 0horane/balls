@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8nj5akpnaosp"]
+
+[ext_resource type="Script" path="res://ObjectScenes/scripts/armas.gd" id="1_5rai0"]
+[ext_resource type="ArrayMesh" uid="uid://d1uet5fuy76jh" path="res://figuras/escenario/gun1/gun1.obj" id="2_rytf5"]
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.151876, 0, 0)
+script = ExtResource("1_5rai0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.048, 0, 0, 0, 0.048, 0, 0, 0, 0.048, -0.14396, 0, 0)
+mesh = ExtResource("2_rytf5")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://cumoophnshusm"]
+
+[ext_resource type="Script" path="res://ObjectScenes/scripts/Liftable.gd" id="1_dejfj"]
+[ext_resource type="ArrayMesh" uid="uid://boxmx8sq3lseq" path="res://figuras/escenario/rama2/dry_branches_medium_01_1k_b.obj" id="2_0knqh"]
+[ext_resource type="Texture2D" uid="uid://yu04tshd1wm" path="res://figuras/escenario/rama2/dry_branches_medium_01_diff_1k.jpg" id="3_u46sg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5loj3"]
+albedo_texture = ExtResource("3_u46sg")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v2i27"]
+points = PackedVector3Array(0.00989351, 0.0908104, 0.247199, -0.018134, 0.00497114, -0.208334, 0.102838, 0.0974584, -0.509571, 0.0961896, 0.0178104, 0.492875, 0.0364428, 0.143938, -0.389906, -0.0299377, 0.0709091, 0.233903, -0.0365714, 0.0709091, -0.336823, 0.00327404, 0.00454287, 0.386607, 0.0961896, 0.0310922, 0.499523, 0.0629922, -0.00211948, 0.393255, 0.102838, 0.0841766, -0.496175, -0.0432195, 0.0111623, -0.157527, 0.0895558, 0.123993, -0.436443, 0.0231896, 0.0111623, -0.170823, 0.0165416, 0.137275, -0.403203, 0.0829078, 0.0841766, -0.509571, 0.0298091, 0.0841766, 0.293635, 0.0696403, 0.0178104, 0.512819, -0.00337402, 0.0908104, 0.247199, -0.0143238, 0.0456845, -0.345367, 0.0165416, -0.00211948, 0.386607, 0.0629922, 0.130656, -0.47623, -0.0299377, 0.0841766, -0.323527, 0.0629922, 0.0908104, -0.496175, 0.076274, 0.130656, -0.423147, -0.0299377, 0.0576416, 0.227255, 0.102838, 0.104078, -0.47623, -0.00337402, 0.0974584, 0.187467, -0.0365714, 0.00454287, -0.137683, 0.076274, 0.00454287, 0.413199, -0.0432195, 0.0310922, -0.157527, 0.00327404, 0.0178104, 0.386607)
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
+max_contacts_reported = 20
+contact_monitor = true
+script = ExtResource("1_dejfj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.37765, 6.16834e-08, 0.0309986, -0.0309986, 6.15715e-08, -1.37765, -6.30528e-08, -1.378, -6.01683e-08, -0.00519818, -0.0913881, 0.048)
+mesh = ExtResource("2_0knqh")
+surface_material_override/0 = SubResource("StandardMaterial3D_5loj3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.37765, 6.16834e-08, 0.0309986, -0.0309986, 6.15715e-08, -1.37765, -6.30528e-08, -1.378, -6.01683e-08, -0.00519818, -0.0913881, 0.048)
+shape = SubResource("ConvexPolygonShape3D_v2i27")

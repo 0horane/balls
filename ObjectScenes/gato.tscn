@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://csq3kr34vcl8d"]
+
+[ext_resource type="Script" path="res://ObjectScenes/scripts/Liftable.gd" id="1_dxeyh"]
+[ext_resource type="ArrayMesh" uid="uid://ch8xi45w0mveo" path="res://figuras/escenario/gatito/concrete_cat_statue_1k.obj" id="2_03fep"]
+[ext_resource type="Texture2D" uid="uid://c20p4vtbac6yw" path="res://figuras/escenario/gatito/concrete_cat_statue_diff_1k.jpg" id="3_m0dvo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikh0o"]
+albedo_texture = ExtResource("3_m0dvo")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i3qa0"]
+size = Vector3(0.169784, 0.175025, 0.257484)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23569, 0.0106759)
+max_contacts_reported = 20
+contact_monitor = true
+script = ExtResource("1_dxeyh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.505, 0, 0, 0, 4.505, 0, 0, 0, 4.505, -0.0481859, -0.0513918, 0.105745)
+mesh = ExtResource("2_03fep")
+surface_material_override/0 = SubResource("StandardMaterial3D_ikh0o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(4.505, 0, 0, 0, 4.505, 0, 0, 0, 4.505, -0.0847169, 0.350155, -0.0307514)
+shape = SubResource("BoxShape3D_i3qa0")

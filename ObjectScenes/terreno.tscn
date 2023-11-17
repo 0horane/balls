@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbqm7rwijbgoh"]
+
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_b7ldt"]
+[ext_resource type="Resource" path="res://figuras/escenario/pasto/dataTerrain/data.hterrain" id="2_3l6i0"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_lr6jt"]
+[ext_resource type="Texture2D" uid="uid://byq5igx5nochy" path="res://CoreScenes/Main/slot0_albedo_bump.png" id="4_edmgn"]
+[ext_resource type="Texture2D" uid="uid://cddlk36yfs4n6" path="res://CoreScenes/Main/slot0_normal_roughness.png" id="5_6vwkt"]
+
+[sub_resource type="Resource" id="Resource_xn836"]
+script = ExtResource("3_lr6jt")
+mode = 0
+textures = [[ExtResource("4_edmgn")], [ExtResource("5_6vwkt")]]
+
+[node name="Terreno" type="Node3D"]
+
+[node name="HTerrain" type="Node3D" parent="."]
+script = ExtResource("1_b7ldt")
+_terrain_data = ExtResource("2_3l6i0")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_xn836")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null

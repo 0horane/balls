@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://cx62hokk7bi82"]
+
+[ext_resource type="Script" path="res://ObjectScenes/scripts/Liftable.gd" id="1_visyi"]
+[ext_resource type="ArrayMesh" uid="uid://y7lv2lp4mmhg" path="res://figuras/escenario/craneo/craneo.obj" id="2_fo05a"]
+[ext_resource type="Texture2D" uid="uid://die4r44q4mi25" path="res://figuras/escenario/craneo/Skull.jpg" id="3_5y1lu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ttm0g"]
+albedo_texture = ExtResource("3_5y1lu")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nfau0"]
+points = PackedVector3Array(-2.24338, 15.3217, -9.14338, -4.67847, -11.1744, 8.7311, 4.18536, -11.1744, 8.7311, -1.34413, -0.730999, -15.7692, 8.36107, 11.1942, 2.84711, -8.37525, 10.7414, 4.60305, 8.40091, 5.47553, -13.0684, -8.87819, -0.278606, -10.8644, -0.0124507, 4.14526, 11.7163, 6.98456, -8.83973, -0.136924, -6.24127, 10.3834, -13.5679, -1.35382, 14.4518, 6.05224, -7.47566, -8.83973, -0.136924, 9.31757, -1.37542, 4.53092, 6.63512, 13.4573, -8.64672, -9.76694, 10.7988, -4.21538, 5.28756, -3.80287, -11.714, 3.9872, 6.81978, -16.2241, -7.94186, 4.68591, 8.26344, 7.45076, 4.68591, 8.26344, 1.34005, -10.713, 11.9869, -9.28167, -0.708806, 3.7399, 4.87138, 15.2552, 2.88451, -5.39261, 15.3732, 1.5854, -6.21499, -2.93668, -13.0749, 9.7452, 9.03008, -3.32696, 8.79803, -0.701759, -8.60653, 4.83905, 11.203, 7.70594, -8.4959, 6.83779, -13.6082, 6.23621, -0.30001, -14.9443, -1.8072, -10.1976, 11.9204, 0.877318, 13.5045, -12.6844)
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
+max_contacts_reported = 20
+contact_monitor = true
+script = ExtResource("1_visyi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.028, 0, 0, 0, 0.0279854, -0.000902945, 0, 0.000902945, 0.0279854, 0, 0, 0.0475835)
+mesh = ExtResource("2_fo05a")
+surface_material_override/0 = SubResource("StandardMaterial3D_ttm0g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.028, 0, 0, 0, 0.0279854, -0.000902945, 0, 0.000902945, 0.0279854, 0, 0, 0.0475835)
+shape = SubResource("ConvexPolygonShape3D_nfau0")

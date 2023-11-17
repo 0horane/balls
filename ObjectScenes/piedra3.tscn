@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0ugwr3kb7olo"]
+
+[ext_resource type="Script" path="res://ObjectScenes/scripts/Liftable.gd" id="1_okq7b"]
+[ext_resource type="ArrayMesh" uid="uid://bh33rk18i6n4u" path="res://figuras/escenario/piedra3/rock_moss_set_01_1k.obj" id="2_12kam"]
+[ext_resource type="Texture2D" uid="uid://cc5hsip58iiw6" path="res://figuras/escenario/piedra3/textures/rock_moss_set_01_diff_1k.jpg" id="3_12byq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khpys"]
+albedo_texture = ExtResource("3_12byq")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ui1ux"]
+points = PackedVector3Array(2.13612, -0.180037, -1.09643, 2.61771, -0.212765, -3.12316, 2.62256, -0.176787, -3.11142, 4.03569, -0.148735, -1.31909, 2.31062, 0.67767, -2.03014, 3.91036, 0.640721, -2.06217, 3.53843, -0.36063, -2.56371, 2.09925, -0.394001, -1.65717, 3.70367, 0.0143085, -2.91932, 2.07983, -0.081783, -2.66656, 2.1293, 0.360262, -1.499, 3.54377, -0.39774, -1.55409, 2.69852, 0.448265, -2.55387, 2.00597, 0.527581, -1.89968, 2.24818, 0.23588, -2.7235, 2.25206, -0.360485, -2.46936, 4.02652, 0.52455, -1.90133, 2.00615, -0.244809, -1.22382, 2.26657, -0.126269, -1.05495, 3.63812, -0.207088, -2.94826, 2.03525, -0.278465, -2.51227, 3.5003, 0.636219, -2.24783, 3.4538, -0.276079, -1.22567, 3.47827, 0.078303, -2.94551, 2.45013, 0.634956, -1.84673, 3.96077, -0.273076, -1.42334, 4.05393, 0.0142413, -1.61607, 3.13248, -0.243946, -3.12063, 3.92621, 0.490912, -2.31533, 2.53043, 0.0465272, -2.97839, 2.23408, -0.115264, -2.9591, 2.56087, -0.334046, -2.82181)
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.100209, 0)
+max_contacts_reported = 20
+contact_monitor = true
+script = ExtResource("1_okq7b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.398, 0, 0, 0, -1.73971e-08, 0.398, 0, -0.398, -1.73971e-08, -1.16321, 0.926263, 0.0475835)
+mesh = ExtResource("2_12kam")
+surface_material_override/0 = SubResource("StandardMaterial3D_khpys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.398, 0, 0, 0, -1.73971e-08, 0.398, 0, -0.398, -1.73971e-08, -1.16321, 0.926263, 0.0475835)
+shape = SubResource("ConvexPolygonShape3D_ui1ux")

@@ -1,27 +1,52 @@
 extends RigidBody3D
 
+var health: int = 100
 
+#### Variables para física	
 const SPEED := 600.0
 const JUMP_VELOCITY := 4.5
 const USE_SIMPLIFIED_COLLISION_MESH := true
-const MINIMUM_ABSORBTION_RATIO:float=0.25
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-var size :float = 1
-var realRotation:float = 0
-var movementRotation:float = 0
+#### variables para Absorcion
+const MINIMUM_ABSORBTION_RATIO:float = 1.0/3**3
+const MINIMUM_PLAYER_ABSORBTION_RATIO:float=0.75
+var size :float = 1000
+@onready var volume :float = 4.0/3*PI*$MeshInstance3D.mesh.radius**3
 var lifted_object_map := {} # aactualmente mapea Body->Collisionshape. Actualizar si algo se cambia
 var mesh:=ArrayMesh.new()
+
+#var target_player:= Player 
+
+#### Variables para el sistema de armas
+#var can_shoot := false
+#var shots_fired := 0
+#var max_shots := 10
+#var current_weapon: Weapon
+#var glock: Weapon  # Referencia a la Glock
+#var subfusil: Weapon  # Referencia al Subfusil
+
+# No se para que era esto. puede que para que tenga mas gravedad la esfera que otros cuerpos?
+
+
+#### variables para camara
+var realRotation:float = 0
+var movementRotation:float = 0
+
+#### Variables para multijuagdor
+var syncPos:Vector3
+var syncRot:Quaternion
+var username = ""
 
 
 var linear_velocity_before_collision := linear_velocity
 
 func _ready():
+	gravity_scale=70/ProjectSettings.get_setting("physics/3d/default_gravity")
 	contact_monitor=true
 	max_contacts_reported=9999
-	
+	$Label3D.text = username
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, $MeshInstance3D.get_mesh().get_mesh_arrays())
+	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 
 
 
@@ -29,13 +54,27 @@ func is_on_floor():
 	return true #TODO
 
 func _physics_process(delta):
+	if not $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		global_position = lerp(global_position, syncPos, 0.5)
+		var newRot:=Quaternion(transform.basis).slerp(syncRot, 0.5)
+		transform.basis = Basis(newRot)
+
+		return
 	
+	syncPos = global_position
+	syncRot = Quaternion(transform.basis)
+		
 	if linear_velocity.y>5:
 		linear_velocity.y=5
 	
 	linear_velocity_before_collision=linear_velocity # to prevent collisions from causing jumps TODO rename
 	
-
+	if Input.is_action_pressed("kill_self_debug"):
+		on_death()
+	
+	#$Label3D.global_position = global_position
+	$Label3D.global_rotation += Vector3.ZERO 	
+	$Label3D.position.y =  (volume/4.0*3/PI)**(1.0/3)*1.8
 	
 
 	# Calculates the rotation of the ball's movement relative to the z axis, 
@@ -57,7 +96,7 @@ func _physics_process(delta):
 
 	
 	var direction := Vector3(-input_dir.y, 0, input_dir.x).normalized()
-	direction += Vector3(accelerometerValue.y/5, 0 ,  accelerometerValue.x/5) #accelerometerValue.y
+	direction += Vector3(accelerometerValue.y/8 + (PI/2.5 if accelerometerValue.y else 0), 0 ,  accelerometerValue.x/8 ) #accelerometerValue.y
 
 	if direction:
 		# the possibilites here is to 
@@ -69,7 +108,7 @@ func _physics_process(delta):
 		# The second one is currently being used, some previous ones are in git history
 		
 		#the current method
-		angular_velocity = direction.rotated(Vector3(0,1,0),movementRotation) * SPEED*delta
+		angular_velocity = direction.rotated(Vector3(0,1,0),movementRotation) * SPEED*delta  *  1/pow(3*volume/(4*PI), 1/3.0)/2 # is this even teh right formula
 	else:
 		angular_velocity.x = move_toward(angular_velocity.x, 0, SPEED/100*delta)
 		angular_velocity.z = move_toward(angular_velocity.z, 0, SPEED/100*delta)
@@ -80,10 +119,8 @@ func _physics_process(delta):
 
 
 # Lo que faltaria hacer:
-# - Mejorar la camara que se mueve mucho
 # - Cambiar la manera que se hace el scale de los vectores para considerar 3 dimensiones/rotacion
 #   (por ahora conviene no rotar y solo escalar proporcionalmente)
-# - usar proyección de vector sobre el mas cercano en evz de reemplazarlo
 # - Usar mas que un punto, tipo encontrar 8 4 que queden por dentro y usar esos
 # - uso de centroide, rotando el negativo de  como indicaría aca:
 #   https://www.euclideanspace.com/maths/geometry/rotations/conversions/eulerToAngle/index.htm
@@ -91,19 +128,24 @@ func _physics_process(delta):
 # - Evitar que esfera solo crezca en una dirección
 
 func _on_body_entered(body):
-	#print("body entered: ", body)
-	if "size" in body and size*MINIMUM_ABSORBTION_RATIO>body.size:
+	if body.is_in_group("balls") && volume*MINIMUM_PLAYER_ABSORBTION_RATIO>body.volume:
+		body.on_death()
+		linear_velocity = linear_velocity_before_collision
+		return
+	
+	if "size" in body and volume*MINIMUM_ABSORBTION_RATIO>GameManager.find_body_volume(body):
 		var parent = body.get_parent()
-
 		if parent && parent!=self:
 			absorb_body(body)
+			linear_velocity = linear_velocity_before_collision
 			
 
 # Notas: de mis pruebas en el juego original, el hitbox del katamri se desforma solo en approx. el 
 # centro del objeto original (en objetos largos era mas hacia la punta). Ademas, parece que el 
 # hitbox de contacto en el piso y objetos grandes es mayor al hitbox que alica para levantar  
 # objetos, que es mas chica. Lo que #TODO habría que hacer seria que el objeto solo sea levantado 
-# despues de ciero volumen de intersección, pero sería bastante complicado.   
+# despues de ciero volumen de intersección, pero sería bastante complicado.  
+@rpc("any_peer", "call_local" )
 func absorb_body(body):
 	var pos=body.global_position
 	var rot=body.global_rotation
@@ -114,27 +156,36 @@ func absorb_body(body):
 	add_child(body)
 	body.add_to_parent(pos, rot)
 	
-	# esto es bastante arbitario e impreciso con cambios de tamaño. Hay que ver o de usar size^3 
-	# como fuente del volumen, o si no intentar calcular el volumen, ya sea 1) usando tetraedros 
-	# desde el centroide hasta los vertices (medio lento pero muy preciso, mejor solución
-	# si tenemos la lista de triangulos en vez de vertices), 2) usando voxeles y un arbol octal de profunidad
-	# variable donde se marcan y luego miden las intersecciones de cada vector, 3) tomar los 8 esquinas
-	# de un cubo, encontrar el punto con un angulo mas similar, y calcular el volumen del cuboide 
-	# rectangular con puntas opuestas en el centro y en ese punto, y sumar cada una 
-	change_size(body.size/12)
-	
-	
 	# removes child object hitbox
 	# child collisionObject will have to be regenerated or added from lifted_object_map
 	var body_collision_shape : CollisionShape3D = body.get_node("CollisionShape3D")
 	lifted_object_map[body] = body_collision_shape
 	body.remove_child(body_collision_shape)
 	
-	# child centroid. as seen by the code, im not actually bothering to calcuate the centroid. explained later
-	var centroid := get_centroid(body.get_node("MeshInstance3D").get_mesh().get_faces(), body.size*scale_to_factor(body.get_node("MeshInstance3D").scale))
+	
+	
+	call_deferred("morph_shape", body)
+	call_deferred("change_size", body)
+
+	print(volume)
+	
+		
+	
+
+
+
+func change_size(body: Node3D):
+	size+=body.size/12
+	print(volume," ", GameManager.find_body_volume(body))
+	#print(body.size)
+	volume += GameManager.find_body_volume(body)
+
+	#volume=get_mesh_volume(mesh)
+	
+
+func morph_shape(body):
+	# child centroid. as seen by the code, im not actually bothering to calcuate the centroid. 
 	var object_centroid_from_player_center:Vector3 = body.position
-	
-	
 
 	# this section modifies the mesh to extend the best aligned point to the centroid and set its
 	# Position there. This is enough when a conevex mesh is then generated by the engine. 
@@ -146,14 +197,11 @@ func absorb_body(body):
 	# also, the vulkan renderer is not compatible with meshdatatool on android, due to a bug in 
 	# godot. the first bug i've encuntered so far. https://github.com/godotengine/godot/issues/75599
 	# everything must be set to a gl_compatibility renderer because of this
-	
-	
 	var mdt := MeshDataTool.new()
-	print(mesh)
 	mdt.create_from_surface(mesh, 0)
 	var closest_aligned_vertex:= 0
 	var closest_angle:float=999
-	
+
 	# the way this has to check the angle of every part of the mesh is incredibly inefficient. we 
 	# should either offload this to another thread or reduce the vertex count of the sphere mesh.
 	# ideally both. the second is already done.
@@ -163,45 +211,43 @@ func absorb_body(body):
 		if current_angle < closest_angle:
 			closest_angle = current_angle
 			closest_aligned_vertex = i
-	mdt.set_vertex(closest_aligned_vertex, object_centroid_from_player_center)
+	mdt.set_vertex(closest_aligned_vertex, object_centroid_from_player_center.project(mdt.get_vertex(closest_aligned_vertex)))
 	mesh.clear_surfaces()
 	mdt.commit_to_surface(mesh)
 	# idk if we should be using the same mesh for calculations or a separate one
 	# var mi = MeshInstance.new()
 	# mi.mesh = mesh
+
 	$MeshInstance3D.set_mesh(mesh)
 	$MeshInstance3D.create_convex_collision(true, USE_SIMPLIFIED_COLLISION_MESH)
 	var new_collison_shape :Shape3D = $MeshInstance3D.find_child("CollisionShape3D").shape
 	$CollisionShape3D.shape = new_collison_shape
 	$MeshInstance3D.remove_child($MeshInstance3D.get_child(0))
-
 	#TODO queue_free, leak de memoria
 	
 	
 	
 
-	
-	
 
-# Esto no calcula verdadermante al centroide. habría que multiplicar cada uno por el area de los 
-# triangulos vecinos, para que sea mucho mas preciso, ya que hay objetos con ams vertices en un lado
-# que en otro. Mas simple que usar este método es centrar bien el objeto a ojo en la escena
-func get_centroid(vertexList: PackedVector3Array, scale:float) -> Vector3:
-	var avg:=Vector3.ZERO
-	for vertex in vertexList:
-		avg+=vertex
-	return avg*scale/len(vertexList)
-	
-		
-	
-	
+@rpc("any_peer", "call_local" )
+func on_death():
+	for child in get_children():
+		if "size" in child:
+			var pos = child.global_position
+			var rot = child.global_rotation
+			var vel = child.global_position - global_position
+			remove_child(child)
+			get_parent().add_child(child)
+			child.call_deferred("remove_from_parent", pos, rot, lifted_object_map[child], vel)
+			
+	queue_free()
+			
 
-func change_size(addedsize):
-	size+=addedsize
-	#$CollisionShape3D.shape.radius=size/2
-	
-func scale_to_factor(scale:Vector3) -> float:
-	# this is terrible and ideally i should be multiplying the scaled mesh vectors by whichever corresponds 
-	# according to direction. it might be worth doing, depends #TODO
-	return (scale.x + scale.y + scale.z) 
+
+
+
+func take_damage(amount:int):
+	health-=amount
+	if health<0:
+		on_death()
 

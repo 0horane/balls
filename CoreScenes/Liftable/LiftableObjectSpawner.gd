@@ -1,8 +1,33 @@
 @tool
 extends Marker3D
-@export var size:float=1
+@export var sin_gravedad := false
+@export var anti_vibracion := false
+@export var size:float:
+	get:
+		return sizestore 
+	set(value):
+		sizestore = value
+		if is_instance_valid(chair_instance) || Engine.is_editor_hint():
+			queue_free_chair()
+			spawn_chair()
+		
+var sizestore:float=1
+var spawncount:=0
 
-@export var chair_scene : PackedScene = preload("res://ObjectScenes/chair.tscn")
+
+
+@export var chair_scene : PackedScene:
+	get:
+		return chair_scene_store 
+	set(value):
+		chair_scene_store = value
+		if is_instance_valid(chair_instance) || Engine.is_editor_hint():
+			queue_free_chair()
+			spawn_chair()
+
+var chair_scene_store : PackedScene = preload("res://ObjectScenes/chair.tscn")
+
+
 var chair_instance : Node3D
 var spawn_timer : Timer
 var check_timer : Timer
@@ -14,6 +39,7 @@ func _ready():
 		spawn_timer = Timer.new()
 		check_timer = Timer.new()
 		setup_timers()
+	queue_free_chair()
 	spawn_chair()
 	
 	
@@ -33,13 +59,23 @@ func setup_timers():
 	
 	check_timer.start()
 	
-func spawn_chair():
+func spawn_chair(newspawn:bool=false):
 	if chair_scene:
 		chair_instance = chair_scene.instantiate()
+		chair_instance.name = name+"_"+str(spawncount)
+
+		
+		if newspawn:
+			anti_vibracion = chair_instance.anti_vibracion 
+			sin_gravedad = chair_instance.sin_gravedad 
+			size = chair_instance.size
+		chair_instance.anti_vibracion = anti_vibracion
+		chair_instance.sin_gravedad = sin_gravedad
 		chair_instance.size = size
 		add_child(chair_instance)
 		chair_instance.position = Vector3.ZERO
 		chair_instance.rotation = Vector3.ZERO
+		spawncount+=1
 
 
 func _on_spawn_timer_timeout():
@@ -64,7 +100,6 @@ func _on_check_timer_timeout():
 	var player_found = false
 	while current_node:
 		if player_group in current_node.get_groups():
-			print(current_node.get_groups())
 			player_found = true
 			break
 		current_node = current_node.get_parent()
@@ -84,5 +119,5 @@ func respawn():
 	spawn_timer.start()
 
 func queue_free_chair():
-	if chair_instance && is_instance_valid(chair_instance):
+	if chair_instance && chair_instance.has_method("queue_free"):
 		chair_instance.queue_free()

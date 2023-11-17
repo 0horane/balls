@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://gg84b7rq5ch2"
+path="res://.godot/imported/island_tree_01_1k.obj-aa696e918577e1034c3d0e9083e04b7f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/island_tree_01_1k.obj-aa696e918577e1034c3d0e9083e04b7f.mesh"]
+
+source_file="res://figuras/escenario/arbol1/island_tree_01_1k.obj"
+dest_files=["res://.godot/imported/island_tree_01_1k.obj-aa696e918577e1034c3d0e9083e04b7f.mesh", "res://.godot/imported/island_tree_01_1k.obj-aa696e918577e1034c3d0e9083e04b7f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
