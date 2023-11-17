@@ -25,6 +25,8 @@ func _ready():
 	if sin_gravedad:
 		gravity_scale=0
 		freeze=true
+	else: 
+		pass#gravity_scale=ProjectSettings.get_setting("physics/3d/default_gravity")
 	
 
 
@@ -32,7 +34,7 @@ func _ready():
 
 func _process(delta):
 
-			
+	
 		
 		
 	if Engine.is_editor_hint():

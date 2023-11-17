@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://betinjxibra4m"]
 
-[ext_resource type="Script" path="res://ObjectScenes/armas.gd" id="1_kkh4p"]
+[ext_resource type="Script" path="res://ObjectScenes/scripts/armas.gd" id="1_va8nb"]
 [ext_resource type="ArrayMesh" uid="uid://d1uet5fuy76jh" path="res://figuras/escenario/gun1/gun1.obj" id="2_2oo3d"]
 [ext_resource type="Texture2D" uid="uid://cm8m4didnhwau" path="res://figuras/escenario/gun1/textures/M1A1_Thompson_Albedo.png" id="3_ymnfc"]
 
@@ -13,7 +13,7 @@ points = PackedVector3Array(1.205, 1.68415, 20.3905, -0.757, -8.7787, -21.4655, 
 [node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
 max_contacts_reported = 20
 contact_monitor = true
-script = ExtResource("1_kkh4p")
+script = ExtResource("1_va8nb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.048, 0, 0, 0, 0.048, 0, 0, 0, 0.048, 0.01468, 0, 0.0475835)

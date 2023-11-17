@@ -59,14 +59,19 @@ func setup_timers():
 	
 	check_timer.start()
 	
-func spawn_chair():
+func spawn_chair(newspawn:bool=false):
 	if chair_scene:
 		chair_instance = chair_scene.instantiate()
 		chair_instance.name = name+"_"+str(spawncount)
 
-		chair_instance.size = size
+		
+		if newspawn:
+			anti_vibracion = chair_instance.anti_vibracion 
+			sin_gravedad = chair_instance.sin_gravedad 
+			size = chair_instance.size
 		chair_instance.anti_vibracion = anti_vibracion
 		chair_instance.sin_gravedad = sin_gravedad
+		chair_instance.size = size
 		add_child(chair_instance)
 		chair_instance.position = Vector3.ZERO
 		chair_instance.rotation = Vector3.ZERO

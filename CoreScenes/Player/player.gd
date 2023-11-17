@@ -8,7 +8,7 @@ const JUMP_VELOCITY := 4.5
 const USE_SIMPLIFIED_COLLISION_MESH := true
 
 #### variables para Absorcion
-const MINIMUM_ABSORBTION_RATIO:float = 1.0/2**3
+const MINIMUM_ABSORBTION_RATIO:float = 1.0/3**3
 const MINIMUM_PLAYER_ABSORBTION_RATIO:float=0.75
 var size :float = 1000
 @onready var volume :float = 4.0/3*PI*$MeshInstance3D.mesh.radius**3
@@ -119,10 +119,8 @@ func _physics_process(delta):
 
 
 # Lo que faltaria hacer:
-# - Mejorar la camara que se mueve mucho
 # - Cambiar la manera que se hace el scale de los vectores para considerar 3 dimensiones/rotacion
 #   (por ahora conviene no rotar y solo escalar proporcionalmente)
-# - usar proyección de vector sobre el mas cercano en evz de reemplazarlo
 # - Usar mas que un punto, tipo encontrar 8 4 que queden por dentro y usar esos
 # - uso de centroide, rotando el negativo de  como indicaría aca:
 #   https://www.euclideanspace.com/maths/geometry/rotations/conversions/eulerToAngle/index.htm
@@ -130,16 +128,16 @@ func _physics_process(delta):
 # - Evitar que esfera solo crezca en una dirección
 
 func _on_body_entered(body):
-	#if body.is_in_group("balls") && size*MINIMUM_PLAYER_ABSORBTION_RATIO>body.size:
 	if body.is_in_group("balls") && volume*MINIMUM_PLAYER_ABSORBTION_RATIO>body.volume:
 		body.on_death()
+		linear_velocity = linear_velocity_before_collision
 		return
 	
 	if "size" in body and volume*MINIMUM_ABSORBTION_RATIO>find_body_volume(body):
 		var parent = body.get_parent()
-
 		if parent && parent!=self:
 			absorb_body(body)
+			linear_velocity = linear_velocity_before_collision
 			
 
 # Notas: de mis pruebas en el juego original, el hitbox del katamri se desforma solo en approx. el 
@@ -164,8 +162,36 @@ func absorb_body(body):
 	lifted_object_map[body] = body_collision_shape
 	body.remove_child(body_collision_shape)
 	
-	# child centroid. as seen by the code, im not actually bothering to calcuate the centroid. explained later
-	var centroid := get_centroid(body.get_node("MeshInstance3D").get_mesh().get_faces(), body.size*scale_to_factor(body.get_node("MeshInstance3D").scale))
+	
+	
+	call_deferred("morph_shape", body)
+	call_deferred("change_size", body)
+
+	print(volume)
+	
+		
+	
+func find_body_volume(body:Node3D) -> float:
+	if body.volume!=0:
+		return body.volume
+	else:
+		var bodymeshinstance:MeshInstance3D = body.get_node("MeshInstance3D")
+		var scalebasis := bodymeshinstance.scale
+		body.volume = get_mesh_volume(bodymeshinstance.mesh)*scalebasis.x*scalebasis.y*scalebasis.z
+		return body.volume
+
+
+func change_size(body: Node3D):
+	size+=body.size/12
+	print(volume," ", find_body_volume(body))
+	#print(body.size)
+	volume += find_body_volume(body)
+
+	#volume=get_mesh_volume(mesh)
+	
+
+func morph_shape(body):
+	# child centroid. as seen by the code, im not actually bothering to calcuate the centroid. 
 	var object_centroid_from_player_center:Vector3 = body.position
 
 	# this section modifies the mesh to extend the best aligned point to the centroid and set its
@@ -205,62 +231,8 @@ func absorb_body(body):
 	$MeshInstance3D.remove_child($MeshInstance3D.get_child(0))
 	#TODO queue_free, leak de memoria
 	
-	# esto es bastante arbitario e impreciso con cambios de tamaño. Hay que ver o de usar size^3 
-	# como fuente del volumen, o si no intentar calcular el volumen, ya sea 1) usando tetraedros 
-	# desde el centroide hasta los vertices (medio lento pero muy preciso, mejor solución
-	# si tenemos la lista de triangulos en vez de vertices), 2) usando voxeles y un arbol octal de profunidad
-	# variable donde se marcan y luego miden las intersecciones de cada vector, 3) tomar los 8 esquinas
-	# de un cubo, encontrar el punto con un angulo mas similar, y calcular el volumen del cuboide 
-	# rectangular con puntas opuestas en el centro y en ese punto, y sumar cada una 
-	var vol = volume
-	change_size(body)
-	print(volume)
-
 	
 	
-	
-
-	
-	
-
-# Esto no calcula verdadermante al centroide. habría que multiplicar cada uno por el area de los 
-# triangulos vecinos, para que sea mucho mas preciso, ya que hay objetos con ams vertices en un lado
-# que en otro. Mas simple que usar este método es centrar bien el objeto a ojo en la escena
-func get_centroid(vertexList: PackedVector3Array, scale:float) -> Vector3:
-	var avg:=Vector3.ZERO
-	for vertex in vertexList:
-		avg+=vertex
-	return avg*scale/len(vertexList)
-	
-		
-	
-func find_body_volume(body:Node3D) -> float:
-	if body.volume!=0:
-		return body.volume
-	else:
-		var bodymeshinstance:MeshInstance3D = body.get_node("MeshInstance3D")
-		var scalebasis := bodymeshinstance.scale
-		body.volume = get_mesh_volume(bodymeshinstance.mesh)*scalebasis.x*scalebasis.y*scalebasis.z
-		return body.volume
-
-
-func change_size(body: Node3D):
-	size+=body.size/12
-	print(volume," ", find_body_volume(body))
-	#print(body.size)
-	volume += find_body_volume(body)
-
-	#volume=get_mesh_volume(mesh)
-	
-
-	
-	
-	
-	
-func scale_to_factor(scale:Vector3) -> float:
-	# this is terrible and ideally i should be multiplying the scaled mesh vectors by whichever corresponds 
-	# according to direction. it might be worth doing, depends #TODO
-	return (scale.x + scale.y + scale.z) 
 
 
 @rpc("any_peer", "call_local" )

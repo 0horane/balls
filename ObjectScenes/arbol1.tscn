@@ -74,7 +74,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.357302, 0)
 gravity_scale = 0.0
 max_contacts_reported = 20
 contact_monitor = true
+freeze = true
 script = ExtResource("1_7wgeh")
+sin_gravedad = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.588, 0, 0, 0, 0.588, 0, 0, 0, 0.588, 0, -0.546427, 0.0475835)
