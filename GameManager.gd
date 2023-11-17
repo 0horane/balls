@@ -35,14 +35,13 @@ func add_body_to_vol_queue(body:Node3D):
 
 static func find_body_volume(body:Node3D) -> float:
 	if body.volume!=0:
-		print("hit")
 		return body.volume
 	else:
-		print("mi9ss")
 		return calc_body_volume(body, body.get_node("MeshInstance3D"), body.get_node("MeshInstance3D").scale)
 		
 static func calc_body_volume(body:Node3D, bodymeshinstance: MeshInstance3D, scalebasis:Vector3):
 	body.volume = get_mesh_volume(bodymeshinstance.mesh)*scalebasis.x*scalebasis.y*scalebasis.z
+	body.mass = body.volume*10
 	return body.volume
 		
 # https://github.com/godotengine/godot-proposals/issues/2293#issuecomment-779374733
