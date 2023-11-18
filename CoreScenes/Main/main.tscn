@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ctjhgbe7lv625"]
+[gd_scene load_steps=44 format=3 uid="uid://ctjhgbe7lv625"]
 
 [ext_resource type="Script" path="res://CoreScenes/Main/SceneManager.gd" id="1_xo2q1"]
 [ext_resource type="Texture2D" uid="uid://bexol24inxyjb" path="res://Joe_Biden_presidential_portrait.jpg" id="2_u3ikh"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://rlmc5wte2jpe" path="res://ObjectScenes/silla2.tscn" id="18_8whbr"]
 [ext_resource type="PackedScene" uid="uid://bcaiyqbwg6v20" path="res://ObjectScenes/chair.tscn" id="19_t2hym"]
 [ext_resource type="PackedScene" uid="uid://dbqm7rwijbgoh" path="res://ObjectScenes/terreno.tscn" id="20_se67r"]
+[ext_resource type="Texture2D" uid="uid://cq22og4jilpkc" path="res://1517788487669.jpeg" id="33_np2of"]
 [ext_resource type="Shader" path="res://shader-bordes/main.gdshader" id="33_sy8ko"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kjjv"]
@@ -44,6 +45,10 @@ albedo_texture = ExtResource("2_u3ikh")
 size = Vector3(250, 2, 250)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fxqy7"]
+sky_top_color = Color(0, 0.454902, 0.803922, 1)
+sky_horizon_color = Color(0.388235, 0.717647, 0.741176, 1)
+sky_curve = 0.117688
+sky_cover = ExtResource("33_np2of")
 
 [sub_resource type="Sky" id="Sky_d4kom"]
 sky_material = SubResource("ProceduralSkyMaterial_fxqy7")
@@ -1652,6 +1657,7 @@ chair_scene = ExtResource("6_ovi30")
 transform = Transform3D(-0.115084, 0.0576919, -0.991679, 0.0268656, 0.998128, 0.0549493, 0.992992, -0.0203183, -0.116419, 169.335, -0.654066, -115.499)
 max_living_spawns = 5
 chair_scene = ExtResource("6_ovi30")
+
 [node name="Caja17" parent="." instance=ExtResource("5_k0rdg")]
 transform = Transform3D(0.194783, 0.00801185, 0.980814, 0.10828, 0.993679, -0.0296206, -0.974851, 0.111972, 0.192685, -30.5195, -4.32304, 76.6087)
 max_living_spawns = 5
