@@ -76,6 +76,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.1891, -39.5205, -30.0503)
 shape = SubResource("BoxShape3D_6kjjv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TemporaryGround"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.41544, 3.52545, -12.1053)
 material_override = SubResource("StandardMaterial3D_vmo7x")
 mesh = SubResource("BoxMesh_8p3s3")
 skeleton = NodePath("../CollisionShape3D")
@@ -137,7 +138,7 @@ size = 2.0
 chair_scene = ExtResource("6_ovi30")
 
 [node name="Bicicleta" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(1, 0, 0, 0, 0.417978, 0.908457, 0, -0.908457, 0.417978, -76.0301, -2.76898, -59.2154)
+transform = Transform3D(1, 0, 0, 0, 0.417978, 0.908457, 0, -0.908457, 0.417978, -74.3991, -2.76898, -63.7952)
 max_living_spawns = 5
 size = 2.0
 chair_scene = ExtResource("7_gayc8")
@@ -1651,3 +1652,146 @@ chair_scene = ExtResource("6_ovi30")
 transform = Transform3D(-0.115084, 0.0576919, -0.991679, 0.0268656, 0.998128, 0.0549493, 0.992992, -0.0203183, -0.116419, 169.335, -0.654066, -115.499)
 max_living_spawns = 5
 chair_scene = ExtResource("6_ovi30")
+[node name="Caja17" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.194783, 0.00801185, 0.980814, 0.10828, 0.993679, -0.0296206, -0.974851, 0.111972, 0.192685, -30.5195, -4.32304, 76.6087)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja18" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.195639, -0.0195141, 0.980482, 0.191034, 0.981407, -0.0185852, -0.96189, 0.190942, 0.195729, -32.5631, -4.37365, 76.5653)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja19" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.195639, -0.0195141, 0.980482, 0.191034, 0.981407, -0.0185852, -0.96189, 0.190942, 0.195729, -34.4365, -4.25739, 76.4564)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja20" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.195639, -0.0195141, 0.980482, 0.191034, 0.981407, -0.0185852, -0.96189, 0.190942, 0.195729, -37.0327, -4.12865, 76.4042)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja21" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.205413, 0.0249658, 0.978357, 0.196662, 0.97823, -0.0662533, -0.958712, 0.206015, 0.196032, -31.5194, -3.24091, 76.7717)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja22" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.195639, -0.0195141, 0.980482, 0.191034, 0.981407, -0.0185852, -0.96189, 0.190942, 0.195729, -33.5329, -3.15791, 76.6205)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja23" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.19271, 0.0166944, 0.981114, 0.0599853, 0.997785, -0.0287604, -0.97942, 0.0643949, 0.191282, -34.0207, -1.9927, 76.7799)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja24" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.197842, 0.0767199, 0.977227, 0.06813, 0.993445, -0.0917863, -0.977863, 0.0847377, 0.191319, -33.019, -0.885184, 76.631)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja25" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.197842, 0.0767199, 0.977227, 0.06813, 0.993445, -0.0917863, -0.977863, 0.0847377, 0.191319, -35.5785, -3.01306, 76.2762)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja26" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.197842, 0.0767199, 0.977227, 0.06813, 0.993445, -0.0917863, -0.977863, 0.0847377, 0.191319, -35.5785, -3.01306, 76.2762)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja27" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.197842, 0.0767199, 0.977227, 0.06813, 0.993445, -0.0917863, -0.977863, 0.0847377, 0.191319, -35.5785, -3.01306, 76.2762)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja28" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.197842, 0.0767199, 0.977227, 0.06813, 0.993445, -0.0917863, -0.977863, 0.0847377, 0.191319, -32.0988, -2.07228, 76.7806)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja29" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.0668238, 0.0225263, 0.99751, 0.212245, 0.977186, -0.00784872, -0.974928, 0.211193, -0.0700801, -135.795, 2.27984, 119.827)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja30" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.063821, 0.0166476, 0.997822, 0.293274, 0.956025, 0.00280767, -0.953895, 0.292815, -0.0658963, -137.778, 2.14906, 120.305)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja31" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.063821, 0.0166476, 0.997822, 0.293274, 0.956025, 0.00280767, -0.953895, 0.292815, -0.0658963, -139.617, 2.19774, 120.694)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja32" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.063821, 0.0166476, 0.997822, 0.293274, 0.956025, 0.00280767, -0.953895, 0.292815, -0.0658963, -142.139, 2.22323, 121.324)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja33" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.0536389, 0.0635574, 0.996535, 0.29896, 0.953218, -0.0447031, -0.952757, 0.295527, -0.0701302, -136.733, 3.29811, 120.355)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja34" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.063821, 0.0166476, 0.997822, 0.293274, 0.956025, 0.00280767, -0.953895, 0.292815, -0.0658963, -138.718, 3.31208, 120.736)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja35" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(0.0245661, 0.00283515, 0.999694, 0.164596, 0.986337, -0.00684216, -0.986054, 0.164714, 0.0237651, -139.167, 4.43456, 121.129)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja36" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.0436313, 0.0782962, 0.995975, 0.172753, 0.982498, -0.0696689, -0.983998, 0.169018, -0.0563935, -138.249, 5.59196, 120.865)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja37" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.064075, 0.0817925, 0.994588, 0.172753, 0.982498, -0.0696689, -0.982879, 0.167354, -0.0770831, -140.785, 3.40536, 120.946)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja38" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.064075, 0.0817925, 0.994588, 0.172753, 0.982498, -0.0696689, -0.982879, 0.167354, -0.0770831, -140.785, 3.40536, 120.946)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja39" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.064075, 0.0817925, 0.994588, 0.172753, 0.982498, -0.0696689, -0.982879, 0.167354, -0.0770831, -140.785, 3.40536, 120.946)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
+
+[node name="Caja40" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(-0.0640746, 0.0817924, 0.994587, 0.172753, 0.982498, -0.0696689, -0.982879, 0.167354, -0.0770831, -137.307, 4.43507, 120.52)
+max_living_spawns = 5
+size = 3.0
+chair_scene = ExtResource("6_gbfgx")
