@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-var SPEED: float = 10.0  # Velocidad de la bala
+var SPEED: float = 20.0  # Velocidad de la bala
 var DAMAGE: int = 20  # Velocidad de la bala
 var BULLET_LIFETIME: float = 5.0  # Tiempo de vida de la bala en segundos
 var DADDY: Node3D
@@ -28,6 +28,8 @@ func _on_bullet_timeout():
 
 
 func _on_body_entered(body):
+	if "DADDY" in body and body.DADDY == DADDY:
+		return
 	if "health" in body:
 		if body!=DADDY:
 			body.take_damage(DAMAGE)

@@ -3,12 +3,12 @@ extends RigidBody3D
 var health: int = 100
 
 #### Variables para física	
-const SPEED := 600.0
+const SPEED := 1000.0
 const JUMP_VELOCITY := 4.5
 const USE_SIMPLIFIED_COLLISION_MESH := true
 
 #### variables para Absorcion
-const MINIMUM_ABSORBTION_RATIO:float = 1.0/3**3
+const MINIMUM_ABSORBTION_RATIO:float = 1.0/2**3
 const MINIMUM_PLAYER_ABSORBTION_RATIO:float=0.75
 var size :float = 1000
 @onready var volume :float = 4.0/3*PI*$MeshInstance3D.mesh.radius**3

@@ -20,29 +20,31 @@ var randomcolorGropus = [
 ]
 
 var scenelist1 = [
-	"res://ObjectScenes/chair.tscn", 
-	"res://ObjectScenes/arbol1.tscn",
-	"res://ObjectScenes/arbol2.tscn",
-	"res://ObjectScenes/basura.tscn",
+	#"res://ObjectScenes/chair.tscn", 
+	#"res://ObjectScenes/arbol1.tscn",
+	#"res://ObjectScenes/arbol2.tscn",
+	#"res://ObjectScenes/basura.tscn",
 	"res://ObjectScenes/chair.tscn",
 	"res://ObjectScenes/craneo.tscn",
 	"res://ObjectScenes/gato.tscn",
 	"res://ObjectScenes/gnomo.tscn",
-	#"res://ObjectScenes/gun1.tscn",
-	#"res://ObjectScenes/gun2.tscn",
-	"res://ObjectScenes/lamparota.tscn",
+	"res://ObjectScenes/gun1.tscn",
+	"res://ObjectScenes/gun2.tscn",
+	#"res://ObjectScenes/lamparota.tscn",
 	"res://ObjectScenes/mesa.tscn",
 	"res://ObjectScenes/piedra1.tscn",
 	"res://ObjectScenes/piedra2.tscn",
 	"res://ObjectScenes/piedra3.tscn",
 	"res://ObjectScenes/piedra4.tscn",
-	"res://ObjectScenes/silla2.tscn",
+	#"res://ObjectScenes/silla2.tscn",
 	"res://ObjectScenes/rama3.tscn",
 	"res://ObjectScenes/rama2.tscn",
 	"res://ObjectScenes/rama1.tscn",
-	"res://ObjectScenes/planta.tscn",
+	#"res://ObjectScenes/planta.tscn",
 	"res://ObjectScenes/piedra6.tscn",
 	"res://ObjectScenes/piedra5.tscn",
+	"res://ObjectScenes/bicicleta.tscn",
+	#"res://ObjectScenes/auto.tscn",
 ]
 var scenelist2 = [
 	"res://ObjectScenes/piedra1.tscn",
@@ -165,7 +167,7 @@ func _on_play_button_down():
 						
 					}, 
 					"setAfterAdding": {
-						"global_position": Vector3(randf_range(-200, 200), 5,randf_range(-200, 200)),
+						"global_position": Vector3(randfn(0, 100*size), 5,randfn(0, 100*size)), 
 						"global_rotation": Vector3(0, randf_range(0, 2*PI),0),
 						"mass": size**3 *1000
 					} 

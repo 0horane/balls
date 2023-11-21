@@ -1801,3 +1801,9 @@ transform = Transform3D(-0.0640746, 0.0817924, 0.994587, 0.172753, 0.982498, -0.
 max_living_spawns = 5
 size = 3.0
 chair_scene = ExtResource("6_gbfgx")
+
+[node name="Silla3" parent="." instance=ExtResource("5_k0rdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.1075, -2.43479, -59.2154)
+max_living_spawns = 5
+size = 0.5
+chair_scene = ExtResource("7_egoh1")

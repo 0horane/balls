@@ -1,20 +1,21 @@
+@tool
 extends "res://ObjectScenes/scripts/Liftable.gd"
 
 
 var respawn_timer: Timer
 var despawn_timer: Timer
-const RESPAWN_TIME: float = 5.0  # Tiempo en segundos antes de reaparecer
-const SHOOT_INTERVAL: float = 0.5  # Intervalo entre disparos en segundos
+var RESPAWN_TIME: float = 1.0  # Tiempo en segundos antes de reaparecer
 var Bullet := load("res://ObjectScenes/bullet.tscn")
 var can_shoot: bool = true  # Controla la velocidad de disparo
 
 func _ready():
 	super()
-	respawn_timer = Timer.new()
-	respawn_timer.one_shot = true
-	respawn_timer.wait_time = RESPAWN_TIME
-	respawn_timer.timeout.connect(_on_respawn_timer_timeout)
-	add_child(respawn_timer)
+	if not Engine.is_editor_hint():
+		respawn_timer = Timer.new()
+		respawn_timer.one_shot = true
+		respawn_timer.wait_time = RESPAWN_TIME
+		respawn_timer.timeout.connect(_on_respawn_timer_timeout)
+		add_child(respawn_timer)
 
 
 func shoot():
@@ -45,7 +46,7 @@ func _on_respawn_timer_timeout():
 	
 func add_to_parent(initpos, initrot):
 	super(initpos, initrot)
-	respawn_timer.start(1)
+	respawn_timer.start(RESPAWN_TIME)
 	can_shoot = true
 	
 func remove_from_parent(initpos, initrot, new_collison_shape, vel):
