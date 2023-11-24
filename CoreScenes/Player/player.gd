@@ -152,8 +152,8 @@ func _on_body_entered(body):
 # despues de ciero volumen de intersección, pero sería bastante complicado.  
 @rpc("any_peer")
 func absorb_body(body):
-	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
-		absorb_body.rpc(body)
+	#if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+#		absorb_body.rpc(body)
 	#else:
 #		if "object_id" in body:
 #			body = instance_from_id(body.object_id )
