@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://ctjhgbe7lv625"]
+[gd_scene load_steps=43 format=3 uid="uid://ctjhgbe7lv625"]
 
 [ext_resource type="Script" path="res://CoreScenes/Main/SceneManager.gd" id="1_xo2q1"]
 [ext_resource type="Texture2D" uid="uid://bexol24inxyjb" path="res://Joe_Biden_presidential_portrait.jpg" id="2_u3ikh"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://betinjxibra4m" path="res://ObjectScenes/gun1.tscn" id="6_egcnx"]
 [ext_resource type="PackedScene" uid="uid://cyg7ngj5xfh6a" path="res://ObjectScenes/caja.tscn" id="6_gbfgx"]
 [ext_resource type="PackedScene" uid="uid://is1sl78rawdc" path="res://ObjectScenes/piedra1.tscn" id="6_ono35"]
-[ext_resource type="PackedScene" uid="uid://cocvn12pheqm7" path="res://ObjectScenes/auto.tscn" id="6_ovi30"]
 [ext_resource type="PackedScene" uid="uid://csq3kr34vcl8d" path="res://ObjectScenes/gato.tscn" id="7_8j1ww"]
 [ext_resource type="PackedScene" uid="uid://dhlsrcobhutet" path="res://ObjectScenes/gun2.tscn" id="7_egoh1"]
 [ext_resource type="PackedScene" uid="uid://shpecs40aeg1" path="res://ObjectScenes/bicicleta.tscn" id="7_gayc8"]
@@ -123,24 +122,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.1891, -2.82028, -34.2343)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.9696, -2.43479, -59.2154)
 max_living_spawns = 5
 size = 2.0
-
-[node name="Auto" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.996979, -0.0707086, -0.0321538, -0.0776761, -0.907551, -0.412696, 0, 0.413947, -0.910301, 115.951, 1.63583, -128.203)
-max_living_spawns = 5
-size = 2.0
-chair_scene = ExtResource("6_ovi30")
-
-[node name="Auto2" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(-0.115084, 0.0576918, -0.991679, 0.0268657, 0.998128, 0.0549493, 0.992993, -0.0203184, -0.116419, 169.335, -0.654066, -10.9707)
-max_living_spawns = 5
-size = 2.0
-chair_scene = ExtResource("6_ovi30")
-
-[node name="Auto3" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(0.996979, -0.0707086, -0.0321538, -0.0708932, -0.997474, -0.0046356, -0.0317447, 0.00690122, -0.999472, -7.44802, 0.90147, 156.89)
-max_living_spawns = 5
-size = 2.0
-chair_scene = ExtResource("6_ovi30")
 
 [node name="Bicicleta" parent="." instance=ExtResource("5_k0rdg")]
 transform = Transform3D(1, 0, 0, 0, 0.417978, 0.908457, 0, -0.908457, 0.417978, -74.3991, -2.76898, -63.7952)
@@ -1640,23 +1621,6 @@ size = 2.0
 [node name="Caja3_18" parent="Node3D6" instance=ExtResource("6_gbfgx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.72309, 1.50708, 0)
 size = 2.0
-
-[node name="Auto4" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(-0.115084, 0.0576919, -0.991679, 0.0268656, 0.998128, 0.0549493, 0.992992, -0.0203183, -0.116419, 114.26, -0.654066, -10.9707)
-max_living_spawns = 5
-size = 2.0
-chair_scene = ExtResource("6_ovi30")
-
-[node name="Auto5" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(-0.115084, 0.0576919, -0.991679, 0.0268656, 0.998128, 0.0549493, 0.992992, -0.0203183, -0.116419, 48.0406, -0.654066, -10.9707)
-max_living_spawns = 5
-size = 2.0
-chair_scene = ExtResource("6_ovi30")
-
-[node name="Auto6" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(-0.115084, 0.0576919, -0.991679, 0.0268656, 0.998128, 0.0549493, 0.992992, -0.0203183, -0.116419, 169.335, -0.654066, -115.499)
-max_living_spawns = 5
-chair_scene = ExtResource("6_ovi30")
 
 [node name="Caja17" parent="." instance=ExtResource("5_k0rdg")]
 transform = Transform3D(0.194783, 0.00801185, 0.980814, 0.10828, 0.993679, -0.0296206, -0.974851, 0.111972, 0.192685, -30.5195, -4.32304, 76.6087)

@@ -1,13 +1,13 @@
 [gd_scene load_steps=8 format=3 uid="uid://cyd3ag08uubnt"]
 
 [ext_resource type="Script" path="res://CoreScenes/Player/player.gd" id="1_r3wye"]
-[ext_resource type="Texture2D" uid="uid://cq22og4jilpkc" path="res://1517788487669.jpeg" id="2_re4j3"]
+[ext_resource type="Texture2D" uid="uid://doulfr5g35g6h" path="res://Captura.PNG" id="2_hy2aj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fex5t"]
 friction = 10000.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7juc"]
-albedo_texture = ExtResource("2_re4j3")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_12i47"]
+albedo_texture = ExtResource("2_hy2aj")
 
 [sub_resource type="SphereMesh" id="SphereMesh_2uske"]
 radial_segments = 16
@@ -36,7 +36,7 @@ contact_monitor = true
 script = ExtResource("1_r3wye")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_j7juc")
+material_override = SubResource("StandardMaterial3D_12i47")
 mesh = SubResource("SphereMesh_2uske")
 skeleton = NodePath("")
 
