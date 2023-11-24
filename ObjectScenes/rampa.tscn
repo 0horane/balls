@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnfiflfbjncbh"]
+
+[ext_resource type="Script" path="res://ObjectScenes/scripts/Liftable.gd" id="1_sdc4o"]
+[ext_resource type="Texture2D" uid="uid://bo2x1oedyknfn" path="res://figuras/escenario/chair/textures/fabric_leather_02_diff_1k.png" id="2_7b1qm"]
+[ext_resource type="Texture2D" uid="uid://s7lb5ylu2ghv" path="res://figuras/escenario/chair/textures/fabric_leather_02_nor_gl_1k.png" id="3_a8ckr"]
+[ext_resource type="Texture2D" uid="uid://df8lfjhuquyq6" path="res://figuras/escenario/chair/textures/fabric_leather_02_rough_1k.png" id="4_xxk0m"]
+[ext_resource type="ArrayMesh" uid="uid://cgw73jkyb1ofl" path="res://figuras/escenario/rampa/16308_SkatePark_launchramp_v2_NEW.obj" id="5_m8l8m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wunn1"]
+albedo_texture = ExtResource("2_7b1qm")
+roughness_texture = ExtResource("4_xxk0m")
+normal_enabled = true
+normal_texture = ExtResource("3_a8ckr")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n2sjo"]
+points = PackedVector3Array(-141.127, -49.5477, 0.678551, 89.5155, 145.095, 97.927, -141.127, 148.402, 0.678551, 89.0844, -45.8767, -1.09519, 78.7829, -49.5477, 99.6418, 89.2457, 141.298, -1.1658, 82.4572, 148.402, 99.6418, 89.5452, -46.2656, 97.94, -137.452, 144.701, 4.34572, -136.857, -45.9446, -1.13041, -137.452, -45.8661, 4.34572, -136.45, 144.455, -0.952186, 78.7829, 144.701, 99.6418, -133.801, 148.402, 4.34572, -133.801, -49.5477, 4.34572)
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
+max_contacts_reported = 20
+contact_monitor = true
+script = ExtResource("1_sdc4o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.018, 0, 0, 0, -7.86805e-10, 0.018, 0, -0.018, -7.86805e-10, 0, -0.581898, 0.0475835)
+material_overlay = SubResource("StandardMaterial3D_wunn1")
+mesh = ExtResource("5_m8l8m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.018, 0, 0, 0, -7.86805e-10, 0.018, 0, -0.018, -7.86805e-10, 0, -0.581898, 0.0475835)
+shape = SubResource("ConvexPolygonShape3D_n2sjo")

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cgw73jkyb1ofl"
+path="res://.godot/imported/16308_SkatePark_launchramp_v2_NEW.obj-c9ad789481bfceef62c42832f323e160.mesh"
+
+[deps]
+
+files=["res://.godot/imported/16308_SkatePark_launchramp_v2_NEW.obj-c9ad789481bfceef62c42832f323e160.mesh"]
+
+source_file="res://figuras/escenario/rampa/16308_SkatePark_launchramp_v2_NEW.obj"
+dest_files=["res://.godot/imported/16308_SkatePark_launchramp_v2_NEW.obj-c9ad789481bfceef62c42832f323e160.mesh", "res://.godot/imported/16308_SkatePark_launchramp_v2_NEW.obj-c9ad789481bfceef62c42832f323e160.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
