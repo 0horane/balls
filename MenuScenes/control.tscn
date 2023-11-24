@@ -247,6 +247,27 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Solo ambiente?"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 984.0
+offset_top = 16.0
+offset_right = 1151.0
+offset_bottom = 167.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.913725, 0.223529, 0.419608, 1)
+bbcode_enabled = true
+text = "Creadores: 
+Abdhala Lucas
+Blake Lucas
+Estrada Lautaro 
+Leandro Horane"
+
 [connection signal="close_requested" from="Error" to="." method="_on_error_close_requested"]
 [connection signal="go_back_requested" from="Error" to="." method="_on_error_close_requested"]
 [connection signal="pressed" from="Error/OkButton" to="." method="_on_error_close_requested"]
