@@ -150,8 +150,13 @@ func _on_body_entered(body):
 # hitbox de contacto en el piso y objetos grandes es mayor al hitbox que alica para levantar  
 # objetos, que es mas chica. Lo que #TODO habría que hacer seria que el objeto solo sea levantado 
 # despues de ciero volumen de intersección, pero sería bastante complicado.  
-@rpc("any_peer", "call_local" )
+@rpc("any_peer")
 func absorb_body(body):
+	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		absorb_body.rpc(body)
+	#else:
+#		if "object_id" in body:
+#			body = instance_from_id(body.object_id )
 	var pos=body.global_position
 	var rot=body.global_rotation
 	var parent = body.get_parent()
@@ -246,7 +251,7 @@ func prchldrec(bdy, init=""):
 		prchldrec(body, init+" ")
 
 
-@rpc("any_peer", "call_local" )
+@rpc("any_peer" )
 func on_death():
 	for child in get_children():
 		if "size" in child:
@@ -256,7 +261,14 @@ func on_death():
 			remove_child(child)
 			get_parent().add_child(child)
 			child.call_deferred("remove_from_parent", pos, rot, lifted_object_map[child], vel)
-			
+	
+	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		get_parent().get_node("CanvasLayer").show()
+		get_parent().get_node("CanvasLayer/Control/LineEdit").text = username
+		on_death.rpc()
+		
+	print(multiplayer.get_unique_id(), " detected deah of ", name)
+	
 	queue_free()
 			
 

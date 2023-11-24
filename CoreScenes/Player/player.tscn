@@ -16,15 +16,15 @@ rings = 8
 [sub_resource type="SphereShape3D" id="SphereShape3D_5vafc"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_rdogs"]
-properties/0/path = NodePath(".:size")
+properties/0/path = NodePath(".:syncPos")
 properties/0/spawn = true
 properties/0/sync = true
 properties/0/watch = false
-properties/1/path = NodePath(".:syncPos")
+properties/1/path = NodePath(".:syncRot")
 properties/1/spawn = true
 properties/1/sync = true
 properties/1/watch = false
-properties/2/path = NodePath(".:syncRot")
+properties/2/path = NodePath(".:volume")
 properties/2/spawn = true
 properties/2/sync = true
 properties/2/watch = false
