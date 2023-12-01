@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://s8vg62w1w3u4"
+path="res://.godot/imported/19243_Sawed-off_shotgun_v1.obj-a9863b73097cf9dfaacab5adf719af14.mesh"
+
+[deps]
+
+files=["res://.godot/imported/19243_Sawed-off_shotgun_v1.obj-a9863b73097cf9dfaacab5adf719af14.mesh"]
+
+source_file="res://figuras/escenario/shotgun/19243_Sawed-off_shotgun_v1.obj"
+dest_files=["res://.godot/imported/19243_Sawed-off_shotgun_v1.obj-a9863b73097cf9dfaacab5adf719af14.mesh", "res://.godot/imported/19243_Sawed-off_shotgun_v1.obj-a9863b73097cf9dfaacab5adf719af14.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
