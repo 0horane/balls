@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bag548qitbsmg"]
+
+[ext_resource type="Script" path="res://ObjectScenes/shotgun.gd" id="1_3g3ds"]
+[ext_resource type="ArrayMesh" uid="uid://s8vg62w1w3u4" path="res://figuras/escenario/shotgun/19243_Sawed-off_shotgun_v1.obj" id="2_ucas8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3j1ij"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
+max_contacts_reported = 20
+contact_monitor = true
+script = ExtResource("1_3g3ds")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.000130315, -0.0529572, -0.00212563, -5.17259e-05, -0.00212551, 0.0529573, -0.0529998, 0.000132284, -4.6458e-05, 0.009, -0.425, 0.427)
+mesh = ExtResource("2_ucas8")
+surface_material_override/0 = SubResource("StandardMaterial3D_3j1ij")
