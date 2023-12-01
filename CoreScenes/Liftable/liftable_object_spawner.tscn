@@ -5,6 +5,5 @@
 
 [node name="LiftableObjectSpawner" type="Marker3D" groups=["liftable_spawner"]]
 script = ExtResource("1_rbe68")
-max_living_spawns = null
 size = 1.0
 chair_scene = ExtResource("2_3qef1")

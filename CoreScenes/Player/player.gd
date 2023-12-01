@@ -41,12 +41,13 @@ var username = ""
 var linear_velocity_before_collision := linear_velocity
 
 func _ready():
+	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	gravity_scale=70/ProjectSettings.get_setting("physics/3d/default_gravity")
-	contact_monitor=true
-	max_contacts_reported=9999
+	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		contact_monitor=true
+		max_contacts_reported=9999
 	$Label3D.text = username
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, $MeshInstance3D.get_mesh().get_mesh_arrays())
-	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 
 
 
@@ -141,7 +142,7 @@ func _on_body_entered(body):
 	if "size" in body and volume*MINIMUM_ABSORBTION_RATIO>GameManager.find_body_volume(body):
 		var parent = body.get_parent()
 		if parent && parent!=self:
-			absorb_body(body)
+			absorb_body(body, body.name, body.global_position, body.global_rotation)
 			linear_velocity = linear_velocity_before_collision
 			
 
@@ -151,15 +152,25 @@ func _on_body_entered(body):
 # objetos, que es mas chica. Lo que #TODO habría que hacer seria que el objeto solo sea levantado 
 # despues de ciero volumen de intersección, pero sería bastante complicado.  
 @rpc("any_peer")
-func absorb_body(body):
-	#if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
-#		absorb_body.rpc(body)
-	#else:
-#		if "object_id" in body:
-#			body = instance_from_id(body.object_id )
-	var pos=body.global_position
-	var rot=body.global_rotation
+func absorb_body(body, bname, globpos, globrot): #TODO rewrite to use relative posotions for cleaner multiplayer code
+	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		absorb_body.rpc(body, body.name, globpos, globrot)
+	else:
+		if "object_id" in body:
+			body = instance_from_id(body.object_id )
+		if !body || !is_instance_valid(body):
+			body = find_child2(get_tree().root, bname)
+		global_position = syncPos
+		transform.basis = Basis(syncRot)
+
+	var pos=globpos
+	var rot=globrot
 	var parent = body.get_parent()
+	
+	if not $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		global_position = lerp(global_position, syncPos, 0.5)
+		var newRot:=Quaternion(transform.basis).slerp(syncRot, 0.5)
+		transform.basis = Basis(newRot)
 	
 	# adds object as player child
 	parent.remove_child(body)
@@ -229,7 +240,6 @@ func morph_shape(body):
 	mi.mesh = mesh
 
 	mi.create_convex_collision(true, USE_SIMPLIFIED_COLLISION_MESH)
-	prchldrec(mi)
 	var new_collison_shape :Shape3D = find_child2(mi,"CollisionShape3D").shape
 	$CollisionShape3D.shape = new_collison_shape
 	mi.queue_free()
@@ -240,10 +250,12 @@ func find_child2(node, nam):
 	var returnbody = null
 	for body in node.get_children():
 		if nam in body.name:
-			returnbody = body
+			return body
 		else: 
-			returnbody = find_child2(body, nam) if returnbody==null else returnbody
-	return returnbody
+			returnbody = find_child2(body, nam) 
+			if returnbody:
+				return returnbody
+	return null
 			
 func prchldrec(bdy, init=""):
 	print(init, bdy)
@@ -279,4 +291,13 @@ func take_damage(amount:int):
 	health-=amount
 	if health<0:
 		on_death()
+		
+		
+static func recurse_find(node:Node, bname:String):
+	if bname.split("_")[0].substr(1) in node.name:
+		node.print_tree_pretty()
+	else:
+		for child in node.get_children():
+			recurse_find(child, bname)
+	
 
