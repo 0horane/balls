@@ -76,7 +76,7 @@ func _physics_process(delta):
 	linear_velocity_before_collision=linear_velocity # to prevent collisions from causing jumps TODO rename
 	
 	if Input.is_action_pressed("kill_self_debug"):
-		on_death()
+		on_death.rpc()
 	
 	#$Label3D.global_position = global_position
 	$Label3D.global_rotation += Vector3.ZERO 	
@@ -135,7 +135,7 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("balls") && volume*MINIMUM_PLAYER_ABSORBTION_RATIO>body.volume:
-		body.on_death()
+		body.on_death.rpc()
 		linear_velocity = linear_velocity_before_collision
 		return
 	
@@ -263,7 +263,7 @@ func prchldrec(bdy, init=""):
 		prchldrec(body, init+" ")
 
 
-@rpc("any_peer" )
+@rpc("any_peer", "call_local" )
 func on_death():
 	for child in get_children():
 		if "size" in child:
@@ -277,7 +277,7 @@ func on_death():
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
 		get_parent().get_node("CanvasLayer").show()
 		get_parent().get_node("CanvasLayer/Control/LineEdit").text = username
-		on_death.rpc()
+
 		
 	print(multiplayer.get_unique_id(), " detected deah of ", name)
 	
@@ -290,7 +290,7 @@ func on_death():
 func take_damage(amount:int):
 	health-=amount
 	if health<0:
-		on_death()
+		on_death.rpc()
 		
 		
 static func recurse_find(node:Node, bname:String):
