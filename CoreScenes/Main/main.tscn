@@ -8,12 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://bmvao6iglaf58" path="res://ObjectScenes/mesa.tscn" id="6_0ugbt"]
 [ext_resource type="PackedScene" uid="uid://dqbfucyr4es7g" path="res://ObjectScenes/casa.tscn" id="6_33ade"]
 [ext_resource type="PackedScene" uid="uid://betinjxibra4m" path="res://ObjectScenes/gun1.tscn" id="6_egcnx"]
-[ext_resource type="PackedScene" path="res://ObjectScenes/caja.tscn" id="6_gbfgx"]
+[ext_resource type="PackedScene" uid="uid://cyg7ngj5xfh6a" path="res://ObjectScenes/caja.tscn" id="6_gbfgx"]
 [ext_resource type="PackedScene" uid="uid://is1sl78rawdc" path="res://ObjectScenes/piedra1.tscn" id="6_ono35"]
 [ext_resource type="PackedScene" uid="uid://bnfiflfbjncbh" path="res://ObjectScenes/rampa.tscn" id="7_5uhfl"]
 [ext_resource type="PackedScene" uid="uid://csq3kr34vcl8d" path="res://ObjectScenes/gato.tscn" id="7_8j1ww"]
 [ext_resource type="PackedScene" uid="uid://dhlsrcobhutet" path="res://ObjectScenes/gun2.tscn" id="7_egoh1"]
-[ext_resource type="PackedScene" path="res://ObjectScenes/bicicleta.tscn" id="7_gayc8"]
+[ext_resource type="PackedScene" uid="uid://shpecs40aeg1" path="res://ObjectScenes/bicicleta.tscn" id="7_gayc8"]
 [ext_resource type="PackedScene" uid="uid://ced6ei1jpv1s3" path="res://ObjectScenes/piedra2.tscn" id="7_uadqf"]
 [ext_resource type="PackedScene" uid="uid://b0ugwr3kb7olo" path="res://ObjectScenes/piedra3.tscn" id="8_ejbl4"]
 [ext_resource type="PackedScene" uid="uid://cvvfe7avdip5d" path="res://ObjectScenes/gnomo.tscn" id="8_fyl7o"]
@@ -110,19 +110,19 @@ fov = 75.9375
 script = ExtResource("4_7or6k")
 
 [node name="SpawnLocations" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.1891, -4.294, -30.0503)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2498, -4.294, -30.0503)
 
 [node name="1" type="Marker3D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1268, 11.1019, -6.76158)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1268, 3.76382, 40.0334)
 
 [node name="0" type="Marker3D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.07476, 11.1019, 4.90293)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.07476, -0.617622, 4.90293)
 
 [node name="3" type="Marker3D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.60892, 11.1019, -5.51603)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.2845, 2.4319, -6.90075)
 
 [node name="2" type="Marker3D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.20286, -4.61605, 3.49349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9454, -4.03001, 48.4722)
 
 [node name="GUN" parent="." instance=ExtResource("6_egcnx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.1891, -2.82028, -34.2343)
@@ -132,7 +132,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.9696, -2.43479, -59.2154)
 size = 2.0
 
 [node name="Rampa" parent="." instance=ExtResource("5_k0rdg")]
-transform = Transform3D(-0.990028, -0.0253395, 0.138576, -0.0250948, 0.999679, 0.00351256, -0.13862, -3.00625e-10, -0.990346, 74.3019, 8.11946, 4.44745)
+transform = Transform3D(-0.990028, -0.0253394, 0.138576, -0.0250948, 0.999679, 0.00351256, -0.13862, -3.25963e-09, -0.990346, 74.3019, 7.85227, 4.44745)
+sin_gravedad = true
 size = 2.0
 chair_scene = ExtResource("7_5uhfl")
 
