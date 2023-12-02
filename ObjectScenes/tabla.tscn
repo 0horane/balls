@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3uhtcddci41u"]
+[gd_scene load_steps=10 format=3 uid="uid://de2it218f3c8x"]
 
 [ext_resource type="Script" path="res://ObjectScenes/scripts/Liftable.gd" id="1_5hdf3"]
 [ext_resource type="Texture2D" uid="uid://bo2x1oedyknfn" path="res://figuras/escenario/chair/textures/fabric_leather_02_diff_1k.png" id="2_ul56d"]
@@ -13,13 +13,13 @@ normal_enabled = true
 normal_texture = ExtResource("3_o4fei")
 
 [sub_resource type="BoxMesh" id="BoxMesh_6clvr"]
-size = Vector3(4.85, 2.332, 0.044)
+size = Vector3(4.85, 2.332, 0.429)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dse5x"]
 albedo_texture = ExtResource("5_c23c6")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pv76h"]
-points = PackedVector3Array(-2.46349, -1.20449, -0.0604921, 2.46349, 1.18202, 0.0934762, 2.46349, 1.18202, -0.0604921, -2.46349, 1.18202, 0.0934762, 2.46349, -1.20449, 0.0934762, 2.46349, -1.20449, -0.0604921, -2.46349, 1.18202, -0.0604921, -2.46349, -1.20449, 0.0934762)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4ewnk"]
+points = PackedVector3Array(-2.46349, -1.20449, -0.252939, 2.46349, 1.18202, 0.285844, 2.46349, 1.18202, -0.252939, -2.46349, 1.18202, 0.285844, 2.46349, -1.20449, 0.285844, 2.46349, -1.20449, -0.252939, -2.46349, 1.18202, -0.252939, -2.46349, -1.20449, 0.285844)
 
 [node name="RigidBody3D" type="RigidBody3D" groups=["liftable"]]
 max_contacts_reported = 20
@@ -34,4 +34,4 @@ surface_material_override/0 = SubResource("StandardMaterial3D_dse5x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.000718351)
-shape = SubResource("ConvexPolygonShape3D_pv76h")
+shape = SubResource("ConvexPolygonShape3D_4ewnk")
