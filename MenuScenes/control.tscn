@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://kdjhlmnvtxfm"]
+[gd_scene load_steps=4 format=3 uid="uid://kdjhlmnvtxfm"]
 
 [ext_resource type="Script" path="res://MultiplayerScenes/MultiplayerController.gd" id="1_rf8e0"]
 [ext_resource type="Texture2D" uid="uid://d3oaqxvdfkiy2" path="res://day-view-basilica-our-lady-pillar.jpg" id="2_7dy7g"]
+[ext_resource type="Texture2D" uid="uid://q4lrlx8cdht5" path="res://logo.png" id="2_u615k"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -16,19 +17,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rf8e0")
 
-[node name="Logo" type="Label" parent="."]
-layout_mode = 2
-offset_left = 163.0
-offset_top = 82.0
-offset_right = 953.0
-offset_bottom = 188.0
-theme_override_colors/font_color = Color(0.34902, 0.317647, 0.0980392, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/outline_size = 40
-theme_override_font_sizes/font_size = 75
-text = "Brig Balls Battle Royal"
-horizontal_alignment = 1
+[node name="Logo2" type="Sprite2D" parent="."]
+position = Vector2(522, 148)
+texture = ExtResource("2_u615k")
 
 [node name="Error" type="Window" parent="."]
 initial_position = 2
